@@ -1,0 +1,108 @@
+{
+  "trips": {
+    "trip0": {
+      "name": "Summer2017",
+      "uid": "madeupid3"
+    },
+    "trip1": {
+      "name": "Christmas2017",
+      "uid": "madeupid3"
+    }
+  },
+  "bases": {
+    "base0": {
+      "end": "6/26/17",
+      "name": "Nashville",
+      "start": "6/26/17",
+      "trip": "trip0"
+    },
+    "base1": {
+      "end": "6/29/17",
+      "name": "Madrid",
+      "start": "6/26/17",
+      "trip": "trip0"
+    },
+    "base2": {
+      "end": "7/4/17",
+      "name": "Geneva",
+      "start": "6/30/17",
+      "trip": "trip1"
+    }
+  },
+  "events": {
+    "event0": {
+      "address": "Plaza Santa Anna 12",
+      "base": "base1",
+      "end": "6/28/17 8:00 PM",
+      "latitude": "40.413722",
+      "longitude": "3.692412",
+      "name": "Lateral",
+      "ref": "early for bar seating, try the dessert",
+      "review": "5",
+      "start": "6/28/17 6:00 PM",
+      "trip": "trip0",
+      "type": "type0"
+    },
+    "event1": {
+      "address": "Calle de Huertas 300, Madrid, Espana,28014",
+      "base": "base1",
+      "end": "6/29/17 11:00 AM",
+      "latitude": "40.413722",
+      "longitude": "3.692412",
+      "name": "Madrid airBnB",
+      "ref": "ABC123, Paula +34 615827397",
+      "start": "6/27/17 2:00 PM",
+      "trip": "trip0",
+      "type": "type1"
+    },
+    "event2": {
+      "address": "Paseo del Prado s/n, Madrid, Espana,28014",
+      "base": "base1",
+      "end": "6/31/17 14:00 PM",
+      "latitude": "40.413722",
+      "longitude": "3.692412",
+      "name": "prado",
+      "ref": "free on sundays, opens at 10",
+      "start": "6/31/17 12:00 PM",
+      "trip": "trip0",
+      "type": "type2"
+    },
+    "event3": {
+      "address": "1 Terminal Dr, Nashville TN 37214",
+      "base": "base1",
+      "end": "6/26/17 13:00 PM",
+      "latitude": "36.1263",
+      "longitude": "86.6774",
+      "name": "Outbound Flight",
+      "ref": "AA 123, T67Y44",
+      "start": "6/26/17 6:00 AM",
+      "trip": "trip0",
+      "type": "type3"
+    }
+  },
+  "types": {
+    "type0": {
+      "name": "food",
+      "image": "./images/food.png"
+    },
+    "type1": {
+      "name": "lodging",
+      "image": "./images/lodging.png"
+    },
+    "type2": {
+      "name": "site",
+      "image": "./images/site.png"
+    },
+    "type3": {
+      "name": "transit",
+      "image": "./images/transit.png"
+    }
+  },
+  "users": {
+    "user0": {
+      "name": "Mitchell",
+      "email": "a@a.com",
+      "uid": "f428ENknAxNH7eJ1gOym7p5Dc8r1"
+    }
+  }
+}
