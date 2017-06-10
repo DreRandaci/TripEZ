@@ -14,9 +14,8 @@
 
     <body ng-app="TripEZapp">
         <toast></toast>
-        <!-- <div ng-include="'partials/navbar.html'"></div> -->
-        <!-- 
-        <main ng-view class="container view-box"></main> -->
+        <div ng-include="'partials/navbar.html'"></div>
+        <main ng-view class="container view-box"></main>
 
         <h1>TripEZ</h1>
         <div uib-alert ng-repeat="alert in alerts" class="alert-danger">{{alert.msg}}</div>
