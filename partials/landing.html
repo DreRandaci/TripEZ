@@ -1,20 +1,25 @@
-<div class="container">
+<div class="container col-xs-4 col-xs-offset-4">
 
   <h3>landing writing to dom</h3>
   
-<!--   <div class="col-sm-2 col-sm-offset-6 btn-right btn-new-board" ng-if="isOwner">
+  <div class="col-sm-2 col-sm-offset-6 btn-right btn-new-board">
     <h3>
-    <button uib-popover-template="createNewBoardPopover.templateUrl" popover-title="What should we call it?" type="button" class="btn btn-default">Login
+    <button uib-popover-template="auth.templateUrl" popover-title="New here?" type="button" class="btn btn-default">Login
     <span class="glyphicon glyphicon-th-large glyph-inverse" aria-hidden="true"></span>
     </button>
-    <script type="text/ng-template" id="newBoardPopover.html">
+    <script type="text/ng-template" id="auth.html">
     <div class="form-group">
       <form>
-        <input type="text" ng-model="createNewBoardPopover.userTitle" class="form-control" ng-keyup="$event.keyCode == 13 && loginUser()">
+        <input type="email" id="inputEmail" class="form-control form-spacing" placeholder="Email Address" ng-model="auth.email" ng-keyup="$event.keyCode == 13 && loginUser()" required autofocus>
+        <input type="email" id="inputPassword" class="form-control form-spacing" placeholder="Password" ng-model="auth.password" ng-keyup="$event.keyCode == 13 && loginUser()" required autofocus>
+
+        <a class="btn col-xs-12" ng-click="loginUser()">Login</a>
+        <a class="btn col-xs-12" ng-click="registerUser()">Register</a>
+
       </form>
     </div>
     </script>
     </h3>
   </div>
-   -->
+  
 </div>
