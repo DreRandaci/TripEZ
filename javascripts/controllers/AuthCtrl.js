@@ -5,6 +5,7 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, AuthFactory, 
 	$scope.auth = {
 		templateUrl: 'auth.html',
 		email: "a@a.com",
+		name: "Mitchell",
 		password: "123456"
 	};
 
@@ -52,17 +53,11 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, AuthFactory, 
 	};
 
 	$scope.loginUser = () => {
-		console.log("loginUser executed");
 		logMeIn();
 	};
 
 	$scope.loginUserGoogle = () => {
 		logMeInGoogle();
-	}
-
-	// $scope.loginPopover = {
- //    templateUrl: 'loginPopover.html',
- //    userEmail: ''
- //  };
+	};
 
 });
