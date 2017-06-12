@@ -5,7 +5,6 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, AuthFactory, 
 	$scope.auth = {};
 
 	$scope.userWillLogin = () => {
-		console.log("user will login");
 		$scope.auth = { 
 			templateUrl: "auth.html",
 			email: "a@a.com",
@@ -14,7 +13,6 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, AuthFactory, 
 	};
 
 	$scope.userWillRegister = () => {
-		console.log("user will register");
 		$scope.auth = { 
 			templateUrl: "reg.html",
 			email: "",
