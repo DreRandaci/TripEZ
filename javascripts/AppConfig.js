@@ -31,6 +31,10 @@ app.config(function($routeProvider) {
         templateUrl: "partials/trip-view.html",
         controller: "TripViewCtrl",
         resolve: {isAuth}
-      })
+     })
+    .when('/logout', {
+        templateUrl: 'partials/landing.html',
+        controller: 'AuthCtrl'
+     })
     .otherwise('/landing');
 });
