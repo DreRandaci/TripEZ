@@ -28,8 +28,8 @@ app.config(function($routeProvider) {
       controller: 'AuthCtrl'
     })
     .when("/trips/:uid", {
-        templateUrl: "partials/trip-view.html",
-        controller: "TripViewCtrl",
+        templateUrl: "partials/trip-list.html",
+        controller: "TripListCtrl",
         resolve: {isAuth}
      })
     .when('/logout', {

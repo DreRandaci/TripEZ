@@ -1,11 +1,27 @@
 {
   "trips": {
     "trip0": {
-      "name": "Summer2017",
+      "end": "7/5/17",
+      "name": "Summer 2017",
+      "start": "6/26/17",
       "uid": "f428ENknAxNH7eJ1gOym7p5Dc8r1"
     },
     "trip1": {
-      "name": "Christmas2017",
+      "end": "12/30/17",
+      "name": "Family Christmas",
+      "start": "12/23/17",
+      "uid": "f428ENknAxNH7eJ1gOym7p5Dc8r1"
+    },
+    "trip2": {
+      "end": "5/10/18",
+      "name": "Med Sea Adventure",
+      "start": "5/1/18",
+      "uid": "f428ENknAxNH7eJ1gOym7p5Dc8r1"
+    },
+    "trip3": {
+      "end": "3/26/18",
+      "name": "Canadian Skiing",
+      "start": "3/22/18",
       "uid": "pAGclMcIUwh96Oyq5aNAFAvaFMD3"
     }
   },
