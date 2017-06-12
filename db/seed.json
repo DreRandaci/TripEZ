@@ -2,11 +2,11 @@
   "trips": {
     "trip0": {
       "name": "Summer2017",
-      "uid": "madeupid3"
+      "uid": "f428ENknAxNH7eJ1gOym7p5Dc8r1"
     },
     "trip1": {
       "name": "Christmas2017",
-      "uid": "madeupid3"
+      "uid": "pAGclMcIUwh96Oyq5aNAFAvaFMD3"
     }
   },
   "bases": {
@@ -100,9 +100,12 @@
   },
   "users": {
     "user0": {
-      "name": "Mitchell",
       "email": "a@a.com",
       "uid": "f428ENknAxNH7eJ1gOym7p5Dc8r1"
+    },
+    "user1": {
+      "email": "b@b.com",
+      "uid": "pAGclMcIUwh96Oyq5aNAFAvaFMD3"
     }
   }
 }

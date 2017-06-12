@@ -1,0 +1,30 @@
+<div class="container col-xs-4 col-xs-offset-4 auth-container">
+  <img src="./images/filler_logo.png" alt="logo" />
+  <h3>TripEZ</h3>
+  <div class="btn-right btn-new-board">
+    <h3>
+      <button ng-click="userWillLogin()" uib-popover-template="auth.templateUrl" popover-title="Welcome Back" type="button" class="btn btn-default">I'm Back!
+      </button>
+      <button ng-click="userWillRegister()" uib-popover-template="auth.templateUrl" popover-title="Please Register" type="button" class="btn btn-default">New Here?
+      </button>
+      <script type="text/ng-template" id="auth.html">
+        <div class="form-group">
+          <form>
+            <input type="email" id="inputEmail" class="form-control form-spacing" placeholder="Email Address" ng-model="auth.email" required autofocus>
+            <input type="password" id="inputPassword" class="form-control form-spacing" placeholder="Password" ng-model="auth.password" ng-keyup="$event.keyCode == 13 && loginUser()" required autofocus>
+            <a class="btn col-xs-12" ng-click="loginUser()">Login</a>
+          </form>
+        </div>
+      </script>
+      <script type="text/ng-template" id="reg.html">
+        <div class="form-group">
+          <form>
+            <input type="email" id="inputEmail" class="form-control form-spacing" placeholder="Email Address" ng-model="auth.email" required autofocus>
+            <input type="password" id="inputPassword" class="form-control form-spacing" placeholder="Password" ng-model="auth.password" ng-keyup="$event.keyCode == 13 && registerUser()" required autofocus>
+            <a class="btn col-xs-12" ng-click="registerUser()">Register</a>
+          </form>
+        </div>
+      </script>
+    </h3>
+  </div>
+</div>
