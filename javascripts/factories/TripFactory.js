@@ -8,7 +8,7 @@ app.factory("TripFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
         let tripCollection = tripsFromFB.data;
         if (tripCollection !== null) {
             Object.keys(tripCollection).forEach((key) => {
-            tripCollection[key].boardId=key;
+            tripCollection[key].tripId=key;
             tripArray.push(tripCollection[key]);
           });
         }
@@ -33,12 +33,10 @@ app.factory("TripFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
   	});
   };
 
-  let editTripInFB = (trip) => {
-    let tripId = trip.tripId;
-    delete trip.tripId;
+  let editTripInFB = (tripToEdit) => {
     return $q((resolve, reject) => {
-      $http.put(`${FIREBASE_CONFIG.databaseURL}/trips/${tripId}.json`,
-        JSON.stringify(trip))
+      $http.put(`${FIREBASE_CONFIG.databaseURL}/trips/${tripToEdit.id}.json`,
+        JSON.stringify(tripToEdit))
       .then((result) => {
         resolve(result);
       })

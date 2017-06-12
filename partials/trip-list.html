@@ -21,7 +21,7 @@
     <div ng-show="editing">
       <input ng-model="trip.name" type="text" autofocus>
       <div class="pull-right">
-        <button class="btn btn-sm btn-success" ng-click="editing = false; editTripName(trip.tripId, trip.name)">
+        <button class="btn btn-sm btn-success" ng-click="editing = false; editTripName(trip, trip.name)">
           <i class="fa fa-save"></i>
         </button>
   		</div>
