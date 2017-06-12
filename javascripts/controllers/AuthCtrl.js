@@ -2,11 +2,24 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, AuthFactory, 
 
 	$scope.alerts = [];
 
-	$scope.auth = {
-		templateUrl: 'auth.html',
-		email: "a@a.com",
-		name: "Mitchell",
-		password: "123456"
+	$scope.auth = {};
+
+	$scope.userWillLogin = () => {
+		console.log("user will login");
+		$scope.auth = { 
+			templateUrl: "auth.html",
+			email: "a@a.com",
+			password: "123456"
+		}
+	};
+
+	$scope.userWillRegister = () => {
+		console.log("user will register");
+		$scope.auth = { 
+			templateUrl: "reg.html",
+			email: "",
+			password: ""
+		}
 	};
 
 	if ($location.path() === '/logout') {
