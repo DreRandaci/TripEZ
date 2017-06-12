@@ -1,17 +1,23 @@
 <div class="col-sm-12">
-    <h3>Future Trips</h3>
+    <h3>Trips Planned</h3>
+</div>
+
+<div class="row row-headings">
+	<h2 class="col-sm-4">Trip</h2>
+	<h2 class="col-sm-3">Start</h2>
+	<h2 class="col-sm-3">End</h2>
 </div>
 
 <div ng-repeat="trip in trips">
 	<div class="row">
 		<div class="col-sm-4">
-      <h2 class="panel-title" ng-show="!editing">
+      <h3 ng-show="!editing">
         <a ng-href="#">
           {{trip.name}}
         </a>
-      </h2>
+      </h3>
     </div>
-    <div class="col-sm-3">{{trip.start}}</div>
-    <div class="col-sm-3">{{trip.end}}</div>
+    <h4 class="col-sm-3">{{trip.start}}</h4>
+    <h4 class="col-sm-3">{{trip.end}}</h4>
   </div>
 </div>
