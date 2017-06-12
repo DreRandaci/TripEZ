@@ -33,9 +33,25 @@ app.factory("TripFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
   	});
   };
 
+  let editTripInFB = (trip) => {
+    let tripId = trip.tripId;
+    delete trip.tripId;
+    return $q((resolve, reject) => {
+      $http.put(`${FIREBASE_CONFIG.databaseURL}/trips/${tripId}.json`,
+        JSON.stringify(trip))
+      .then((result) => {
+        resolve(result);
+      })
+      .catch((error) => {
+        reject("error in editTripInFB", error);
+      });
+    });
+  };
+
 	return {
 		getTripsFromFB:getTripsFromFB,
-		makeNewTripInFB:makeNewTripInFB
+		makeNewTripInFB:makeNewTripInFB,
+    editTripInFB:editTripInFB
 	};
 
 });

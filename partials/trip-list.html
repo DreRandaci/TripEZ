@@ -9,15 +9,24 @@
 <div ng-repeat="trip in trips">
 	<div class="row">
 		<div class="col-sm-4">
-      <h3 ng-show="!editing">
-        <a ng-href="#">
-          {{trip.name}}
-        </a>
-      </h3>
+      <h3><a ng-href="#">{{trip.name}}</a></h3>
     </div>
     <h4 class="col-sm-3">{{trip.start}}</h4>
     <h4 class="col-sm-3">{{trip.end}}</h4>
-  </div>
+    <div class="pull-right col-sm-1">
+      <button class="btn btn-sm btn-info edit-btn" ng-click="editing = true">
+        <i class="fa fa-pencil"></i>
+      </button>
+    </div>
+    <div ng-show="editing">
+      <input ng-model="trip.name" type="text" autofocus>
+      <div class="pull-right">
+        <button class="btn btn-sm btn-success" ng-click="editing = false; editTripName(trip.tripId, trip.name)">
+          <i class="fa fa-save"></i>
+        </button>
+  		</div>
+  	</div>
+	</div>
 </div>
 
 <div class="col-sm-12">

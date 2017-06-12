@@ -34,4 +34,21 @@ app.controller("TripListCtrl", function($location, $rootScope, $routeParams, $sc
     });
   };
 
+  $scope.editTripName = (tripId, newTripName) => {
+  	console.log("tripId", tripId);
+  	console.log("newTripName", newTripName);
+		let tripToEdit = {
+			tripId: tripId,
+			end: trip.end,
+			start: trip.start,
+			uid: $rootScope.user.uid,
+			name: newTripName
+		};
+		TripFactory.editTripInFB(tripToEdit).then(() => {
+			getTrips();
+		}).catch((error) => {
+			console.log("changeBoard error", error);
+		});
+	};
+
 });
