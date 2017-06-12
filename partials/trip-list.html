@@ -1,6 +1,4 @@
-<div class="col-sm-12">
-    <h3>Trips Planned</h3>
-</div>
+<h3>Trips Planned</h3>
 
 <div class="row row-headings">
 	<h2 class="col-sm-4">Trip</h2>
@@ -20,4 +18,22 @@
     <h4 class="col-sm-3">{{trip.start}}</h4>
     <h4 class="col-sm-3">{{trip.end}}</h4>
   </div>
+</div>
+
+<div class="col-sm-12">
+	<div class="col-sm-2 col-sm-offset-6 btn-right">
+	  <h3>
+	    <button uib-popover-template="newTripPopover.templateUrl" popover-title="Your Next Adventure..." type="button" class="btn btn-default">New Trip</button>
+	    <script type="text/ng-template" id="newTripPopover.html" class="newPopover">
+	      <div class="form-group">
+	        <form>
+	          <input type="text" placeholder="Trip Name" ng-model="newTripPopover.tripName" class="form-control">
+	          <input type="text" placeholder="Start Date" ng-model="newTripPopover.tripStartDate" class="form-control" value="5/1/19">
+	          <input type="text" placeholder="End Date" ng-model="newTripPopover.tripEndDate" class="form-control" value="6/1/19" ng-keyup="$event.keyCode == 13 && makeNewTrip()">
+	          <button ng-click="makeNewTrip()">Submit</button>
+	        </form>
+	      </div>
+	    </script>
+	  </h3>
+	</div>
 </div>

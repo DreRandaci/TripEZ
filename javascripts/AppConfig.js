@@ -32,6 +32,11 @@ app.config(function($routeProvider) {
         controller: "TripListCtrl",
         resolve: {isAuth}
      })
+    .when("/trips/newTripModal", {
+        templateUrl: "partials/new-modal.html",
+        controller: "TripListCtrl",
+        resolve: {isAuth}
+     })
     .when('/logout', {
         templateUrl: 'partials/landing.html',
         controller: 'AuthCtrl'

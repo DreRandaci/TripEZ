@@ -20,8 +20,22 @@ app.factory("TripFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
     });
   };
 
+  let makeNewTripInFB = (newTrip) => {
+    return $q((resolve, reject) => {
+      $http.post(`${FIREBASE_CONFIG.databaseURL}/trips.json`,
+        JSON.stringify(newTrip))
+      .then((data) => {
+      	resolve(data);
+      })
+      .catch((error) => {
+      	reject("error in makeNewTripInFB", error);
+      });
+  	});
+  };
+
 	return {
-		getTripsFromFB:getTripsFromFB
+		getTripsFromFB:getTripsFromFB,
+		makeNewTripInFB:makeNewTripInFB
 	};
 
 });
