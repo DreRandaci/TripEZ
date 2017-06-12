@@ -10,7 +10,7 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, AuthFactory, 
 			templateUrl: "auth.html",
 			email: "a@a.com",
 			password: "123456"
-		}
+		};
 	};
 
 	$scope.userWillRegister = () => {
@@ -19,7 +19,7 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, AuthFactory, 
 			templateUrl: "reg.html",
 			email: "",
 			password: ""
-		}
+		};
 	};
 
 	if ($location.path() === '/logout') {

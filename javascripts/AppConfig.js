@@ -27,7 +27,7 @@ app.config(function($routeProvider) {
       templateUrl: 'partials/landing.html',
       controller: 'AuthCtrl'
     })
-    .when("/boards/:uid", {
+    .when("/trips/:uid", {
         templateUrl: "partials/trip-view.html",
         controller: "TripViewCtrl",
         resolve: {isAuth}
