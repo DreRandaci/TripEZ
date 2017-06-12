@@ -24,7 +24,7 @@
 }
 
 .sidenav a {
-  padding: 8px 8px 8px 32px;
+  padding: 20px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
   color: #818181;
@@ -33,10 +33,10 @@
 }
 
 .sidenav a:hover, .offcanvas a:focus{
-    color: #fefefe;
+  color: #fefefe;
 }
 
-.sidenav .closebtn {
+.sidenav .nav-toggle-btn {
   position: absolute;
   top: 0;
   right: 25px;
@@ -47,4 +47,10 @@
 main {
   transition: margin-left .5s;
   padding: 20px;
+}
+
+.nav-img {
+	height: 40px;
+	width: 40px;
+	margin-right: 20px;
 }
