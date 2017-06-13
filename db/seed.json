@@ -1,47 +1,47 @@
 {
   "trips": {
     "trip0": {
-      "end": "7/5/17",
+      "end": "2017-06-13T05:00:00.000Z",
       "name": "Summer 2017",
-      "start": "6/26/17",
+      "start": "2017-06-13T05:00:00.000Z",
       "uid": "f428ENknAxNH7eJ1gOym7p5Dc8r1"
     },
     "trip1": {
-      "end": "12/30/17",
+      "end": "2017-06-13T05:00:00.000Z",
       "name": "Family Christmas",
-      "start": "12/23/17",
+      "start": "2017-06-13T05:00:00.000Z",
       "uid": "f428ENknAxNH7eJ1gOym7p5Dc8r1"
     },
     "trip2": {
-      "end": "5/10/18",
+      "end": "2017-06-13T05:00:00.000Z",
       "name": "Med Sea Adventure",
-      "start": "5/1/18",
+      "start": "2017-06-13T05:00:00.000Z",
       "uid": "f428ENknAxNH7eJ1gOym7p5Dc8r1"
     },
     "trip3": {
-      "end": "3/26/18",
+      "end": "2017-06-13T05:00:00.000Z",
       "name": "Canadian Skiing",
-      "start": "3/22/18",
+      "start": "2017-06-13T05:00:00.000Z",
       "uid": "pAGclMcIUwh96Oyq5aNAFAvaFMD3"
     }
   },
   "bases": {
     "base0": {
-      "end": "6/26/17",
+      "end": "2017-06-13T05:00:00.000Z",
       "name": "Nashville",
-      "start": "6/26/17",
+      "start": "2017-06-13T05:00:00.000Z",
       "trip": "trip0"
     },
     "base1": {
-      "end": "6/29/17",
+      "end": "2017-06-13T05:00:00.000Z",
       "name": "Madrid",
-      "start": "6/26/17",
+      "start": "2017-06-13T05:00:00.000Z",
       "trip": "trip0"
     },
     "base2": {
-      "end": "7/4/17",
+      "end": "2017-06-13T05:00:00.000Z",
       "name": "Geneva",
-      "start": "6/30/17",
+      "start": "2017-06-13T05:00:00.000Z",
       "trip": "trip1"
     }
   },

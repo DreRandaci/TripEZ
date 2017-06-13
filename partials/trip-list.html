@@ -21,7 +21,7 @@
     <div ng-show="editing">
       <input ng-model="trip.name" type="text" autofocus>
       <div class="pull-right">
-        <button class="btn btn-sm btn-success" ng-click="editing = false; editTripName(trip, trip.name)">
+        <button class="btn btn-sm btn-success" ng-click="editing = false; editTrip(trip, trip.name)">
           <i class="fa fa-save"></i>
         </button>
   		</div>
@@ -37,8 +37,22 @@
 	      <div class="form-group">
 	        <form>
 	          <input type="text" placeholder="Trip Name" ng-model="newTripPopover.tripName" class="form-control">
-	          <input type="text" placeholder="Start Date" ng-model="newTripPopover.tripStartDate" class="form-control" value="5/1/19">
-	          <input type="text" placeholder="End Date" ng-model="newTripPopover.tripEndDate" class="form-control" value="6/1/19" ng-keyup="$event.keyCode == 13 && makeNewTrip()">
+				    <p class="input-group date-picker">
+			      	<input type="date" class="form-control" uib-datepicker-popup ng-model="newTripPopover.tripStartDate" is-open="isOpened1" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+			      	<span class="input-group-btn">
+			        <button type="button" class="btn btn-default" ng-click="isOpened1 = !isOpened1">
+			          <i class="glyphicon glyphicon-calendar"></i>
+			        </button>
+			      	</span>
+			    	</p>
+	          <p class="input-group date-picker">
+			      	<input type="date" class="form-control" uib-datepicker-popup ng-model="newTripPopover.tripEndDate" is-open="isOpened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+			      	<span class="input-group-btn">
+			        <button type="button" class="btn btn-default" ng-click="isOpened2 = !isOpened2">
+			          <i class="glyphicon glyphicon-calendar"></i>
+			        </button>
+			      	</span>
+			    	</p>
 	          <button ng-click="makeNewTrip()">Submit</button>
 	        </form>
 	      </div>
