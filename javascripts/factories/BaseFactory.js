@@ -3,11 +3,13 @@ app.factory("BaseFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
 	let getBasesFromFB = (tripId) => {
     let baseArray = [];
     return $q((resolve, reject) => {
-      $http.get(`${FIREBASE_CONFIG.databaseURL}/bases.json?orderBy="tripId"&equalTo="${tripId}"`)
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/bases.json?orderBy="trip"&equalTo="${tripId}"`)
       .then((basesFromFB) => {
         let baseCollection = basesFromFB.data;
         if (baseCollection !== null) {
             Object.keys(baseCollection).forEach((key) => {
+            baseCollection[key].start=new Date(baseCollection[key].start);
+            baseCollection[key].end=new Date(baseCollection[key].end);
             baseCollection[key].baseId=key;
             baseArray.push(baseCollection[key]);
           });
@@ -15,7 +17,7 @@ app.factory("BaseFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
         resolve(baseArray);
       })
       .catch((error) => {
-        reject(error);
+        reject("getBasesFromFB: ", error);
       });
     });
   };
@@ -48,7 +50,7 @@ app.factory("BaseFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
 
 	return {
 		getBasesFromFB:getBasesFromFB,
-		makeNewTripInFB:makeNewTripInFB,
+		makeNewBaseInFB:makeNewBaseInFB,
 		editBaseInFB:editBaseInFB
 	};
 

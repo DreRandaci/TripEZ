@@ -1,7 +1,6 @@
 app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $scope, BaseFactory) {
 
 	let getBases = () => {
-		console.log($routeParams.tripId);
     BaseFactory.getBasesFromFB($routeParams.tripId)
     	.then((bases) => {
       $scope.bases = bases;
@@ -24,6 +23,7 @@ app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $sc
   		end: $scope.newBasePopover.baseEndDate,
       name: $scope.newBasePopover.baseName,
       start: $scope.newBasePopover.baseStartDate,
+      trip: $routeParams.tripId,
       uid: $rootScope.user.uid
     };
    	BaseFactory.makeNewBaseInFB(newBase)
@@ -40,6 +40,7 @@ app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $sc
 			end: base.end,
 			id: base.baseId,
 			start: base.start,
+			trip: $routeParams.tripId,
 			uid: $rootScope.user.uid,
 			name: newBaseName
 		};
