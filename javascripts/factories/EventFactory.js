@@ -1,6 +1,6 @@
 app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
 
-	let getEventsFromFB = (tripId) => {
+	let getEventsByTripFromFB = (tripId) => {
     let eventArray = [];
     return $q((resolve, reject) => {
       $http.get(`${FIREBASE_CONFIG.databaseURL}/events.json?orderBy="trip"&equalTo="${tripId}"`)
@@ -17,7 +17,29 @@ app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
         resolve(eventArray);
       })
       .catch((error) => {
-        reject("getEventsFromFB: ", error);
+        reject("getEventsFromFB error: ", error);
+      });
+    });
+  };
+
+  let getEventsByBaseFromFB = (baseId) => {
+    let eventArray = [];
+    return $q((resolve, reject) => {
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/events.json?orderBy="base"&equalTo="${baseId}"`)
+      .then((eventsFromFB) => {
+        let eventCollection = eventsFromFB.data;
+        if (eventCollection !== null) {
+            Object.keys(eventCollection).forEach((key) => {
+            eventCollection[key].start=new Date(eventCollection[key].start);
+            eventCollection[key].end=new Date(eventCollection[key].end);
+            eventCollection[key].eventId=key;
+            eventArray.push(eventCollection[key]);
+          });
+        }
+        resolve(eventArray);
+      })
+      .catch((error) => {
+        reject("getEventsFromFB error: ", error);
       });
     });
   };
@@ -38,9 +60,27 @@ app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
     });
   };
 
+  let deleteBaseEventsFromFB = (baseId) => {
+    getEventsByBaseFromFB(baseId).then((eventArray) => {
+      return $q((resolve, reject) => {
+        eventArray.forEach((eventToDelete) => {
+          $http.delete(`${FIREBASE_CONFIG.databaseURL}/events/${eventToDelete.eventId}.json`)
+          .then((result) => {
+            resolve(result);
+          })
+          .catch((error) => {
+            reject("deleteTripEventsFromFB error", error);
+          });
+        });
+      });
+    });
+  };
+
 	return {
-		getEventsFromFB:getEventsFromFB,
-    deleteTripEventsFromFB:deleteTripEventsFromFB
+		getEventsByTripFromFB:getEventsByTripFromFB,
+    getEventsByBaseFromFB:getEventsByBaseFromFB,
+    deleteTripEventsFromFB:deleteTripEventsFromFB,
+    deleteBaseEventsFromFB:deleteBaseEventsFromFB
 	};
 
 });

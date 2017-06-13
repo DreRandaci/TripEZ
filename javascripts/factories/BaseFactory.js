@@ -64,11 +64,24 @@ app.factory("BaseFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
     });
   };
 
+  let deleteBaseFromFB = (baseId) => {
+    return $q((resolve, reject) => {
+      $http.delete(`${FIREBASE_CONFIG.databaseURL}/bases/${baseId}.json`)
+      .then((result) => {
+        resolve(result);
+      })
+      .catch((error) => {
+        reject("deleteBaseFromFB error", error);
+      });
+    });
+  };
+
 	return {
 		getBasesFromFB:getBasesFromFB,
 		makeNewBaseInFB:makeNewBaseInFB,
 		editBaseInFB:editBaseInFB,
-    deleteTripBasesFromFB:deleteTripBasesFromFB
+    deleteTripBasesFromFB:deleteTripBasesFromFB,
+    deleteBaseFromFB:deleteBaseFromFB
 	};
 
 });

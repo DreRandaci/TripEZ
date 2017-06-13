@@ -68,7 +68,7 @@ app.factory("TripFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
         resolve(result);
       })
       .catch((error) => {
-        reject("deleteTripFromFB", error);
+        reject("deleteTripFromFB error", error);
       });
     });
   };

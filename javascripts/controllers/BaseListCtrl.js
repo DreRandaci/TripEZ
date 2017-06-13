@@ -1,4 +1,4 @@
-app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $scope, BaseFactory, TripFactory) {
+app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $scope, EventFactory, BaseFactory, TripFactory) {
 
 	let getSingleTripName = () => {
     TripFactory.getSingleTripNameFromFB($routeParams.tripId)
@@ -61,5 +61,14 @@ app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $sc
 			console.log("editBaseName error", error);
 		});
 	};
+
+  $scope.deleteEntireBase = (baseId) => {
+    BaseFactory.deleteBaseFromFB(baseId).then(() => {
+      EventFactory.deleteBaseEventsFromFB(baseId);
+      getBases();
+    }).catch((error) => {
+      console.log("deleteEntireBase error", error);
+    });
+  };
 
 });
