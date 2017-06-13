@@ -1,9 +1,7 @@
-.auth-container {
-  border: 2px solid black;
-  border-radius: 15px;
-  text-align: center;
-  padding: 25px;
-  margin-top: 200px; }
+.nav-img {
+  height: 40px;
+  width: 40px;
+  margin-right: 20px; }
 
 .sidenav {
   height: 100%;
@@ -35,11 +33,15 @@
   font-size: 36px;
   margin-left: 50px; }
 
-main {
-  transition: margin-left .5s;
-  padding: 20px; }
+.auth-container {
+  border: 2px solid black;
+  border-radius: 15px;
+  text-align: center;
+  padding: 25px;
+  margin-top: 200px; }
 
-.nav-img {
-  height: 40px;
-  width: 40px;
-  margin-right: 20px; }
+.row-headings {
+  text-decoration: underline; }
+
+.date-picker {
+  width: 40px; }

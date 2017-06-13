@@ -1,15 +1,15 @@
 <div ng-controller="NavBarCtrl" id="sideNav" class="sidenav">  
   <a href="javascript:void(0)" class="nav-toggle-btn" ng-show="!navOpen" ng-click="openNav(); navOpen = true;">|||</a>
   <a href="javascript:void(0)" class="nav-toggle-btn" ng-show="navOpen" ng-click="closeNav(); navOpen = false;">|||</a>
-  <a href="#">
-  	<div ng-if="navOpen">Future Trips</div>														<!-- add ng-if="!user.uid" when done testing -->
+  <a ng-show="user.uid" href="#">
+  	<div ng-if="navOpen">Future Trips</div>
   	<img class="nav-img pull-right" src="./images/fwd.png" alt="future"/>
   </a>
-  <a href="#">																												<!-- add ng-if="!user.uid" when done testing -->
+  <a ng-show="user.uid" href="#">
   	<div ng-if="navOpen">Past Trips</div> 
   	<img class="nav-img pull-right" src="./images/bkwd.png" alt="past"/>
   </a>
-  <a href="#">
+  <a href="#!/logout">
   	<div ng-if="navOpen">Logout</div>
   	<img class="nav-img pull-right" src="./images/logout.png" alt="logout"/>
   </a>
