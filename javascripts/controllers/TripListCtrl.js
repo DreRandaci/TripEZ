@@ -34,7 +34,7 @@ app.controller("TripListCtrl", function($location, $rootScope, $routeParams, $sc
     });
   };
 
-  $scope.editTripName = (trip, newTripName) => {
+  $scope.editTrip = (trip, newTripName) => {
 		let tripToEdit = {
 			end: trip.end,
 			id: trip.tripId,
