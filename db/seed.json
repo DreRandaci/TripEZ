@@ -31,7 +31,7 @@
       "review" : "5",
       "start" : "6/28/17 6:00 PM",
       "trip" : "trip0",
-      "type" : "type0"
+      "type" : "Food"
     },
     "event1" : {
       "address" : "Calle de Huertas 300, Madrid, Espana,28014",
@@ -43,7 +43,7 @@
       "ref" : "ABC123, Paula +34 615827397",
       "start" : "6/27/17 2:00 PM",
       "trip" : "trip0",
-      "type" : "type1"
+      "type" : "Lodging"
     },
     "event2" : {
       "address" : "Paseo del Prado s/n, Madrid, Espana,28014",
@@ -55,7 +55,7 @@
       "ref" : "free on sundays, opens at 10",
       "start" : "6/31/17 12:00 PM",
       "trip" : "trip0",
-      "type" : "type2"
+      "type" : "Site"
     },
     "event3" : {
       "address" : "1 Terminal Dr, Nashville TN 37214",
@@ -67,7 +67,7 @@
       "ref" : "AA 123, T67Y44",
       "start" : "6/26/17 6:00 AM",
       "trip" : "trip0",
-      "type" : "type3"
+      "type" : "Transit"
     }
   },
   "trips" : {
@@ -100,24 +100,6 @@
       "name" : "Canadian Skiing",
       "start" : "2017-06-13T05:00:00.000Z",
       "uid" : "pAGclMcIUwh96Oyq5aNAFAvaFMD3"
-    }
-  },
-  "types" : {
-    "type0" : {
-      "image" : "./images/food.png",
-      "name" : "food"
-    },
-    "type1" : {
-      "image" : "./images/lodging.png",
-      "name" : "lodging"
-    },
-    "type2" : {
-      "image" : "./images/site.png",
-      "name" : "site"
-    },
-    "type3" : {
-      "image" : "./images/transit.png",
-      "name" : "transit"
     }
   },
   "users" : {

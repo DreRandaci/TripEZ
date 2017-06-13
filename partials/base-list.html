@@ -9,7 +9,7 @@
 <div ng-repeat="base in bases">
 	<div class="row">
 		<div class="col-sm-4">
-      <h3><a ng-href="#!/events/{{base.baseId}}">{{base.name}}</a></h3>
+      <h3><a ng-href="#!/events/{{base.trip}}/{{base.baseId}}">{{base.name}}</a></h3>
     </div>
     <h4 class="col-sm-3">{{base.start | date: 'shortDate'}}</h4>
     <h4 class="col-sm-3">{{base.end | date: 'shortDate'}}</h4>
@@ -52,7 +52,7 @@
 	    <script type="text/ng-template" id="newBasePopover.html" class="newPopover">
 	      <div class="form-group">
 	        <form>
-	          <input type="text" placeholder="Trip Name" ng-model="newBasePopover.baseName" class="form-control">
+	          <input type="text" placeholder="Base Name" ng-model="newBasePopover.baseName" class="form-control">
 				    <p class="input-group date-picker">
 			      	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBasePopover.baseStartDate" is-open="isOpened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
 			      	<span class="input-group-btn">

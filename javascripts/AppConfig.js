@@ -31,15 +31,20 @@ app.config(function($routeProvider) {
         templateUrl: "partials/trip-list.html",
         controller: "TripListCtrl",
         resolve: {isAuth}
-     })
+    })
     .when("/trips/bases/:tripId", {
         templateUrl: "partials/base-list.html",
         controller: "BaseListCtrl",
+        resolve: {isAuth}
+    })
+    .when("/events/:tripId/:baseId", {
+        templateUrl: "partials/event-list.html",
+        controller: "EventListCtrl",
         resolve: {isAuth}
      })
     .when('/logout', {
         templateUrl: 'partials/landing.html',
         controller: 'AuthCtrl'
-     })
+    })
     .otherwise('/landing');
 });
