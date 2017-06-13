@@ -61,11 +61,24 @@ app.factory("TripFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
     });
   };
 
+  let deleteTripFromFB = (tripId) => {
+    return $q((resolve, reject) => {
+      $http.delete(`${FIREBASE_CONFIG.databaseURL}/trips/${tripId}.json`)
+      .then((result) => {
+        resolve(result);
+      })
+      .catch((error) => {
+        reject("deleteTripFromFB error", error);
+      });
+    });
+  };
+
 	return {
 		getTripsFromFB:getTripsFromFB,
 		makeNewTripInFB:makeNewTripInFB,
     editTripInFB:editTripInFB,
-    getSingleTripNameFromFB:getSingleTripNameFromFB
+    getSingleTripNameFromFB:getSingleTripNameFromFB,
+    deleteTripFromFB:deleteTripFromFB
 	};
 
 });

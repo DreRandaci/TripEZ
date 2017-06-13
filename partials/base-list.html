@@ -7,7 +7,7 @@
 </div>
 
 <div ng-repeat="base in bases">
-	<div class="row">
+	<div class="row row-div">
 		<div class="col-sm-4">
       <h3><a ng-href="#!/events/{{base.trip}}/{{base.baseId}}">{{base.name}}</a></h3>
     </div>
@@ -17,6 +17,7 @@
       <button class="btn btn-sm btn-info edit-btn" ng-click="editing = true">
         <i class="fa fa-pencil"></i>
       </button>
+      <button class="btn btn-sm btn-danger" ng-click="deleteEntireBase(base.baseId)"><i class="fa fa-trash"></i></button>
     </div>
     <div ng-show="editing">
       <input ng-model="base.name" type="text" autofocus>

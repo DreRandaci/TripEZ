@@ -11,17 +11,16 @@ app.controller("EventListCtrl", function($location, $rootScope, $routeParams, $s
 
   getSingleTripName();
 
-	let getEvents = () => {
-    EventFactory.getEventsFromFB($routeParams.tripId)
+	let getEventsByTrip = () => {
+    EventFactory.getEventsByTripFromFB($routeParams.tripId)
     	.then((events) => {
-    	console.log("events", events);
       $scope.events = events;
     }).catch((error) => {
-      console.log("getEvents error", error);
+      console.log("getEventsByTrip error", error);
     });
   };
 
-  getEvents();
+  getEventsByTrip();
 
   let getBases = () => {
     BaseFactory.getBasesFromFB($routeParams.tripId)
@@ -33,5 +32,13 @@ app.controller("EventListCtrl", function($location, $rootScope, $routeParams, $s
   };
 
   getBases();
+
+  $scope.deleteEvent = (eventId) => {
+    EventFactory.deleteEventFromFB(eventId).then(() => {
+      getEventsByTrip();
+    }).catch((error) => {
+      console.log("deletePin error", error);
+    });
+  };
 
 });

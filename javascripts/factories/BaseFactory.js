@@ -48,10 +48,40 @@ app.factory("BaseFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
     });
   };
 
+  let deleteTripBasesFromFB = (tripId) => {
+    getBasesFromFB(tripId).then((baseArray) => {
+      return $q((resolve, reject) => {
+        baseArray.forEach((baseToDelete) => {
+          $http.delete(`${FIREBASE_CONFIG.databaseURL}/bases/${baseToDelete.baseId}.json`)
+          .then((result) => {
+            resolve(result);
+          })
+          .catch((error) => {
+            reject("deleteTripBasesFromFB error", error);
+          });
+        });
+      });
+    });
+  };
+
+  let deleteBaseFromFB = (baseId) => {
+    return $q((resolve, reject) => {
+      $http.delete(`${FIREBASE_CONFIG.databaseURL}/bases/${baseId}.json`)
+      .then((result) => {
+        resolve(result);
+      })
+      .catch((error) => {
+        reject("deleteBaseFromFB error", error);
+      });
+    });
+  };
+
 	return {
 		getBasesFromFB:getBasesFromFB,
 		makeNewBaseInFB:makeNewBaseInFB,
-		editBaseInFB:editBaseInFB
+		editBaseInFB:editBaseInFB,
+    deleteTripBasesFromFB:deleteTripBasesFromFB,
+    deleteBaseFromFB:deleteBaseFromFB
 	};
 
 });
