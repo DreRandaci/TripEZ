@@ -42,6 +42,11 @@ app.config(function($routeProvider) {
         controller: "EventListCtrl",
         resolve: {isAuth}
      })
+    .when("/events/:eventId", {
+        templateUrl: "partials/event-view.html",
+        controller: "EventViewCtrl",
+        resolve: {isAuth}
+     })
     .when('/logout', {
         templateUrl: 'partials/landing.html',
         controller: 'AuthCtrl'

@@ -1,5 +1,20 @@
 app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
 
+  let getSingleEventFromFB = (eventId) => {
+    console.log("eventId: ", eventId);
+    return $q((resolve, reject) => {
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/events/${eventId}.json`)
+      .then((result) => {
+        result.data.id = eventId;
+        returnedEvent = result.data;
+        resolve(returnedEvent);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+    });
+  };
+
 	let getEventsByTripFromFB = (tripId) => {
     let eventArray = [];
     return $q((resolve, reject) => {
@@ -89,6 +104,7 @@ app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
   };
 
 	return {
+    getSingleEventFromFB:getSingleEventFromFB,
 		getEventsByTripFromFB:getEventsByTripFromFB,
     getEventsByBaseFromFB:getEventsByBaseFromFB,
     deleteTripEventsFromFB:deleteTripEventsFromFB,
