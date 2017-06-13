@@ -1,6 +1,19 @@
 app.factory("TripFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
 
- let getTripsFromFB = (userID) => {
+  let getSingleTripNameFromFB = (tripIdPassed) => {
+    return $q((resolve, reject) => {
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/trips/${tripIdPassed}.json`)
+      .then((tripFromFB) => {
+        let tripReturned = tripFromFB.data;
+        resolve(tripReturned);
+      })
+      .catch((error) => {
+        reject("getSingleTripNameFromFB error", error);
+      });
+    });
+  };
+
+  let getTripsFromFB = (userID) => {
     let tripArray = [];
     return $q((resolve, reject) => {
       $http.get(`${FIREBASE_CONFIG.databaseURL}/trips.json?orderBy="uid"&equalTo="${userID}"`)
@@ -51,7 +64,8 @@ app.factory("TripFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
 	return {
 		getTripsFromFB:getTripsFromFB,
 		makeNewTripInFB:makeNewTripInFB,
-    editTripInFB:editTripInFB
+    editTripInFB:editTripInFB,
+    getSingleTripNameFromFB:getSingleTripNameFromFB
 	};
 
 });

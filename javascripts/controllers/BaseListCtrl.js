@@ -1,4 +1,15 @@
-app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $scope, BaseFactory) {
+app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $scope, BaseFactory, TripFactory) {
+
+	let getSingleTripName = () => {
+    TripFactory.getSingleTripNameFromFB($routeParams.tripId)
+    	.then((tripReturned) => {
+      $scope.trip = tripReturned;
+    }).catch((error) => {
+      console.log("getSingleTripName error", error);
+    });
+  };
+
+  getSingleTripName();
 
 	let getBases = () => {
     BaseFactory.getBasesFromFB($routeParams.tripId)
