@@ -76,11 +76,24 @@ app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
     });
   };
 
+  let deleteEventFromFB = (eventId) => {
+    return $q((resolve, reject) => {
+      $http.delete(`${FIREBASE_CONFIG.databaseURL}/events/${eventId}.json`)
+      .then((result) => {
+        resolve(result);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+    });
+  };
+
 	return {
 		getEventsByTripFromFB:getEventsByTripFromFB,
     getEventsByBaseFromFB:getEventsByBaseFromFB,
     deleteTripEventsFromFB:deleteTripEventsFromFB,
-    deleteBaseEventsFromFB:deleteBaseEventsFromFB
+    deleteBaseEventsFromFB:deleteBaseEventsFromFB,
+    deleteEventFromFB:deleteEventFromFB
 	};
 
 });

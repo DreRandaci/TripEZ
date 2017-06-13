@@ -33,4 +33,12 @@ app.controller("EventListCtrl", function($location, $rootScope, $routeParams, $s
 
   getBases();
 
+  $scope.deleteEvent = (eventId) => {
+    EventFactory.deleteEventFromFB(eventId).then(() => {
+      getEventsByTrip();
+    }).catch((error) => {
+      console.log("deletePin error", error);
+    });
+  };
+
 });
