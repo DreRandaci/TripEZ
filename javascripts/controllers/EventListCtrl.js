@@ -14,7 +14,6 @@ app.controller("EventListCtrl", function($location, $rootScope, $routeParams, $s
 	let getEvents = () => {
     EventFactory.getEventsFromFB($routeParams.tripId)
     	.then((events) => {
-    	console.log("events", events);
       $scope.events = events;
     }).catch((error) => {
       console.log("getEvents error", error);
