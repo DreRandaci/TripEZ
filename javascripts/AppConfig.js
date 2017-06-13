@@ -32,9 +32,9 @@ app.config(function($routeProvider) {
         controller: "TripListCtrl",
         resolve: {isAuth}
      })
-    .when("/trips/newTripModal", {
-        templateUrl: "partials/new-modal.html",
-        controller: "TripListCtrl",
+    .when("/trips/bases/:tripId", {
+        templateUrl: "partials/base-list.html",
+        controller: "BaseListCtrl",
         resolve: {isAuth}
      })
     .when('/logout', {

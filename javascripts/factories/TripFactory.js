@@ -8,6 +8,8 @@ app.factory("TripFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
         let tripCollection = tripsFromFB.data;
         if (tripCollection !== null) {
             Object.keys(tripCollection).forEach((key) => {
+            tripCollection[key].start=new Date(tripCollection[key].start);
+            tripCollection[key].end=new Date(tripCollection[key].end);
             tripCollection[key].tripId=key;
             tripArray.push(tripCollection[key]);
           });

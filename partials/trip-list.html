@@ -9,7 +9,7 @@
 <div ng-repeat="trip in trips">
 	<div class="row">
 		<div class="col-sm-4">
-      <h3><a ng-href="#">{{trip.name}}</a></h3>
+      <h3><a ng-href="#!/trips/bases/{{trip.tripId}}">{{trip.name}}</a></h3>
     </div>
     <h4 class="col-sm-3">{{trip.start | date: 'shortDate'}}</h4>
     <h4 class="col-sm-3">{{trip.end | date: 'shortDate'}}</h4>
