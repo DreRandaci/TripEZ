@@ -1,14 +1,15 @@
 app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, $scope, EventFactory) {
 
-  $scope.searchGooglePlaces = (userInput) => {
-  	$scope.searchEvent = "";
-  	initMap(userInput);
+  $scope.searchEvents = {};
+
+  $scope.searchGooglePlaces = (userSearchTerms) => {
+  	initMap(userSearchTerms);
   };
 
   var map;
   var infowindow;
 
-  function initMap(userInput) {
+  let initMap = (userSearchTerms) => {
     var pyrmont = {lat: -33.867, lng: 151.195};
 
     map = new google.maps.Map(document.getElementById('map'), {
@@ -21,19 +22,26 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
     service.nearbySearch({
       location: pyrmont,
       radius: 500,
-      keyword: [userInput]
+      keyword: [userSearchTerms]
     }, callback);
-  }
+  };
 
-  function callback(results, status) {
+  let callback = (results, status) => {
+    let resultsArray = [];
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       for (var i = 0; i < results.length; i++) {
         createMarker(results[i]);
+        resultsArray.push(results[i]);
       }
     }
-  }
+    // $scope.searchEvents = resultsArray;
+    // console.log("$scope.searchEvents: ", $scope.searchEvents);
+    $scope.$apply(function () {
+            $scope.searchEvents = resultsArray;
+        });
+  };
 
-  function createMarker(place) {
+  let createMarker = (place) => {
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({
       map: map,
@@ -44,6 +52,6 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
       infowindow.setContent(place.name);
       infowindow.open(map, this);
     });
-  }
+  };
 
 });
