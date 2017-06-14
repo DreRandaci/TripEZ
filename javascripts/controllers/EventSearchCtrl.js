@@ -1,14 +1,14 @@
 app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, $scope, EventFactory) {
 
-  $scope.searchGooglePlaces = () => {
+  $scope.searchGooglePlaces = (userInput) => {
   	$scope.searchEvent = "";
-  	initMap();
+  	initMap(userInput);
   };
 
   var map;
   var infowindow;
 
-  function initMap() {
+  function initMap(userInput) {
     var pyrmont = {lat: -33.867, lng: 151.195};
 
     map = new google.maps.Map(document.getElementById('map'), {
@@ -21,7 +21,7 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
     service.nearbySearch({
       location: pyrmont,
       radius: 500,
-      type: ['store']
+      keyword: [userInput]
     }, callback);
   }
 

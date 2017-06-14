@@ -8,6 +8,7 @@ let isAuth = (AuthFactory) => new Promise((resolve, reject) => {
 
 app.run(function($location, $rootScope, GOOGLE_CONFIG, FIREBASE_CONFIG, AuthFactory) {
   GoogleMapsLoader.KEY = GOOGLE_CONFIG;
+  GoogleMapsLoader.LIBRARIES = ['places'];
   GoogleMapsLoader.load(function(google) {});
   firebase.initializeApp(FIREBASE_CONFIG);
   $rootScope.$on('$routeChangeStart', function(event, currRoute, prevRoute) {
