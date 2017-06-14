@@ -3,7 +3,7 @@
 <h4>Filter By Base:</h4>
 <select>
 	<option name="base" ng-model="baseIdToFilter">All Bases</option>
-	<option ng-repeat="base in bases" name="base" ng-model="baseIdToFilter" value="{{base.baseId}}">{{base.name}}</option>
+	<option ng-repeat="base in bases" name="base" ng-model="baseIdToFilter" value="base.baseId">{{base.name}}</option>
 </select>
 
 <a ng-href="#!/search/{{trip.id}}">

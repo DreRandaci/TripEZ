@@ -2,7 +2,9 @@
 @import "images";
 @import "navbar";
 
-// landing
+.inline {
+	display: inline-block;
+}
 
 .auth-container {
 	border: 2px solid black;

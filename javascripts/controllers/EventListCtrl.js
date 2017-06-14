@@ -3,6 +3,7 @@ app.controller("EventListCtrl", function($location, $rootScope, $routeParams, $s
 	let getSingleTripName = () => {
     TripFactory.getSingleTripNameFromFB($routeParams.tripId)
     	.then((tripReturned) => {
+      tripReturned.id = $routeParams.tripId;
       $scope.trip = tripReturned;
     }).catch((error) => {
       console.log("getSingleTripName error", error);

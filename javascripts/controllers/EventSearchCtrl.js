@@ -1,6 +1,46 @@
-app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, $scope, EventFactory) {
+app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
 
-  $scope.searchEvents = {};
+  let latToSearch;
+  let longToSearch;
+
+  let getSingleTripName = () => {
+    TripFactory.getSingleTripNameFromFB($routeParams.tripId)
+      .then((tripReturned) => {
+      $scope.trip = tripReturned;
+    }).catch((error) => {
+      console.log("getSingleTripName error", error);
+    });
+  };
+
+  getSingleTripName();
+
+  let getBases = () => {
+    BaseFactory.getBasesFromFB($routeParams.tripId)
+      .then((bases) => {
+      $scope.bases = bases;
+    }).catch((error) => {
+      console.log("getBases error", error);
+    });
+  };
+
+  getBases();
+
+  $scope.setBaseSearchCoordinates = (centerOnThis) => {
+    console.log("in setBaseSearchCoordinates: ", centerOnThis);
+    // latToSearch = lat;
+    // longToSearch = long;
+    latToSearch = 37.1773;
+    longToSearch = -3.5986;
+    centerMapToBase(latToSearch, longToSearch);
+  };
+
+  let centerMapToBase = (latToSearch, longToSearch) => {
+    var baseToSearchFrom = {lat: latToSearch, lng: longToSearch};
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: baseToSearchFrom,
+      zoom: 15
+    });
+  };
 
   $scope.searchGooglePlaces = (userSearchTerms) => {
   	initMap(userSearchTerms);
@@ -10,17 +50,17 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
   var infowindow;
 
   let initMap = (userSearchTerms) => {
-    var pyrmont = {lat: -33.867, lng: 151.195};
+    var basetoSearchFrom = {lat: latToSearch, lng: longToSearch};
 
     map = new google.maps.Map(document.getElementById('map'), {
-      center: pyrmont,
+      center: basetoSearchFrom,
       zoom: 15
     });
 
     infowindow = new google.maps.InfoWindow();
     var service = new google.maps.places.PlacesService(map);
     service.nearbySearch({
-      location: pyrmont,
+      location: basetoSearchFrom,
       radius: 500,
       keyword: [userSearchTerms]
     }, callback);
@@ -34,11 +74,9 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
         resultsArray.push(results[i]);
       }
     }
-    // $scope.searchEvents = resultsArray;
-    // console.log("$scope.searchEvents: ", $scope.searchEvents);
     $scope.$apply(function () {
-            $scope.searchEvents = resultsArray;
-        });
+      $scope.searchEvents = resultsArray;
+    });
   };
 
   let createMarker = (place) => {

@@ -1,21 +1,24 @@
-<h2>New Event Search</h2>
+<h2>New Event Search in {{trip.name}}</h2>
+<div>
+	<p class="inline">From This Base:</p>
+	<select class="inline" ng-click="setBaseSearchCoordinates(centerOnThis)">
+		<option ng-repeat="base in bases" name="base" ng-model="centerOnThis" value="38">{{base.name}}</option>
+	</select>
+</div>
 <input type="text" placeholder="Anything you want" ng-model="userSearchTerms"/>
 <button class="btn btn-default" ng-click="searchGooglePlaces(userSearchTerms)">Search</button> 
-
 <div id="map"></div>
-
 <div class="row row-headings">
 	<h2 class="col-sm-2">Name</h2>
 	<h2 class="col-sm-2">Rating</h2>
 	<h2 class="col-sm-4">PlaceID</h2>
 	<h2 class="col-sm-2">Vicinity</h2>
 </div>
-
-<div ng-repeat="each in searchEvents">
+<div ng-repeat="searchEvent in searchEvents">
 	<div class="row row-div">
-		<h4 class="col-sm-2">{{each.name}}</h4>
-		<h4 class="col-sm-2">{{each.rating}}</h4>
-		<h4 class="col-sm-4">{{each.place_id}}</h4>
-		<h4 class="col-sm-2">{{each.vicinity}}</h4>
+		<h4 class="col-sm-2">{{searchEvent.name}}</h4>
+		<h4 class="col-sm-2">{{searchEvent.rating}}</h4>
+		<h4 class="col-sm-4">{{searchEvent.place_id}}</h4>
+		<h4 class="col-sm-2">{{searchEvent.vicinity}}</h4>
 	</div>
 </div>
