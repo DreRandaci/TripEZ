@@ -3,7 +3,7 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
   let latToSearch;
   let longToSearch;
 
-  $scope.baseLatToCenterOn = {
+  $scope.baseCoords = {
     lat: "",
     long: ""
   };
@@ -31,8 +31,9 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
   getBases();
 
   $scope.setBaseSearchCoordinates = () => {
-    latToSearch = Number($scope.baseLatToCenterOn);
-    longToSearch = -3.5986;
+    let baseCoordsArray = $scope.baseCoords.split(',');
+    latToSearch = Number(baseCoordsArray[0]);
+    longToSearch = Number(baseCoordsArray[1]);
     centerMapToBase(latToSearch, longToSearch);
   };
 

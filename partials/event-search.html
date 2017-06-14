@@ -1,14 +1,14 @@
 <h2>New Event Search in {{trip.name}}</h2>
 <div>
 	<p class="inline">From This Base:</p>
-	<select class="inline" ng-change="setBaseSearchCoordinates()" ng-model="baseLatToCenterOn">
-		<option ng-repeat="base in bases" name="base" value="{{base.latitude}}">{{base.name}}</option>
+	<select class="inline" ng-change="setBaseSearchCoordinates()" ng-model="baseCoords">
+		<option ng-repeat="base in bases" name="base" value="{{base.latitude}},{{base.longitude}}">{{base.name}}</option>
 	</select>
 </div>
 <input type="text" placeholder="Anything you want" ng-model="userSearchTerms"/>
-<button class="btn btn-default" ng-click="searchGooglePlaces(userSearchTerms)">Search</button> 
+<button class="btn btn-default" ng-click="searchGooglePlaces(userSearchTerms); searching = true">Search</button> 
 <div id="map"></div>
-<div class="row row-headings">
+<div class="row row-headings" ng-show="searching">
 	<h2 class="col-sm-2">Name</h2>
 	<h2 class="col-sm-2">Rating</h2>
 	<h2 class="col-sm-4">PlaceID</h2>
