@@ -3,6 +3,11 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
   let latToSearch;
   let longToSearch;
 
+  $scope.baseLatToCenterOn = {
+    lat: "",
+    long: ""
+  };
+
   let getSingleTripName = () => {
     TripFactory.getSingleTripNameFromFB($routeParams.tripId)
       .then((tripReturned) => {
@@ -25,11 +30,8 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
 
   getBases();
 
-  $scope.setBaseSearchCoordinates = (centerOnThis) => {
-    console.log("in setBaseSearchCoordinates: ", centerOnThis);
-    // latToSearch = lat;
-    // longToSearch = long;
-    latToSearch = 37.1773;
+  $scope.setBaseSearchCoordinates = () => {
+    latToSearch = Number($scope.baseLatToCenterOn);
     longToSearch = -3.5986;
     centerMapToBase(latToSearch, longToSearch);
   };

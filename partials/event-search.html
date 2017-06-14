@@ -1,8 +1,8 @@
 <h2>New Event Search in {{trip.name}}</h2>
 <div>
 	<p class="inline">From This Base:</p>
-	<select class="inline" ng-click="setBaseSearchCoordinates(centerOnThis)">
-		<option ng-repeat="base in bases" name="base" ng-model="centerOnThis" value="38">{{base.name}}</option>
+	<select class="inline" ng-change="setBaseSearchCoordinates()" ng-model="baseLatToCenterOn">
+		<option ng-repeat="base in bases" name="base" value="{{base.latitude}}">{{base.name}}</option>
 	</select>
 </div>
 <input type="text" placeholder="Anything you want" ng-model="userSearchTerms"/>
