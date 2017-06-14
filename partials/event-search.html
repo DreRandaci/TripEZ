@@ -1,0 +1,16 @@
+<h2>New Event Search</h2>
+<input type="text" placeholder="Anything you want" ng-model="userInput"/>
+<button class="btn btn-default" ng-click="searchGooglePlaces()">Search</button> 
+
+<div id="map"></div>
+
+<h4 class="">Type: {{searchEvent.type}}</h4>
+<h4 class="">Average Review: {{searchEvent.review}}</h4>
+<h4 class="">Start: {{searchEvent.start | date: 'short'}}</h4>
+<h4 class="">End: {{searchEvent.end | date: 'short'}}</h4>
+<h4 class="">Address: {{searchEvent.address}}</h4>
+<h4 class="">Base: {{searchEvent.base}}</h4>
+<h4 class="">Trip: {{searchEvent.trip}}</h4>
+<h4 class="">Reference: {{searchEvent.ref}}</h4>
+<h4 class="">Lat: {{searchEvent.latitude}}</h4>
+<h4 class="">Long: {{searchEvent.longitude}}</h4>

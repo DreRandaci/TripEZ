@@ -1,49 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>TripEZ</title>
-        <link rel="stylesheet" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="icon" type="image/png" href="./images/favicon.png">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="lib/bower_components/ngToast/dist/ngToast.min.css">
-        <link rel="stylesheet" href="styles/main.css">
-    </head>
-    <body ng-app="TripEZapp">
-        <toast></toast>
-        <div ng-include="'partials/navbar.html'"></div>
-        <main ng-view class="container view-box"></main>
-        <div uib-alert ng-repeat="alert in alerts" class="alert-danger">{{alert.msg}}</div>
-        <!-- third party / dependencies -->
-        <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
-        <script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="./lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="./lib/bower_components/angular/angular.min.js"></script>
-        <script type="text/javascript" src="./lib/bower_components/angular-route/angular-route.min.js"></script>
-        <script type="text/javascript" src="./lib/bower_components/angular-animate/angular-animate.min.js"></script>
-        <script type="text/javascript" src="./lib/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-        <script type="text/javascript" src="./javascripts/vendor/ui-bootstrap-tpls-2.5.0.min.js"></script>
-        <script type="text/javascript" src="./lib/node_modules/google-maps/lib/Google.js"></script>
-        <script type="text/javascript" src="./lib/bower_components/ngToast/dist/ngToast.min.js"></script>
-        <!-- app config -->
-        <script type="text/javascript" src="javascripts/app.js"></script>
-        <script type="text/javascript" src="javascripts/AppConstants.js"></script>
-        <script type="text/javascript" src="javascripts/AppConfig.js"></script>
-        <!-- factories -->
-        <script type="text/javascript" src="javascripts/factories/AuthFactory.js"></script>
-        <script type="text/javascript" src="javascripts/factories/UserFactory.js"></script>
-        <script type="text/javascript" src="javascripts/factories/TripFactory.js"></script>
-        <script type="text/javascript" src="javascripts/factories/BaseFactory.js"></script>
-        <script type="text/javascript" src="javascripts/factories/EventFactory.js"></script>
-        <!-- controllers -->
-        <script type="text/javascript" src="javascripts/controllers/AuthCtrl.js"></script>
-        <script type="text/javascript" src="javascripts/controllers/NavBarCtrl.js"></script>
-        <script type="text/javascript" src="javascripts/controllers/TripListCtrl.js"></script>
-        <script type="text/javascript" src="javascripts/controllers/BaseListCtrl.js"></script>
-        <script type="text/javascript" src="javascripts/controllers/EventListCtrl.js"></script>
-        <script type="text/javascript" src="javascripts/controllers/EventViewCtrl.js"></script>
-
-    </body>
-
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TripEZ</title>
+    <link rel="stylesheet" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="./images/favicon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/bower_components/ngToast/dist/ngToast.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body ng-app="TripEZapp">
+    <toast></toast>
+    <div ng-include="'partials/navbar.html'"></div>
+    <main ng-view class="container view-box"></main>
+    <div uib-alert ng-repeat="alert in alerts" class="alert-danger">{{alert.msg}}</div>
+    <!-- third party / dependencies -->
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+    <script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./lib/bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="./lib/bower_components/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="./lib/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="./lib/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="./javascripts/vendor/ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <script type="text/javascript" src="./lib/node_modules/google-maps/lib/Google.js"></script>
+    <script type="text/javascript" src="./lib/bower_components/ngToast/dist/ngToast.min.js"></script>
+    <!-- app config -->
+    <script type="text/javascript" src="javascripts/app.js"></script>
+    <script type="text/javascript" src="javascripts/AppConstants.js"></script>
+    <script type="text/javascript" src="javascripts/AppConfig.js"></script>
+    <!-- factories -->
+    <script type="text/javascript" src="javascripts/factories/AuthFactory.js"></script>
+    <script type="text/javascript" src="javascripts/factories/UserFactory.js"></script>
+    <script type="text/javascript" src="javascripts/factories/TripFactory.js"></script>
+    <script type="text/javascript" src="javascripts/factories/BaseFactory.js"></script>
+    <script type="text/javascript" src="javascripts/factories/EventFactory.js"></script>
+    <!-- controllers -->
+    <script type="text/javascript" src="javascripts/controllers/AuthCtrl.js"></script>
+    <script type="text/javascript" src="javascripts/controllers/NavBarCtrl.js"></script>
+    <script type="text/javascript" src="javascripts/controllers/TripListCtrl.js"></script>
+    <script type="text/javascript" src="javascripts/controllers/BaseListCtrl.js"></script>
+    <script type="text/javascript" src="javascripts/controllers/EventListCtrl.js"></script>
+    <script type="text/javascript" src="javascripts/controllers/EventViewCtrl.js"></script>
+    <script type="text/javascript" src="javascripts/controllers/EventSearchCtrl.js"></script>
+  </body>
 </html>

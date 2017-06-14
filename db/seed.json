@@ -24,11 +24,11 @@
       "address" : "Plaza Santa Anna 12",
       "base" : "base1",
       "end" : "6/28/17 8:00 PM",
-      "latitude" : "40.413722",
-      "longitude" : "3.692412",
+      "latitude" : 40.413722,
+      "longitude" : -3.692412,
       "name" : "Lateral",
       "ref" : "early for bar seating, try the dessert",
-      "review" : "5",
+      "review" : 4,
       "start" : "6/28/17 6:00 PM",
       "trip" : "trip0",
       "type" : "Food"
@@ -37,10 +37,11 @@
       "address" : "Calle de Huertas 300, Madrid, Espana,28014",
       "base" : "base1",
       "end" : "6/29/17 11:00 AM",
-      "latitude" : "40.413722",
-      "longitude" : "3.692412",
+      "latitude" : 40.413722,
+      "longitude" : -3.692412,
       "name" : "Madrid airBnB",
       "ref" : "ABC123, Paula +34 615827397",
+      "review" : 0,
       "start" : "6/27/17 2:00 PM",
       "trip" : "trip0",
       "type" : "Lodging"
@@ -49,10 +50,11 @@
       "address" : "Paseo del Prado s/n, Madrid, Espana,28014",
       "base" : "base1",
       "end" : "6/31/17 14:00 PM",
-      "latitude" : "40.413722",
-      "longitude" : "3.692412",
+      "latitude" : 40.413722,
+      "longitude" : -3.692412,
       "name" : "prado",
       "ref" : "free on sundays, opens at 10",
+      "review" : 4,
       "start" : "6/31/17 12:00 PM",
       "trip" : "trip0",
       "type" : "Site"
@@ -61,10 +63,11 @@
       "address" : "1 Terminal Dr, Nashville TN 37214",
       "base" : "base1",
       "end" : "6/26/17 13:00 PM",
-      "latitude" : "36.1263",
-      "longitude" : "86.6774",
+      "latitude" : 36.1263,
+      "longitude" : 86.6774,
       "name" : "Outbound Flight",
       "ref" : "AA 123, T67Y44",
+      "review" : 0,
       "start" : "6/26/17 6:00 AM",
       "trip" : "trip0",
       "type" : "Transit"
@@ -72,30 +75,35 @@
   },
   "trips" : {
     "-KmTstB38YSABtx5W5wQ" : {
+      "archived" : false,
       "end" : "2017-07-03T05:00:00.000Z",
       "name" : "Bourbon Trail",
       "start" : "2017-06-19T05:00:00.000Z",
       "uid" : "f428ENknAxNH7eJ1gOym7p5Dc8r1"
     },
     "trip0" : {
+      "archived" : false,
       "end" : "2017-06-13T05:00:00.000Z",
       "name" : "Summer 2017",
       "start" : "2017-06-13T05:00:00.000Z",
       "uid" : "f428ENknAxNH7eJ1gOym7p5Dc8r1"
     },
     "trip1" : {
+      "archived" : false,
       "end" : "2017-06-13T05:00:00.000Z",
       "name" : "Family Christmas",
       "start" : "2017-06-13T05:00:00.000Z",
       "uid" : "f428ENknAxNH7eJ1gOym7p5Dc8r1"
     },
     "trip2" : {
+      "archived" : false,
       "end" : "2017-06-13T05:00:00.000Z",
       "name" : "Med Sea Adventure",
       "start" : "2017-06-13T05:00:00.000Z",
       "uid" : "f428ENknAxNH7eJ1gOym7p5Dc8r1"
     },
     "trip3" : {
+      "archived" : false,
       "end" : "2017-06-13T05:00:00.000Z",
       "name" : "Canadian Skiing",
       "start" : "2017-06-13T05:00:00.000Z",

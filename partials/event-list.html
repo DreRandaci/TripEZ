@@ -6,6 +6,8 @@
 	<option ng-repeat="base in bases" name="base" ng-model="baseIdToFilter" value="{{base.baseId}}">{{base.name}}</option>
 </select>
 
+<button class="btn btn-default"><a ng-href="#!/search/{{trip.id}}">Search New Event</a></button> 
+
 <div class="row row-headings">
 	<h2 class="col-sm-4">Event</h2>
 	<h2 class="col-sm-3">Start</h2>

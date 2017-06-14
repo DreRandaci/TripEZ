@@ -14,7 +14,7 @@ app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG, GOO
     });
   };
 
-	let getEventsByTripFromFB = (tripId) => {
+  let getEventsByTripFromFB = (tripId) => {
     let eventArray = [];
     return $q((resolve, reject) => {
       $http.get(`${FIREBASE_CONFIG.databaseURL}/events.json?orderBy="trip"&equalTo="${tripId}"`)
@@ -102,28 +102,13 @@ app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG, GOO
     });
   };
 
-  let searchGooglePlaces = (userInput, key) => {
-    return $q((resolve, reject) => {
-      $http.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=36.174465,-86.767960&radius=50000&keyword=${userInput}&key=${key}
-        `)
-        .then((data) => {
-          console.log("data from loadPlaceSearch", data);
-          resolve(data);
-        })
-        .catch((error) => {
-          reject("searchGooglePlaces error: ", error);
-        });
-    });
-  };
-
-	return {
+  return {
     getSingleEventFromFB:getSingleEventFromFB,
-		getEventsByTripFromFB:getEventsByTripFromFB,
+    getEventsByTripFromFB:getEventsByTripFromFB,
     getEventsByBaseFromFB:getEventsByBaseFromFB,
     deleteTripEventsFromFB:deleteTripEventsFromFB,
     deleteBaseEventsFromFB:deleteBaseEventsFromFB,
-    deleteEventFromFB:deleteEventFromFB,
-    searchGooglePlaces:searchGooglePlaces
-	};
+    deleteEventFromFB:deleteEventFromFB
+  };
 
 });
