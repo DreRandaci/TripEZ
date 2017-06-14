@@ -1,7 +1,6 @@
-app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
+app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG, GOOGLE_CONFIG) {
 
   let getSingleEventFromFB = (eventId) => {
-    console.log("eventId: ", eventId);
     return $q((resolve, reject) => {
       $http.get(`${FIREBASE_CONFIG.databaseURL}/events/${eventId}.json`)
       .then((result) => {
@@ -103,13 +102,28 @@ app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
     });
   };
 
+  let searchGooglePlaces = (userInput, key) => {
+    return $q((resolve, reject) => {
+      $http.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=36.174465,-86.767960&radius=50000&keyword=${userInput}&key=${key}
+        `)
+        .then((data) => {
+          console.log("data from loadPlaceSearch", data);
+          resolve(data);
+        })
+        .catch((error) => {
+          reject("searchGooglePlaces error: ", error);
+        });
+    });
+  };
+
 	return {
     getSingleEventFromFB:getSingleEventFromFB,
 		getEventsByTripFromFB:getEventsByTripFromFB,
     getEventsByBaseFromFB:getEventsByBaseFromFB,
     deleteTripEventsFromFB:deleteTripEventsFromFB,
     deleteBaseEventsFromFB:deleteBaseEventsFromFB,
-    deleteEventFromFB:deleteEventFromFB
+    deleteEventFromFB:deleteEventFromFB,
+    searchGooglePlaces:searchGooglePlaces
 	};
 
 });

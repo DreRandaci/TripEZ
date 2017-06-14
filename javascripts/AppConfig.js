@@ -6,7 +6,14 @@ let isAuth = (AuthFactory) => new Promise((resolve, reject) => {
   }
 });
 
-app.run(function($location, $rootScope, FIREBASE_CONFIG, AuthFactory) {
+app.run(function($location, $rootScope, GOOGLE_CONFIG, FIREBASE_CONFIG, AuthFactory) {
+  GoogleMapsLoader.load(function(google) {
+    new google.maps.Map(el, options);
+  });
+  GoogleMapsLoader.KEY = GOOGLE_CONFIG;
+  GoogleMapsLoader.onLoad(function(google) {
+    console.log('I just loaded google maps api IN APPCONFIG');
+  });
   firebase.initializeApp(FIREBASE_CONFIG);
   $rootScope.$on('$routeChangeStart', function(event, currRoute, prevRoute) {
     var logged = AuthFactory.isAuthenticated();
@@ -52,4 +59,5 @@ app.config(function($routeProvider) {
         controller: 'AuthCtrl'
     })
     .otherwise('/landing');
+
 });
