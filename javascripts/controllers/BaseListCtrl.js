@@ -1,5 +1,7 @@
 app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $scope, EventFactory, BaseFactory, TripFactory) {
 
+var input = document.getElementById('new-base-input');
+
 	let getSingleTripName = () => {
     TripFactory.getSingleTripNameFromFB($routeParams.tripId)
     	.then((tripReturned) => {
@@ -30,7 +32,7 @@ app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $sc
   };
 
   let baseAutoComplete = () => {
-    var input = document.getElementById('pac-input');
+    var input = document.getElementById('new-base-input');
     var autocomplete = new google.maps.places.Autocomplete(input, {placeIdOnly: true});
     var geocoder = new google.maps.Geocoder;
     autocomplete.addListener('place_changed', function() {
@@ -39,7 +41,10 @@ app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $sc
         return;
       }
       geocoder.geocode({'placeId': place.place_id}, function(results, status) {
-        console.log("coords? ", results[0].geometry.location);
+        console.log("dig here for base coords: ", results[0].geometry.location);
+        console.log("dig here for base coords: ", results[0].geometry.location.lat());
+        console.log("dig here for base coords: ", results[0].geometry.location.lng());
+        $scope.newBasePopover.baseName = results[0].address_components[0].short_name;
         if (status !== 'OK') {
           window.alert('Geocoder failed due to: ' + status);
           return;

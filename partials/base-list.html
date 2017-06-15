@@ -46,23 +46,27 @@
 	</div>
 </div>
 <div class="row row-div">
-	<input id="pac-input" ng-model="newBasePopover.baseName" class="col-sm-4 inline" type="text" placeholder="Search for new base" ng-model="newBasePopover.baseName" autofocus>
-  <p class="input-group date-picker col-sm-3">
-  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBasePopover.baseStartDate" is-open="isOpened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
-  	<span class="input-group-btn">
-    <button type="button" class="btn btn-default" ng-click="isOpened2 = !isOpened2">
-      <i class="glyphicon glyphicon-calendar"></i>
-    </button>
-  	</span>
-	</p>
-  <p class="input-group date-picker col-sm-3">
-  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBasePopover.baseEndDate" is-open="isOpened3" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
-  	<span class="input-group-btn">
-    <button type="button" class="btn btn-default" ng-click="isOpened3 = !isOpened3">
-      <i class="glyphicon glyphicon-calendar"></i>
-    </button>
-  	</span>
-	</p>
-	<button class="btn btn-default col-sm-2 inline" ng-click="makeNewBase()">Submit</button>
+	<input id="new-base-input" ng-model="newBasePopover.baseName" class="col-sm-4" type="text" placeholder="Search for new base" ng-model="newBasePopover.baseName" autofocus>
+	<div class="inline">
+	  <p class="input-group date-picker col-sm-3">
+	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBasePopover.baseStartDate" is-open="isOpened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+	  	<span class="input-group-btn">
+	    <button type="button" class="btn btn-default" ng-click="isOpened2 = !isOpened2">
+	      <i class="glyphicon glyphicon-calendar"></i>
+	    </button>
+	  	</span>
+		</p>
+	</div>
+	<div class="inline">
+	  <p class="input-group date-picker col-sm-3">
+	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBasePopover.baseEndDate" is-open="isOpened3" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+	  	<span class="input-group-btn">
+	    <button type="button" class="btn btn-default" ng-click="isOpened3 = !isOpened3">
+	      <i class="glyphicon glyphicon-calendar"></i>
+	    </button>
+	  	</span>
+		</p>
+	</div>
+	<button class="btn btn-default col-sm-2" ng-click="makeNewBase()">Submit</button>
 	</div>
 </div>
