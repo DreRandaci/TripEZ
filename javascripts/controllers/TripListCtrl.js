@@ -20,6 +20,7 @@ app.controller("TripListCtrl", function($location, $rootScope, $routeParams, $sc
 
   $scope.makeNewTrip = () => {
   	let newTrip = {
+      archived: false,
   		end: $scope.newTripPopover.tripEndDate,
       name: $scope.newTripPopover.tripName,
       start: $scope.newTripPopover.tripStartDate,
@@ -36,8 +37,10 @@ app.controller("TripListCtrl", function($location, $rootScope, $routeParams, $sc
 
   $scope.editTrip = (trip, newTripName) => {
 		let tripToEdit = {
+      archived: trip.archived,
 			end: trip.end,
-			id: trip.tripId,
+      latitude: trip.latitude,
+      longitude: trip.longitude,
 			start: trip.start,
 			uid: $rootScope.user.uid,
 			name: newTripName

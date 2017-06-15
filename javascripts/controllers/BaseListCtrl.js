@@ -78,7 +78,8 @@ var input = document.getElementById('new-base-input');
   $scope.editBase = (base, newBaseName) => {
 		let baseToEdit = {
 			end: base.end,
-			id: base.baseId,
+      latitude: base.latitude,
+      longitude: base.longitude,
 			start: base.start,
 			trip: $routeParams.tripId,
 			uid: $rootScope.user.uid,
