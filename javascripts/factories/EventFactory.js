@@ -58,6 +58,20 @@ app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG, GOO
     });
   };
 
+  let addToTripEventsInFB = (eventToBeSavedToFB) => {
+    console.log("in addToTripEventsInFB: ", eventToBeSavedToFB);
+    return $q((resolve, reject) => {
+      $http.post(`${FIREBASE_CONFIG.databaseURL}/events.json`,
+        JSON.stringify(eventToBeSavedToFB))
+      .then((data) => {
+        resolve(data);
+      })
+      .catch((error) => {
+        reject("error in addToTripEventsInFB", error);
+      });
+    });
+  };
+
   let deleteTripEventsFromFB = (tripId) => {
     getEventsFromFB(tripId).then((eventArray) => {
       return $q((resolve, reject) => {
@@ -106,6 +120,7 @@ app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG, GOO
     getSingleEventFromFB:getSingleEventFromFB,
     getEventsByTripFromFB:getEventsByTripFromFB,
     getEventsByBaseFromFB:getEventsByBaseFromFB,
+    addToTripEventsInFB:addToTripEventsInFB,
     deleteTripEventsFromFB:deleteTripEventsFromFB,
     deleteBaseEventsFromFB:deleteBaseEventsFromFB,
     deleteEventFromFB:deleteEventFromFB
