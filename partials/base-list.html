@@ -1,11 +1,9 @@
 <h3>Bases in {{trip.name}}</h3>
-
 <div class="row row-headings">
 	<h2 class="col-sm-4">Base</h2>
 	<h2 class="col-sm-3">Start</h2>
 	<h2 class="col-sm-3">End</h2>
 </div>
-
 <div ng-repeat="base in bases">
 	<div class="row row-div">
 		<div class="col-sm-4">
@@ -46,10 +44,10 @@
 	</div>
 </div>
 <div class="row row-div">
-	<input id="new-base-input" ng-model="newBasePopover.baseName" class="col-sm-4" type="text" placeholder="Search for new base" ng-model="newBasePopover.baseName" autofocus>
+	<input id="new-base-input" ng-model="newBaseToAdd.baseName" class="col-sm-4" type="text" placeholder="Search for new base" ng-model="newBaseToAdd.baseName" autofocus>
 	<div class="inline">
 	  <p class="input-group date-picker col-sm-3">
-	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBasePopover.baseStartDate" is-open="isOpened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBaseToAdd.baseStartDate" is-open="isOpened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
 	  	<span class="input-group-btn">
 	    <button type="button" class="btn btn-default" ng-click="isOpened2 = !isOpened2">
 	      <i class="glyphicon glyphicon-calendar"></i>
@@ -59,7 +57,7 @@
 	</div>
 	<div class="inline">
 	  <p class="input-group date-picker col-sm-3">
-	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBasePopover.baseEndDate" is-open="isOpened3" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBaseToAdd.baseEndDate" is-open="isOpened3" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
 	  	<span class="input-group-btn">
 	    <button type="button" class="btn btn-default" ng-click="isOpened3 = !isOpened3">
 	      <i class="glyphicon glyphicon-calendar"></i>
