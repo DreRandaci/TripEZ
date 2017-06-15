@@ -29,6 +29,27 @@ app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $sc
 		baseStartDate: ""
   };
 
+  let baseAutoComplete = () => {
+    var input = document.getElementById('pac-input');
+    var autocomplete = new google.maps.places.Autocomplete(input, {placeIdOnly: true});
+    var geocoder = new google.maps.Geocoder;
+    autocomplete.addListener('place_changed', function() {
+      var place = autocomplete.getPlace();
+      if (!place.place_id) {
+        return;
+      }
+      geocoder.geocode({'placeId': place.place_id}, function(results, status) {
+        console.log("coords? ", results[0].geometry.location);
+        if (status !== 'OK') {
+          window.alert('Geocoder failed due to: ' + status);
+          return;
+        }
+      });
+    });
+  };
+
+  baseAutoComplete();
+
   $scope.makeNewBase = () => {
   	let newBase = {
   		end: $scope.newBasePopover.baseEndDate,
