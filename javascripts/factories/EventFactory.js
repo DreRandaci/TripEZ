@@ -59,7 +59,6 @@ app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG, GOO
   };
 
   let addToTripEventsInFB = (eventToBeSavedToFB) => {
-    console.log("in addToTripEventsInFB: ", eventToBeSavedToFB);
     return $q((resolve, reject) => {
       $http.post(`${FIREBASE_CONFIG.databaseURL}/events.json`,
         JSON.stringify(eventToBeSavedToFB))

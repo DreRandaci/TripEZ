@@ -5,11 +5,6 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
   let latToSearch;
   let longToSearch;
 
-  $scope.baseCoords = {
-    lat: "",
-    long: ""
-  };
-
   $scope.newEventToSave = {
     end: "",
     start: ""
@@ -38,18 +33,18 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
   getBases();
 
   $scope.addToTripEvents = (searchEvent) => {
-    console.log("event to be saved to list: ", searchEvent);
     let eventToBeSavedToFB = {};
     eventToBeSavedToFB.address = searchEvent.vicinity;
+    eventToBeSavedToFB.base = $scope.baseSelected;                        // need baseId here
     eventToBeSavedToFB.end = $scope.newEventToSave.end;
     eventToBeSavedToFB.latitude = searchEvent.geometry.location.lat();
     eventToBeSavedToFB.longitude = searchEvent.geometry.location.lng();
     eventToBeSavedToFB.name = searchEvent.name;
     eventToBeSavedToFB.review = searchEvent.rating;
     eventToBeSavedToFB.start = $scope.newEventToSave.start;
+    eventToBeSavedToFB.trip = $routeParams.tripId;
     EventFactory.addToTripEventsInFB(eventToBeSavedToFB)
       .then((results) => {
-        console.log("results returned from addToTripEventsInFB: ", results);
         $scope.alerts[0] = {msg: "Saved to trip!"};
       })
       .catch((error) => {
@@ -57,11 +52,15 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
       });
   };
 
-  $scope.setBaseSearchCoordinates = () => {
-    let baseCoordsArray = $scope.baseCoords.split(',');
-    latToSearch = Number(baseCoordsArray[0]);
-    longToSearch = Number(baseCoordsArray[1]);
-    centerMapToBase(latToSearch, longToSearch);
+  $scope.setBaseToSearchFrom = () => {
+    BaseFactory.getBaseWithBaseIdFromFB($scope.baseSelected)
+      .then((baseReturned) => {
+        latToSearch = baseReturned.latitude;
+        longToSearch = baseReturned.longitude;
+        centerMapToBase(latToSearch, longToSearch);
+      }).catch ((error) => {
+        console.log("error in setBaseToSearchFrom", error);
+      });
   };
 
   let centerMapToBase = (latToSearch, longToSearch) => {
@@ -100,7 +99,6 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
     let resultsArray = [];
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       for (var i = 0; i < results.length; i++) {
-        console.log("resulting place: ", results[i]);
         createMarker(results[i]);
         resultsArray.push(results[i]);
       }

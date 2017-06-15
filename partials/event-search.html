@@ -1,8 +1,8 @@
 <h2>New Event Search in {{trip.name}}</h2>
 <div>
 	<p class="inline">From This Base:</p>
-	<select class="inline" ng-change="setBaseSearchCoordinates()" ng-model="baseCoords">
-		<option ng-repeat="base in bases" name="base" value="{{base.latitude}},{{base.longitude}}">{{base.name}}</option>
+	<select class="inline" ng-change="setBaseToSearchFrom()" ng-model="baseSelected">
+		<option ng-repeat="base in bases" name="base" value="{{base.baseId}}">{{base.name}}</option>
 	</select>
 </div>
 <input type="text" placeholder="Anything you want" ng-model="userSearchTerms"/>
