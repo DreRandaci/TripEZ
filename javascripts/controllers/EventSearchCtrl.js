@@ -38,6 +38,8 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
   };
 
   let centerMapToBase = (latToSearch, longToSearch) => {
+    console.log(latToSearch);
+    console.log(longToSearch);
     var baseToSearchFrom = {lat: latToSearch, lng: longToSearch};
     map = new google.maps.Map(document.getElementById('map'), {
       center: baseToSearchFrom,

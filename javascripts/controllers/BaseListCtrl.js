@@ -24,8 +24,8 @@ var input = document.getElementById('new-base-input');
 
   getBases();
 
-  $scope.newBaseToAdd = {
-    templateUrl: "newBaseToAdd.html",
+  $scope.newBasePopover = {
+    templateUrl: "newBasePopover.html",
     baseEndDate: "",
     baseName: "",
 		baseStartDate: "",
@@ -43,9 +43,9 @@ var input = document.getElementById('new-base-input');
         return;
       }
       geocoder.geocode({'placeId': place.place_id}, function(results, status) {
-        $scope.newBaseToAdd.baseName = results[0].address_components[0].short_name;
-        $scope.newBaseToAdd.latitude = results[0].geometry.location.lat();
-        $scope.newBaseToAdd.longitude = results[0].geometry.location.lng();
+        $scope.newBasePopover.baseName = results[0].address_components[0].short_name;
+        $scope.newBasePopover.latitude = results[0].geometry.location.lat();
+        $scope.newBasePopover.longitude = results[0].geometry.location.lng();
         if (status !== 'OK') {
           window.alert('Geocoder failed due to: ' + status);
           return;
@@ -58,11 +58,11 @@ var input = document.getElementById('new-base-input');
 
   $scope.makeNewBase = () => {
   	let newBase = {
-  		end: $scope.newBaseToAdd.baseEndDate,
-      latitude: $scope.newBaseToAdd.latitude,
-      longitude: $scope.newBaseToAdd.longitude,
-      name: $scope.newBaseToAdd.baseName,
-      start: $scope.newBaseToAdd.baseStartDate,
+  		end: $scope.newBasePopover.baseEndDate,
+      latitude: $scope.newBasePopover.latitude,
+      longitude: $scope.newBasePopover.longitude,
+      name: $scope.newBasePopover.baseName,
+      start: $scope.newBasePopover.baseStartDate,
       trip: $routeParams.tripId,
       uid: $rootScope.user.uid
     };
