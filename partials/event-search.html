@@ -1,4 +1,3 @@
-<div uib-alert ng-repeat="alert in alerts" class="col-xs-4 col-xs-offset-4 alert-danger">{{alert.msg}}</div>
 <h2>New Event Search in {{trip.name}}</h2>
 <div>
 	<p class="inline">From This Base:</p>
@@ -9,6 +8,7 @@
 <input type="text" placeholder="Anything you want" ng-model="userSearchTerms"/>
 <button class="btn btn-default" ng-click="searchGooglePlaces(userSearchTerms); searching = true">Search</button> 
 <div id="map"></div>
+<div uib-alert ng-repeat="alert in alerts" class="col-xs-4 col-xs-offset-4 alert-danger">{{alert.msg}}</div>
 <div class="row row-headings" ng-show="searching">
 	<h3 class="col-sm-2">Name</h3>
 	<h3 class="col-sm-1">Rating</h3>

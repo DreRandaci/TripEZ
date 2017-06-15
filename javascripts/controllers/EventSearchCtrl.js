@@ -40,9 +40,11 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
   $scope.addToTripEvents = (searchEvent) => {
     console.log("event to be saved to list: ", searchEvent);
     let eventToBeSavedToFB = {};
-    eventToBeSavedToFB.end = $scope.newEventToSave.end;
-    eventToBeSavedToFB.name = searchEvent.name;
     eventToBeSavedToFB.address = searchEvent.vicinity;
+    eventToBeSavedToFB.end = $scope.newEventToSave.end;
+    eventToBeSavedToFB.latitude = searchEvent.geometry.location.lat();
+    eventToBeSavedToFB.longitude = searchEvent.geometry.location.lng();
+    eventToBeSavedToFB.name = searchEvent.name;
     eventToBeSavedToFB.review = searchEvent.rating;
     eventToBeSavedToFB.start = $scope.newEventToSave.start;
     EventFactory.addToTripEventsInFB(eventToBeSavedToFB)
