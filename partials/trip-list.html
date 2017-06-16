@@ -38,41 +38,34 @@
 		        </button>
 	      	</span>
 	    	</p>
-        <button class="btn btn-sm btn-success" ng-click="editing = false; editTrip(trip, trip.name)">
+        <button class="btn btn-sm btn-success" ng-click="editing = false; editTrip(trip)">
           <i class="fa fa-save"></i>
         </button>
   		</div>
   	</div>
 	</div>
 </div>
-<div class="col-sm-12">
-	<div class="col-sm-2 col-sm-offset-6 btn-right">
-	  <h3>
-	    <button uib-popover-template="newTripPopover.templateUrl" popover-title="Your Next Adventure..." type="button" class="btn btn-default">New Trip</button>
-	    <script type="text/ng-template" id="newTripPopover.html" class="newPopover">
-	      <div class="form-group">
-	        <form>
-	          <input type="text" placeholder="Trip Name" ng-model="newTripPopover.tripName" class="form-control">
-				    <p class="input-group date-picker">
-			      	<input type="date" class="form-control" uib-datepicker-popup ng-model="newTripPopover.tripStartDate" is-open="isOpened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
-			      	<span class="input-group-btn">
-			        <button type="button" class="btn btn-default" ng-click="isOpened2 = !isOpened2">
-			          <i class="glyphicon glyphicon-calendar"></i>
-			        </button>
-			      	</span>
-			    	</p>
-	          <p class="input-group date-picker">
-			      	<input type="date" class="form-control" uib-datepicker-popup ng-model="newTripPopover.tripEndDate" is-open="isOpened3" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
-			      	<span class="input-group-btn">
-			        <button type="button" class="btn btn-default" ng-click="isOpened3 = !isOpened3">
-			          <i class="glyphicon glyphicon-calendar"></i>
-			        </button>
-			      	</span>
-			    	</p>
-	          <button ng-click="makeNewTrip()">Submit</button>
-	        </form>
-	      </div>
-	    </script>
-	  </h3>
+<div class="row row-div">
+	<input id="new-base-input" ng-model="newTrip.name" class="col-sm-4" type="text" placeholder="New Trip Name" autofocus>
+	<div class="inline">
+	  <p class="input-group date-picker col-sm-3">
+	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newTrip.start" is-open="newTripStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+	  	<span class="input-group-btn">
+	    <button type="button" class="btn btn-default" ng-click="newTripStartEdit = !newTripStartEdit">
+	      <i class="glyphicon glyphicon-calendar"></i>
+	    </button>
+	  	</span>
+		</p>
 	</div>
+	<div class="inline">
+	  <p class="input-group date-picker col-sm-3">
+	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newTrip.end" is-open="newTripEndEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+	  	<span class="input-group-btn">
+	    <button type="button" class="btn btn-default" ng-click="newTripEndEdit = !newTripEndEdit">
+	      <i class="glyphicon glyphicon-calendar"></i>
+	    </button>
+	  	</span>
+		</p>
+	</div>
+	<button class="btn btn-default col-sm-2" ng-click="makeNewTrip(newTrip)">Submit</button>
 </div>

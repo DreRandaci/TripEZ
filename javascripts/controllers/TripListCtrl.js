@@ -1,8 +1,13 @@
 app.controller("TripListCtrl", function($location, $rootScope, $routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
 
-	let getTrips = () => {
+  $scope.newTrip = {
+      archived: false,
+      uid: $rootScope.user.uid
+  };
+
+  let getTrips = () => {
     TripFactory.getTripsFromFB($routeParams.uid)
-    	.then((trips) => {
+      .then((trips) => {
         $scope.trips = trips;
       })
       .catch((error) => {
@@ -12,21 +17,7 @@ app.controller("TripListCtrl", function($location, $rootScope, $routeParams, $sc
 
   getTrips();
 
-  $scope.newTripPopover = {
-    templateUrl: "newTripPopover.html",
-    tripEndDate: "",
-    tripName: "",
-		tripStartDate: ""
-  };
-
-  $scope.makeNewTrip = () => {
-  	let newTrip = {
-      archived: false,
-  		end: $scope.newTripPopover.tripEndDate,
-      name: $scope.newTripPopover.tripName,
-      start: $scope.newTripPopover.tripStartDate,
-      uid: $rootScope.user.uid
-    };
+  $scope.makeNewTrip = (newTrip) => {
    	TripFactory.makeNewTripInFB(newTrip)
     .then(() => {
     	getTrips();

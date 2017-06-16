@@ -113,7 +113,6 @@
     "trip0" : {
       "archived" : false,
       "end" : "2017-06-23T05:00:00.000Z",
-      "id" : "trip0",
       "name" : "Summer 2017",
       "start" : "2017-06-13T05:00:00.000Z",
       "uid" : "f428ENknAxNH7eJ1gOym7p5Dc8r1"
@@ -121,7 +120,6 @@
     "trip1" : {
       "archived" : false,
       "end" : "2017-12-31T06:00:00.000Z",
-      "id" : "trip1",
       "name" : "Family Christmas",
       "start" : "2017-12-22T06:00:00.000Z",
       "uid" : "f428ENknAxNH7eJ1gOym7p5Dc8r1"
