@@ -1,6 +1,8 @@
 app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $scope, EventFactory, BaseFactory, TripFactory) {
 
-var input = document.getElementById('new-base-input');
+  $scope.base = {};
+
+  var input = document.getElementById('new-base-input');
 
 	let getSingleTripName = () => {
     TripFactory.getSingleTripNameFromFB($routeParams.tripId)
@@ -77,17 +79,9 @@ var input = document.getElementById('new-base-input');
       });
   };
 
-  $scope.editBase = (base, newBaseName) => {
-		let baseToEdit = {
-			end: base.end,
-      latitude: base.latitude,
-      longitude: base.longitude,
-			start: base.start,
-			trip: $routeParams.tripId,
-			uid: $rootScope.user.uid,
-			name: newBaseName
-		};
-		BaseFactory.editBaseInFB(baseToEdit)
+  $scope.editBase = (base) => {
+    console.log(base);
+		BaseFactory.editBaseInFB(base)
       .then(() => {
         getBases();
 		  })

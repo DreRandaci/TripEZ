@@ -71,6 +71,19 @@ app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG, GOO
     });
   };
 
+  let editEventAttributeInFB = (eventToEdit) => {
+    return $q((resolve, reject) => {
+      $http.put(`${FIREBASE_CONFIG.databaseURL}/events/${eventToEdit.id}.json`,
+        JSON.stringify(eventToEdit))
+      .then((result) => {
+        resolve(result);
+      })
+      .catch((error) => {
+        reject("error in editEventAttributeInFB", error);
+      });
+    });
+  };
+
   let deleteTripEventsFromFB = (tripId) => {
     getEventsFromFB(tripId).then((eventArray) => {
       return $q((resolve, reject) => {
@@ -120,6 +133,7 @@ app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG, GOO
     getEventsByTripFromFB:getEventsByTripFromFB,
     getEventsByBaseFromFB:getEventsByBaseFromFB,
     addToTripEventsInFB:addToTripEventsInFB,
+    editEventAttributeInFB:editEventAttributeInFB,
     deleteTripEventsFromFB:deleteTripEventsFromFB,
     deleteBaseEventsFromFB:deleteBaseEventsFromFB,
     deleteEventFromFB:deleteEventFromFB

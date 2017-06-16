@@ -1,11 +1,9 @@
 <h3>Trips Planned</h3>
-
 <div class="row row-headings">
 	<h2 class="col-sm-4">Trip</h2>
 	<h2 class="col-sm-3">Start</h2>
 	<h2 class="col-sm-3">End</h2>
 </div>
-
 <div ng-repeat="trip in trips">
 	<div class="row row-div">
 		<div class="col-sm-4">
@@ -17,7 +15,9 @@
       <button class="btn btn-sm btn-info edit-btn" ng-click="editing = true">
         <i class="fa fa-pencil"></i>
       </button>
-      <button class="btn btn-sm btn-danger" ng-click="deleteEntireTrip(trip.tripId)"><i class="fa fa-trash"></i></button>
+      <button class="btn btn-sm btn-danger" ng-click="deleteEntireTrip(trip.tripId)">
+      	<i class="fa fa-trash"></i>
+      </button>
     </div>
     <div ng-show="editing">
       <input ng-model="trip.name" type="text" autofocus>
@@ -45,7 +45,6 @@
   	</div>
 	</div>
 </div>
-
 <div class="col-sm-12">
 	<div class="col-sm-2 col-sm-offset-6 btn-right">
 	  <h3>

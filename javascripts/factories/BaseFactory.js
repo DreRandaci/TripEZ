@@ -48,10 +48,19 @@ app.factory("BaseFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
   	});
   };
 
-  let editBaseInFB = (baseToEdit) => {
+  let editBaseInFB = (base) => {
     return $q((resolve, reject) => {
-      $http.put(`${FIREBASE_CONFIG.databaseURL}/bases/${baseToEdit.id}.json`,
-        JSON.stringify(baseToEdit))
+      $http.put(`${FIREBASE_CONFIG.databaseURL}/bases/${base.baseId}.json`,
+        JSON.stringify({
+          end: base.end,
+          latitude: base.latitude,
+          longitude: base.longitude,
+          name: base.name,
+          start: base.start,
+          trip: base.trip,
+          uid: base.uid
+        })
+      )
       .then((result) => {
         resolve(result);
       })
