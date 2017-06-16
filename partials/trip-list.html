@@ -6,43 +6,49 @@
 </div>
 <div ng-repeat="trip in trips">
 	<div class="row row-div">
-		<div class="col-sm-4">
-      <h3><a ng-href="#!/trips/bases/{{trip.tripId}}">{{trip.name}}</a></h3>
-    </div>
-    <h4 class="col-sm-3">{{trip.start | date: 'shortDate'}}</h4>
-    <h4 class="col-sm-3">{{trip.end | date: 'shortDate'}}</h4>
-    <div class="pull-right col-sm-1">
-      <button class="btn btn-sm btn-info edit-btn" ng-click="editing = true">
-        <i class="fa fa-pencil"></i>
-      </button>
-      <button class="btn btn-sm btn-danger" ng-click="deleteEntireTrip(trip.tripId)">
-      	<i class="fa fa-trash"></i>
-      </button>
-    </div>
-    <div ng-show="editing">
-      <input ng-model="trip.name" type="text" autofocus>
-      <div class="pull-right">
-		    <p class="input-group date-picker">
-	      	<input type="date" class="form-control" uib-datepicker-popup ng-model="trip.start" is-open="isOpened0" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" value="trip.start"/>
-	      	<span class="input-group-btn">
-		        <button type="button" class="btn btn-default" ng-click="isOpened0 = !isOpened0">
+		<div ng-show="!editing">
+			<div class="col-sm-4">
+	      <h3><a ng-href="#!/trips/bases/{{trip.tripId}}">{{trip.name}}</a></h3>
+	    </div>
+	    <h4 class="col-sm-3" ng-show="!editing">{{trip.start | date: 'shortDate'}}</h4>
+	    <h4 class="col-sm-3" ng-show="!editing">{{trip.end | date: 'shortDate'}}</h4>
+	    <div class="pull-right col-sm-2">
+	      <button class="btn btn-sm btn-danger inline pull-right" ng-click="deleteEntireTrip(trip.tripId)">
+	      	<i class="fa fa-trash"></i>
+	      </button>
+	      <button class="btn btn-sm btn-info edit-btn inline pull-right" ng-click="editing = true">
+	        <i class="fa fa-pencil"></i>
+	      </button>
+	    </div>
+	  </div>
+	  <div ng-show="editing">
+	    <input class="col-sm-4 inline" ng-model="trip.name" type="text" autofocus>
+	    <div class="inline">
+		    <p class="input-group date-picker col-sm-3">
+		    	<input type="date" class="form-control" uib-datepicker-popup ng-model="trip.start" is-open="tripStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" value="trip.start"/>
+		    	<span class="input-group-btn">
+		        <button type="button" class="btn btn-default" ng-click="tripStartEdit = !tripStartEdit">
 		          <i class="glyphicon glyphicon-calendar"></i>
 		        </button>
-	      	</span>
-	    	</p>
-	    	<p class="input-group date-picker">
-	      	<input type="date" class="form-control" uib-datepicker-popup ng-model="trip.end" is-open="isOpened1" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" value="trip.end"/>
-	      	<span class="input-group-btn">
-		        <button type="button" class="btn btn-default" ng-click="isOpened1 = !isOpened1">
+		    	</span>
+		  	</p>
+		  </div>
+		  <div class="inline">
+		  	<p class="input-group date-picker col-sm-3">
+		    	<input type="date" class="form-control" uib-datepicker-popup ng-model="trip.end" is-open="tripEndEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" value="trip.end"/>
+		    	<span class="input-group-btn">
+		        <button type="button" class="btn btn-default" ng-click="tripEndEdit = !tripEndEdit">
 		          <i class="glyphicon glyphicon-calendar"></i>
 		        </button>
-	      	</span>
-	    	</p>
-        <button class="btn btn-sm btn-success" ng-click="editing = false; editTrip(trip)">
-          <i class="fa fa-save"></i>
-        </button>
-  		</div>
-  	</div>
+		    	</span>
+		  	</p>
+		  </div>
+		  <div class="pull-right col-sm-2">
+		    <button class="btn btn-sm btn-success col-sm-2 inline pull-right" ng-click="editing = false; editTrip(trip)">
+		      <i class="fa fa-save"></i>
+		    </button>
+		  </div>
+		</div>
 	</div>
 </div>
 <div class="row row-div">
@@ -67,5 +73,5 @@
 	  	</span>
 		</p>
 	</div>
-	<button class="btn btn-default col-sm-2" ng-click="makeNewTrip(newTrip)">Submit</button>
+	<button class="btn btn-default col-sm-2 inline pull-right" ng-click="makeNewTrip(newTrip)">Submit</button>
 </div>
