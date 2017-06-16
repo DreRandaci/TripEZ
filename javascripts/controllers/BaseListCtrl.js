@@ -34,7 +34,7 @@ app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $sc
   let baseAutoComplete = () => {
     var input = document.getElementById('new-base-input');
     var autocomplete = new google.maps.places.Autocomplete(input, {placeIdOnly: true});
-    var geocoder = new google.maps.Geocoder;
+    var geocoder = new google.maps.Geocoder();
     autocomplete.addListener('place_changed', function() {
       var place = autocomplete.getPlace();
       if (!place.place_id) {
