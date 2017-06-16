@@ -2,37 +2,37 @@ app.controller("EventViewCtrl", function($location, $routeParams, $scope, BaseFa
 
 	let getSingleEvent = () => {
     EventFactory.getSingleEventFromFB($routeParams.eventId)
-	  	.then((event) => {
-	      $scope.event = event;
-	      pinSingleEvent();
-	      getTripFromTripId(event.trip);
-	      getBaseFromBaseId(event.base);
-	  	})
-	  	.catch((error) => {
-	      console.log("getSingleEvent error", error);
-	 	 	});
+  	.then((event) => {
+      $scope.event = event;
+      pinSingleEvent();
+      getTripFromTripId(event.trip);
+      getBaseFromBaseId(event.base);
+  	})
+  	.catch((error) => {
+      console.log("getSingleEvent error", error);
+ 	 	});
   };
 
   getSingleEvent();
 
 	let getTripFromTripId = (tripId) => {
     TripFactory.getSingleTripNameFromFB(tripId)
-    	.then((tripReturned) => {
-      	$scope.trip = tripReturned;
-    	})
-    	.catch((error) => {
-      	console.log("getTripFromTripId error", error);
-    	});
+  	.then((tripReturned) => {
+    	$scope.trip = tripReturned;
+  	})
+  	.catch((error) => {
+    	console.log("getTripFromTripId error", error);
+  	});
   };
 
   let getBaseFromBaseId = (baseId) => {
     BaseFactory.getBaseWithBaseIdFromFB(baseId)
-      .then((baseReturned) => {
-      	$scope.base = baseReturned;
-      })
-      .catch ((error) => {
-        console.log("error in getBaseFromBaseId", error);
-      });
+    .then((baseReturned) => {
+    	$scope.base = baseReturned;
+    })
+    .catch ((error) => {
+      console.log("error in getBaseFromBaseId", error);
+    });
   };
 
   $scope.editEventAttribute = () => {
@@ -51,12 +51,12 @@ app.controller("EventViewCtrl", function($location, $routeParams, $scope, BaseFa
       type: $scope.event.type
 		};
 		EventFactory.editEventAttributeInFB(eventToEdit)
-      .then(() => {
-        getSingleEvent();
-		  })
-      .catch((error) => {
-        console.log("editEventAttribute error", error);
-		  });
+    .then(() => {
+      getSingleEvent();
+	  })
+    .catch((error) => {
+      console.log("editEventAttribute error", error);
+	  });
 	};
 
 	let map;

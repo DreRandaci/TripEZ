@@ -9,24 +9,24 @@ app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $sc
 
   let getSingleTripName = () => {
     TripFactory.getSingleTripNameFromFB($routeParams.tripId)
-      .then((tripReturned) => {
-        $scope.trip = tripReturned;
-      })
-      .catch((error) => {
-        console.log("getSingleTripName error", error);
-      });
+    .then((tripReturned) => {
+      $scope.trip = tripReturned;
+    })
+    .catch((error) => {
+      console.log("getSingleTripName error", error);
+    });
   };
 
   getSingleTripName();
 
   let getBases = () => {
     BaseFactory.getBasesFromFB($routeParams.tripId)
-      .then((bases) => {
-        $scope.bases = bases;
-      })
-      .catch((error) => {
-        console.log("getBases error", error);
-      });
+    .then((bases) => {
+      $scope.bases = bases;
+    })
+    .catch((error) => {
+      console.log("getBases error", error);
+    });
   };
 
   getBases();
@@ -56,33 +56,33 @@ app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $sc
 
   $scope.makeNewBase = (newBase) => {
    	BaseFactory.makeNewBaseInFB(newBase)
-      .then(() => {
-      	getBases();
-      })
-      .catch((error) => {
-      	console.log("error in makeNewBases", error);
-      });
+    .then(() => {
+    	getBases();
+    })
+    .catch((error) => {
+    	console.log("error in makeNewBases", error);
+    });
   };
 
   $scope.editBase = (base) => {
 		BaseFactory.editBaseInFB(base)
-      .then(() => {
-        getBases();
-		  })
-      .catch((error) => {
-        console.log("editBaseName error", error);
-		  });
+    .then(() => {
+      getBases();
+	  })
+    .catch((error) => {
+      console.log("editBaseName error", error);
+	  });
 	};
 
   $scope.deleteEntireBase = (baseId) => {
     BaseFactory.deleteBaseFromFB(baseId)
-      .then(() => {
-        EventFactory.deleteBaseEventsFromFB(baseId);
-        getBases();
-      })
-      .catch((error) => {
-        console.log("deleteEntireBase error", error);
-      });
+    .then(() => {
+      EventFactory.deleteBaseEventsFromFB(baseId);
+      getBases();
+    })
+    .catch((error) => {
+      console.log("deleteEntireBase error", error);
+    });
   };
 
 });

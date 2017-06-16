@@ -31,7 +31,7 @@ app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG, GOO
         resolve(eventArray);
       })
       .catch((error) => {
-        reject("getEventsFromFB error: ", error);
+        reject("getEventsByTripFromFB error: ", error);
       });
     });
   };
@@ -85,7 +85,7 @@ app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG, GOO
   };
 
   let deleteTripEventsFromFB = (tripId) => {
-    getEventsFromFB(tripId).then((eventArray) => {
+    getEventsByTripFromFB(tripId).then((eventArray) => {
       return $q((resolve, reject) => {
         eventArray.forEach((eventToDelete) => {
           $http.delete(`${FIREBASE_CONFIG.databaseURL}/events/${eventToDelete.eventId}.json`)
