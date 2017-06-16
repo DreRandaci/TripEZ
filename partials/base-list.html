@@ -44,12 +44,12 @@
 	</div>
 </div>
 <div class="row row-div">
-	<input id="new-base-input" ng-model="newBasePopover.baseName" class="col-sm-4" type="text" placeholder="Search for new base" ng-model="newBasePopover.baseName" autofocus>
+	<input id="new-base-input" ng-model="newBase.name" class="col-sm-4" type="text" placeholder="Search for new base" autofocus>
 	<div class="inline">
 	  <p class="input-group date-picker col-sm-3">
-	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBasePopover.baseStartDate" is-open="isOpened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBase.start" is-open="newBaseStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
 	  	<span class="input-group-btn">
-	    <button type="button" class="btn btn-default" ng-click="isOpened2 = !isOpened2">
+	    <button type="button" class="btn btn-default" ng-click="newBaseStartEdit = !newBaseStartEdit">
 	      <i class="glyphicon glyphicon-calendar"></i>
 	    </button>
 	  	</span>
@@ -57,14 +57,14 @@
 	</div>
 	<div class="inline">
 	  <p class="input-group date-picker col-sm-3">
-	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBasePopover.baseEndDate" is-open="isOpened3" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBase.end" is-open="newBaseEndEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
 	  	<span class="input-group-btn">
-	    <button type="button" class="btn btn-default" ng-click="isOpened3 = !isOpened3">
+	    <button type="button" class="btn btn-default" ng-click="newBaseEndEdit = !newBaseEndEdit">
 	      <i class="glyphicon glyphicon-calendar"></i>
 	    </button>
 	  	</span>
 		</p>
 	</div>
-	<button class="btn btn-default col-sm-2" ng-click="makeNewBase()">Submit</button>
+	<button class="btn btn-default col-sm-2" ng-click="makeNewBase(newBase)">Submit</button>
 	</div>
 </div>

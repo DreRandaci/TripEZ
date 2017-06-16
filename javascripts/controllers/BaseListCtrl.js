@@ -1,12 +1,15 @@
 app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $scope, EventFactory, BaseFactory, TripFactory) {
 
-  $scope.base = {};
+  $scope.newBase = {
+    trip: $routeParams.tripId,
+    uid: $rootScope.user.uid
+  };
 
   var input = document.getElementById('new-base-input');
 
-	let getSingleTripName = () => {
+  let getSingleTripName = () => {
     TripFactory.getSingleTripNameFromFB($routeParams.tripId)
-    	.then((tripReturned) => {
+      .then((tripReturned) => {
         $scope.trip = tripReturned;
       })
       .catch((error) => {
@@ -16,9 +19,9 @@ app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $sc
 
   getSingleTripName();
 
-	let getBases = () => {
+  let getBases = () => {
     BaseFactory.getBasesFromFB($routeParams.tripId)
-    	.then((bases) => {
+      .then((bases) => {
         $scope.bases = bases;
       })
       .catch((error) => {
@@ -27,15 +30,6 @@ app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $sc
   };
 
   getBases();
-
-  $scope.newBasePopover = {
-    templateUrl: "newBasePopover.html",
-    baseEndDate: "",
-    baseName: "",
-		baseStartDate: "",
-    latitude: "",
-    longitude: ""
-  };
 
   let baseAutoComplete = () => {
     var input = document.getElementById('new-base-input');
@@ -47,9 +41,9 @@ app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $sc
         return;
       }
       geocoder.geocode({'placeId': place.place_id}, function(results, status) {
-        $scope.newBasePopover.baseName = results[0].address_components[0].short_name;
-        $scope.newBasePopover.latitude = results[0].geometry.location.lat();
-        $scope.newBasePopover.longitude = results[0].geometry.location.lng();
+        $scope.newBase.name = results[0].address_components[0].short_name;
+        $scope.newBase.latitude = results[0].geometry.location.lat();
+        $scope.newBase.longitude = results[0].geometry.location.lng();
         if (status !== 'OK') {
           window.alert('Geocoder failed due to: ' + status);
           return;
@@ -60,16 +54,7 @@ app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $sc
 
   baseAutoComplete();
 
-  $scope.makeNewBase = () => {
-  	let newBase = {
-  		end: $scope.newBasePopover.baseEndDate,
-      latitude: $scope.newBasePopover.latitude,
-      longitude: $scope.newBasePopover.longitude,
-      name: $scope.newBasePopover.baseName,
-      start: $scope.newBasePopover.baseStartDate,
-      trip: $routeParams.tripId,
-      uid: $rootScope.user.uid
-    };
+  $scope.makeNewBase = (newBase) => {
    	BaseFactory.makeNewBaseInFB(newBase)
       .then(() => {
       	getBases();
@@ -80,7 +65,6 @@ app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $sc
   };
 
   $scope.editBase = (base) => {
-    console.log(base);
 		BaseFactory.editBaseInFB(base)
       .then(() => {
         getBases();

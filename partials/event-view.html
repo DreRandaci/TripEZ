@@ -17,6 +17,14 @@
 	<div class="row">
 		<h4 class="col-sm-2">Start:</h4>
 		<h5 class="col-sm-10">{{event.start | date: 'short'}}</h5>
+    <p class="input-group date-picker">
+    	<input type="date" class="form-control" uib-datepicker-popup ng-model="event.start" is-open="eventStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+    	<span class="input-group-btn">
+      <button type="button" class="btn btn-default" ng-click="eventStartEdit = !eventStartEdit">
+        <i class="glyphicon glyphicon-calendar"></i>
+      </button>
+    	</span>
+  	</p>
 	</div>
 	<div class="row">
 		<h4 class="col-sm-2">End:</h4>

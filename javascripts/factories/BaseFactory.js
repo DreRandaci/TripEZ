@@ -35,10 +35,10 @@ app.factory("BaseFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
     });
   };
 
-  let makeNewBaseInFB = (newBase) => {
+  let makeNewBaseInFB = (base) => {
     return $q((resolve, reject) => {
       $http.post(`${FIREBASE_CONFIG.databaseURL}/bases.json`,
-        JSON.stringify(newBase))
+        JSON.stringify(base))
       .then((data) => {
       	resolve(data);
       })
