@@ -1,11 +1,9 @@
 <h3>Bases in {{trip.name}}</h3>
-
 <div class="row row-headings">
 	<h2 class="col-sm-4">Base</h2>
 	<h2 class="col-sm-3">Start</h2>
 	<h2 class="col-sm-3">End</h2>
 </div>
-
 <div ng-repeat="base in bases">
 	<div class="row row-div">
 		<div class="col-sm-4">
@@ -45,35 +43,28 @@
   	</div>
 	</div>
 </div>
-
-<div class="col-sm-12">
-	<div class="col-sm-2 col-sm-offset-6 btn-right">
-	  <h3>
-	    <button uib-popover-template="newBasePopover.templateUrl" popover-title="Another Base..." type="button" class="btn btn-default">New Base</button>
-	    <script type="text/ng-template" id="newBasePopover.html" class="newPopover">
-	      <div class="form-group">
-	        <form>
-	          <input type="text" placeholder="Base Name" ng-model="newBasePopover.baseName" class="form-control">
-				    <p class="input-group date-picker">
-			      	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBasePopover.baseStartDate" is-open="isOpened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
-			      	<span class="input-group-btn">
-			        <button type="button" class="btn btn-default" ng-click="isOpened2 = !isOpened2">
-			          <i class="glyphicon glyphicon-calendar"></i>
-			        </button>
-			      	</span>
-			    	</p>
-	          <p class="input-group date-picker">
-			      	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBasePopover.baseEndDate" is-open="isOpened3" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
-			      	<span class="input-group-btn">
-			        <button type="button" class="btn btn-default" ng-click="isOpened3 = !isOpened3">
-			          <i class="glyphicon glyphicon-calendar"></i>
-			        </button>
-			      	</span>
-			    	</p>
-	          <button ng-click="makeNewBase()">Submit</button>
-	        </form>
-	      </div>
-	    </script>
-	  </h3>
+<div class="row row-div">
+	<input id="new-base-input" ng-model="newBasePopover.baseName" class="col-sm-4" type="text" placeholder="Search for new base" ng-model="newBasePopover.baseName" autofocus>
+	<div class="inline">
+	  <p class="input-group date-picker col-sm-3">
+	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBasePopover.baseStartDate" is-open="isOpened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+	  	<span class="input-group-btn">
+	    <button type="button" class="btn btn-default" ng-click="isOpened2 = !isOpened2">
+	      <i class="glyphicon glyphicon-calendar"></i>
+	    </button>
+	  	</span>
+		</p>
+	</div>
+	<div class="inline">
+	  <p class="input-group date-picker col-sm-3">
+	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBasePopover.baseEndDate" is-open="isOpened3" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+	  	<span class="input-group-btn">
+	    <button type="button" class="btn btn-default" ng-click="isOpened3 = !isOpened3">
+	      <i class="glyphicon glyphicon-calendar"></i>
+	    </button>
+	  	</span>
+		</p>
+	</div>
+	<button class="btn btn-default col-sm-2" ng-click="makeNewBase()">Submit</button>
 	</div>
 </div>

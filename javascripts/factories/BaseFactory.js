@@ -22,6 +22,19 @@ app.factory("BaseFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
     });
   };
 
+  let getBaseWithBaseIdFromFB = (baseId) => {
+    return $q((resolve, reject) => {
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/bases/${baseId}.json`)
+      .then((baseFromFB) => {
+        let baseReturned = baseFromFB.data;
+        resolve(baseReturned);
+      })
+      .catch((error) => {
+        reject("getBaseWithBaseIdFromFB error", error);
+      });
+    });
+  };
+
   let makeNewBaseInFB = (newBase) => {
     return $q((resolve, reject) => {
       $http.post(`${FIREBASE_CONFIG.databaseURL}/bases.json`,
@@ -78,6 +91,7 @@ app.factory("BaseFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
 
 	return {
 		getBasesFromFB:getBasesFromFB,
+    getBaseWithBaseIdFromFB:getBaseWithBaseIdFromFB,
 		makeNewBaseInFB:makeNewBaseInFB,
 		editBaseInFB:editBaseInFB,
     deleteTripBasesFromFB:deleteTripBasesFromFB,

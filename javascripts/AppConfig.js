@@ -6,7 +6,10 @@ let isAuth = (AuthFactory) => new Promise((resolve, reject) => {
   }
 });
 
-app.run(function($location, $rootScope, FIREBASE_CONFIG, AuthFactory) {
+app.run(function($location, $rootScope, GOOGLE_CONFIG, FIREBASE_CONFIG, AuthFactory) {
+  GoogleMapsLoader.KEY = GOOGLE_CONFIG;
+  GoogleMapsLoader.LIBRARIES = ['places'];
+  GoogleMapsLoader.load(function(google) {});
   firebase.initializeApp(FIREBASE_CONFIG);
   $rootScope.$on('$routeChangeStart', function(event, currRoute, prevRoute) {
     var logged = AuthFactory.isAuthenticated();
@@ -42,9 +45,20 @@ app.config(function($routeProvider) {
         controller: "EventListCtrl",
         resolve: {isAuth}
      })
+    .when("/events/:eventId", {
+        templateUrl: "partials/event-view.html",
+        controller: "EventViewCtrl",
+        resolve: {isAuth}
+     })
+    .when("/search/:tripId", {
+        templateUrl: "partials/event-search.html",
+        controller: "EventSearchCtrl",
+        resolve: {isAuth}
+     })
     .when('/logout', {
         templateUrl: 'partials/landing.html',
         controller: 'AuthCtrl'
     })
     .otherwise('/landing');
+
 });

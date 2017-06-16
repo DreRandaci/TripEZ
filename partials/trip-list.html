@@ -25,17 +25,17 @@
 		    <p class="input-group date-picker">
 	      	<input type="date" class="form-control" uib-datepicker-popup ng-model="trip.start" is-open="isOpened0" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" value="trip.start"/>
 	      	<span class="input-group-btn">
-	        <button type="button" class="btn btn-default" ng-click="isOpened0 = !isOpened0">
-	          <i class="glyphicon glyphicon-calendar"></i>
-	        </button>
+		        <button type="button" class="btn btn-default" ng-click="isOpened0 = !isOpened0">
+		          <i class="glyphicon glyphicon-calendar"></i>
+		        </button>
 	      	</span>
 	    	</p>
 	    	<p class="input-group date-picker">
 	      	<input type="date" class="form-control" uib-datepicker-popup ng-model="trip.end" is-open="isOpened1" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" value="trip.end"/>
 	      	<span class="input-group-btn">
-	        <button type="button" class="btn btn-default" ng-click="isOpened1 = !isOpened1">
-	          <i class="glyphicon glyphicon-calendar"></i>
-	        </button>
+		        <button type="button" class="btn btn-default" ng-click="isOpened1 = !isOpened1">
+		          <i class="glyphicon glyphicon-calendar"></i>
+		        </button>
 	      	</span>
 	    	</p>
         <button class="btn btn-sm btn-success" ng-click="editing = false; editTrip(trip, trip.name)">

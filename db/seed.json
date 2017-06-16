@@ -1,22 +1,58 @@
 {
   "bases" : {
     "base0" : {
-      "end" : "2017-06-13T05:00:00.000Z",
-      "name" : "Nashville",
-      "start" : "2017-06-13T05:00:00.000Z",
-      "trip" : "trip0"
+      "end" : "2017-06-23T05:00:00.000Z",
+      "latitude" : 46.2043907,
+      "longitude" : 6.143157699999961,
+      "name" : "Geneva",
+      "start" : "2017-06-21T05:00:00.000Z",
+      "trip" : "trip0",
+      "uid" : "f428ENknAxNH7eJ1gOym7p5Dc8r1"
     },
     "base1" : {
-      "end" : "2017-06-13T05:00:00.000Z",
+      "end" : "2017-06-20T05:00:00.000Z",
+      "latitude": 40.4167754,
+      "longitude": -3.7037901999999576,
       "name" : "Madrid",
       "start" : "2017-06-13T05:00:00.000Z",
-      "trip" : "trip0"
+      "trip" : "trip0",
+      "uid" : "f428ENknAxNH7eJ1gOym7p5Dc8r1"
     },
     "base2" : {
+      "end" : "2017-12-26T06:00:00.000Z",
+      "latitude" : 45.6769979,
+      "longitude" : -111.04293389999998,
+      "name" : "Bozeman",
+      "start" : "2017-12-22T06:00:00.000Z",
+      "trip" : "trip1",
+      "uid" : "f428ENknAxNH7eJ1gOym7p5Dc8r1"
+    },
+    "base3" : {
+      "end" : "2017-12-31T06:00:00.000Z",
+      "latitude" : 43.4799291,
+      "longitude" : -110.76242819999999,
+      "name" : "Jackson",
+      "start" : "2017-12-27T06:00:00.000Z",
+      "trip" : "trip1",
+      "uid" : "f428ENknAxNH7eJ1gOym7p5Dc8r1"
+    },
+    "base4" : {
+      "end" : "2017-12-21T06:00:00.000Z",
+      "latitude" : 36.1626638,
+      "longitude" : -86.78160159999999,
+      "name" : "Nashville",
+      "start" : "2017-12-21T06:00:00.000Z",
+      "trip" : "trip1",
+      "uid" : "f428ENknAxNH7eJ1gOym7p5Dc8r1"
+    },
+    "base5" : {
       "end" : "2017-06-13T05:00:00.000Z",
-      "name" : "Geneva",
+      "latitude" : 36.1626638,
+      "longitude" : -86.78160159999999,
+      "name" : "Nashville",
       "start" : "2017-06-13T05:00:00.000Z",
-      "trip" : "trip1"
+      "trip" : "trip0",
+      "uid" : "f428ENknAxNH7eJ1gOym7p5Dc8r1"
     }
   },
   "events" : {
@@ -24,35 +60,37 @@
       "address" : "Plaza Santa Anna 12",
       "base" : "base1",
       "end" : "6/28/17 8:00 PM",
-      "latitude" : "40.413722",
-      "longitude" : "3.692412",
+      "latitude" : 40.413722,
+      "longitude" : -3.692412,
       "name" : "Lateral",
       "ref" : "early for bar seating, try the dessert",
-      "review" : "5",
+      "review" : 4,
       "start" : "6/28/17 6:00 PM",
       "trip" : "trip0",
       "type" : "Food"
     },
     "event1" : {
-      "address" : "Calle de Huertas 300, Madrid, Espana,28014",
+      "address" : "Calle de Huertas 300, Madrid, Espana, 28014",
       "base" : "base1",
       "end" : "6/29/17 11:00 AM",
-      "latitude" : "40.413722",
-      "longitude" : "3.692412",
+      "latitude" : 40.413722,
+      "longitude" : -3.692412,
       "name" : "Madrid airBnB",
       "ref" : "ABC123, Paula +34 615827397",
+      "review" : 0,
       "start" : "6/27/17 2:00 PM",
       "trip" : "trip0",
       "type" : "Lodging"
     },
     "event2" : {
-      "address" : "Paseo del Prado s/n, Madrid, Espana,28014",
+      "address" : "Paseo del Prado s/n, Madrid, Espana, 28014",
       "base" : "base1",
       "end" : "6/31/17 14:00 PM",
-      "latitude" : "40.413722",
-      "longitude" : "3.692412",
+      "latitude" : 40.413722,
+      "longitude" : -3.692412,
       "name" : "prado",
       "ref" : "free on sundays, opens at 10",
+      "review" : 4,
       "start" : "6/31/17 12:00 PM",
       "trip" : "trip0",
       "type" : "Site"
@@ -61,44 +99,52 @@
       "address" : "1 Terminal Dr, Nashville TN 37214",
       "base" : "base1",
       "end" : "6/26/17 13:00 PM",
-      "latitude" : "36.1263",
-      "longitude" : "86.6774",
+      "latitude" : 36.1263,
+      "longitude" : -86.6774,
       "name" : "Outbound Flight",
       "ref" : "AA 123, T67Y44",
+      "review" : 0,
       "start" : "6/26/17 6:00 AM",
       "trip" : "trip0",
       "type" : "Transit"
     }
   },
   "trips" : {
-    "-KmTstB38YSABtx5W5wQ" : {
-      "end" : "2017-07-03T05:00:00.000Z",
-      "name" : "Bourbon Trail",
-      "start" : "2017-06-19T05:00:00.000Z",
-      "uid" : "f428ENknAxNH7eJ1gOym7p5Dc8r1"
-    },
     "trip0" : {
-      "end" : "2017-06-13T05:00:00.000Z",
+      "archived" : false,
+      "end" : "2017-06-23T05:00:00.000Z",
+      "id" : "trip0",
       "name" : "Summer 2017",
       "start" : "2017-06-13T05:00:00.000Z",
       "uid" : "f428ENknAxNH7eJ1gOym7p5Dc8r1"
     },
     "trip1" : {
-      "end" : "2017-06-13T05:00:00.000Z",
+      "archived" : false,
+      "end" : "2017-12-31T06:00:00.000Z",
+      "id" : "trip1",
       "name" : "Family Christmas",
-      "start" : "2017-06-13T05:00:00.000Z",
+      "start" : "2017-12-22T06:00:00.000Z",
       "uid" : "f428ENknAxNH7eJ1gOym7p5Dc8r1"
     },
     "trip2" : {
+      "archived" : false,
       "end" : "2017-06-13T05:00:00.000Z",
       "name" : "Med Sea Adventure",
       "start" : "2017-06-13T05:00:00.000Z",
       "uid" : "f428ENknAxNH7eJ1gOym7p5Dc8r1"
     },
     "trip3" : {
+      "archived" : false,
       "end" : "2017-06-13T05:00:00.000Z",
       "name" : "Canadian Skiing",
       "start" : "2017-06-13T05:00:00.000Z",
+      "uid" : "pAGclMcIUwh96Oyq5aNAFAvaFMD3"
+    },
+    "trip5" : {
+      "archived" : false,
+      "end" : "2017-07-03T05:00:00.000Z",
+      "name" : "Bourbon Trail",
+      "start" : "2017-06-19T05:00:00.000Z",
       "uid" : "pAGclMcIUwh96Oyq5aNAFAvaFMD3"
     }
   },

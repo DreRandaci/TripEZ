@@ -6,3 +6,7 @@ app.constant("FIREBASE_CONFIG", {
   storageBucket: "",
   messagingSenderId: ""
 });
+
+app.constant("GOOGLE_CONFIG",
+	""
+);

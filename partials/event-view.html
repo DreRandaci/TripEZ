@@ -1,0 +1,42 @@
+<h2><a ng-href="#!/events/{{eventId}}">{{event.name}}</a></h2>
+<h4>Event in {{trip.name}}</h4>
+
+<div id="map"></div>
+
+<div>
+	<div class="row">
+		<h4 class="col-sm-2">Map Coordinates:</h4>
+		<h5 class="col-sm-10">{{event.latitude}}, {{event.longitude}}</h5>
+	</div>
+	<div class="row">
+		<h4 class="col-sm-2">Type:</h4> 
+		<h5 class="col-sm-10">{{event.type}}</h5>
+	</div>
+	<div class="row">
+		<h4 class="col-sm-2">Average Review:</h4>
+		<h5 class="col-sm-10">{{event.review}}</h5>
+	</div>
+	<div class="row">
+		<h4 class="col-sm-2">Start:</h4>
+		<h5 class="col-sm-10">{{event.start | date: 'short'}}</h5>
+	</div>
+	<div class="row">
+		<h4 class="col-sm-2">End:</h4>
+		<h5 class="col-sm-10">{{event.end | date: 'short'}}</h5>
+	</div>
+	<div class="row">
+		<h4 class="col-sm-2">Address:</h4>
+		<h5 class="col-sm-10">{{event.address}}</h5>
+	</div>
+	<div class="row">
+		<h4 class="col-sm-2">Base:</h4>
+		<h5 class="col-sm-10">{{base.name}}</h5>
+	</div>
+	<div class="row">
+		<h4 class="col-sm-2">Reference:</h4>
+		<h5 class="col-sm-10">{{event.ref}}</h5>
+	</div>
+</div>
+
+<input type="text" ng-model="userInput"/>
+<button class="btn btn-default" ng-click="">Edit Event</button>
