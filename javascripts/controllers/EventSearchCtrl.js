@@ -42,7 +42,8 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
       name: searchEvent.name,
       review: searchEvent.rating,
       start: $scope.newEventToSave.start,
-      trip: $routeParams.tripId
+      trip: $routeParams.tripId,
+      type: $scope.newEventToSave.type
     };
     EventFactory.addToTripEventsInFB(eventToBeSavedToFB)
       .then((results) => {
