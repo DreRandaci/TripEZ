@@ -1,17 +1,39 @@
-app.controller("EventViewCtrl", function($location, $rootScope, $routeParams, $scope, EventFactory) {
+app.controller("EventViewCtrl", function($location, $routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
 
 	let getSingleEvent = () => {
     EventFactory.getSingleEventFromFB($routeParams.eventId)
-  	.then((event) => {
-      $scope.event = event;
-      pinSingleEvent();
-  	})
-  	.catch((error) => {
-      console.log("getSingleEvent error", error);
- 	 	});
+	  	.then((event) => {
+	      $scope.event = event;
+	      pinSingleEvent();
+	      getTripFromTripId(event.trip);
+	      getBaseFromBaseId(event.base);
+	  	})
+	  	.catch((error) => {
+	      console.log("getSingleEvent error", error);
+	 	 	});
   };
 
   getSingleEvent();
+
+	let getTripFromTripId = (tripId) => {
+    TripFactory.getSingleTripNameFromFB(tripId)
+    	.then((tripReturned) => {
+      	$scope.trip = tripReturned;
+    	})
+    	.catch((error) => {
+      	console.log("getTripFromTripId error", error);
+    	});
+  };
+
+  let getBaseFromBaseId = (baseId) => {
+    BaseFactory.getBaseWithBaseIdFromFB(baseId)
+      .then((baseReturned) => {
+      	$scope.base = baseReturned;
+      })
+      .catch ((error) => {
+        console.log("error in getBaseFromBaseId", error);
+      });
+  };
 
 	let map;
 

@@ -1,4 +1,4 @@
-app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
+app.controller("EventSearchCtrl", function($location, $routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
 
   $scope.alerts = [];
 
@@ -17,10 +17,11 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
   let getSingleTripName = () => {
     TripFactory.getSingleTripNameFromFB($routeParams.tripId)
       .then((tripReturned) => {
-      $scope.trip = tripReturned;
-    }).catch((error) => {
-      console.log("getSingleTripName error", error);
-    });
+        $scope.trip = tripReturned;
+      })
+      .catch((error) => {
+        console.log("getSingleTripName error", error);
+      });
   };
 
   getSingleTripName();
@@ -28,10 +29,11 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
   let getBases = () => {
     BaseFactory.getBasesFromFB($routeParams.tripId)
       .then((bases) => {
-      $scope.bases = bases;
-    }).catch((error) => {
-      console.log("getBases error", error);
-    });
+        $scope.bases = bases;
+      })
+      .catch((error) => {
+        console.log("getBases error", error);
+      });
   };
 
   getBases();
@@ -65,7 +67,8 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
         latToSearch = baseReturned.latitude;
         longToSearch = baseReturned.longitude;
         centerMapToBase(latToSearch, longToSearch);
-      }).catch ((error) => {
+      })
+      .catch ((error) => {
         console.log("error in setBaseToSearchFrom", error);
       });
   };

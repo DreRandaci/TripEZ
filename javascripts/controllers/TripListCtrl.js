@@ -3,10 +3,11 @@ app.controller("TripListCtrl", function($location, $rootScope, $routeParams, $sc
 	let getTrips = () => {
     TripFactory.getTripsFromFB($routeParams.uid)
     	.then((trips) => {
-      $scope.trips = trips;
-    }).catch((error) => {
-      console.log("getTrips error", error);
-    });
+        $scope.trips = trips;
+      })
+      .catch((error) => {
+        console.log("getTrips error", error);
+      });
   };
 
   getTrips();
@@ -45,20 +46,24 @@ app.controller("TripListCtrl", function($location, $rootScope, $routeParams, $sc
 			uid: $rootScope.user.uid,
 			name: newTripName
 		};
-		TripFactory.editTripInFB(tripToEdit).then(() => {
-			getTrips();
-		}).catch((error) => {
-			console.log("editTripName error", error);
+		TripFactory.editTripInFB(tripToEdit)
+      .then(() => {
+        getTrips();
+		  })
+      .catch((error) => {
+        console.log("editTripName error", error);
 		});
 	};
 
   $scope.deleteEntireTrip = (tripId) => {
-    TripFactory.deleteTripFromFB(tripId).then(() => {
-      BaseFactory.deleteTripBasesFromFB(tripId);
-      EventFactory.deleteTripEventsFromFB(tripId);
-      getTrips();
-    }).catch((error) => {
-      console.log("deleteEntireTrip error", error);
+    TripFactory.deleteTripFromFB(tripId)
+      .then(() => {
+        BaseFactory.deleteTripBasesFromFB(tripId);
+        EventFactory.deleteTripEventsFromFB(tripId);
+        getTrips();
+      })
+      .catch((error) => {
+        console.log("deleteEntireTrip error", error);
     });
   };
 

@@ -70,7 +70,7 @@
       "type" : "Food"
     },
     "event1" : {
-      "address" : "Calle de Huertas 300, Madrid, Espana,28014",
+      "address" : "Calle de Huertas 300, Madrid, Espana, 28014",
       "base" : "base1",
       "end" : "6/29/17 11:00 AM",
       "latitude" : 40.413722,
@@ -83,7 +83,7 @@
       "type" : "Lodging"
     },
     "event2" : {
-      "address" : "Paseo del Prado s/n, Madrid, Espana,28014",
+      "address" : "Paseo del Prado s/n, Madrid, Espana, 28014",
       "base" : "base1",
       "end" : "6/31/17 14:00 PM",
       "latitude" : 40.413722,
