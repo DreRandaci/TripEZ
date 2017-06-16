@@ -10,6 +10,10 @@ app.controller("EventSearchCtrl", function($location, $rootScope, $routeParams, 
     start: ""
   };
 
+  $scope.newEventPopover = {
+    templateUrl: "newEventPopover.html",
+  };
+
   let getSingleTripName = () => {
     TripFactory.getSingleTripNameFromFB($routeParams.tripId)
       .then((tripReturned) => {
