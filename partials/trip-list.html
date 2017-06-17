@@ -4,7 +4,7 @@
 	<h2 class="col-sm-3">Start</h2>
 	<h2 class="col-sm-3">End</h2>
 </div>
-<div ng-repeat="trip in trips">
+<div ng-repeat="trip in trips | orderBy:'start'">
 	<div class="row row-div">
 		<div ng-show="!editing">
 			<div class="col-sm-4">
