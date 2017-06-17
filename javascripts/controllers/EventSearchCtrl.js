@@ -81,21 +81,15 @@ app.controller("EventSearchCtrl", function($location, $routeParams, $scope, Base
     });
   };
 
-  $scope.searchGooglePlaces = (userSearchTerms) => {
-  	initMap(userSearchTerms);
-  };
-
-  var map;
+  var map = {};
   var infowindow;
 
-  let initMap = (userSearchTerms) => {
+  $scope.initMap = (userSearchTerms) => {
     var basetoSearchFrom = {lat: latToSearch, lng: longToSearch};
-
     map = new google.maps.Map(document.getElementById('map'), {
       center: basetoSearchFrom,
       zoom: 15
     });
-
     infowindow = new google.maps.InfoWindow();
     var service = new google.maps.places.PlacesService(map);
     service.nearbySearch({
@@ -113,6 +107,8 @@ app.controller("EventSearchCtrl", function($location, $routeParams, $scope, Base
         resultsArray.push(results[i]);
       }
     }
+                                          // order here by start date/time before applying scope, 
+                                          // apply counter attribute to use when writing # on pin to map
     $scope.$apply(function () {
       $scope.searchEvents = resultsArray;
     });
@@ -123,12 +119,14 @@ app.controller("EventSearchCtrl", function($location, $routeParams, $scope, Base
     var marker = new google.maps.Marker({
       map: map,
       position: place.geometry.location
+                                                // number attribute to pin based on start order
+                                                // color attribute to pin for events
     });
-
     google.maps.event.addListener(marker, 'click', function() {
       infowindow.setContent(place.name);
       infowindow.open(map, this);
     });
   };
 
+      
 });

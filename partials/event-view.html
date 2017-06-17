@@ -8,7 +8,19 @@
 	</div>
 	<div class="row">
 		<h4 class="col-sm-2">Type:</h4> 
-		<h5 class="col-sm-10">{{event.type}}</h5>
+		<h5 class="col-sm-10" ng-show="!editingType">{{event.type}}</h5>
+		<select ng-model="event.type" ng-show="editingType">
+			<option name="type" value="Food">Food</option>
+			<option name="type" value="Site">Site</option>
+			<option name="type" value="Transit">Transit</option>
+			<option name="type" value="Lodging">Lodging</option>
+		</select>
+		<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-show="!editingType" ng-click="editingType = true">
+      <i class="fa fa-pencil"></i>
+		</button>
+    <button class="btn btn-sm btn-success pull-right inline" ng-show="editingType" ng-click="editingType = false; editEvent();">
+      <i class="fa fa-save"></i>
+    </button>
 	</div>
 	<div class="row">
 		<h4 class="col-sm-2">Average Review:</h4>
@@ -16,8 +28,8 @@
 	</div>
 	<div class="row">
 		<h4 class="col-sm-2">Start:</h4>
-		<h5 class="col-sm-10">{{event.start | date: 'short'}}</h5>
-    <p class="input-group date-picker">
+		<h5 class="col-sm-10" ng-show="!editingStart">{{event.start | date: 'shortDate'}}</h5>
+    <p class="input-group date-picker" ng-show="editingStart">
     	<input type="date" class="form-control" uib-datepicker-popup ng-model="event.start" is-open="eventStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
     	<span class="input-group-btn">
       <button type="button" class="btn btn-default" ng-click="eventStartEdit = !eventStartEdit">
@@ -25,19 +37,39 @@
       </button>
     	</span>
   	</p>
+		<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-show="!editingStart" ng-click="editingStart = true">
+      <i class="fa fa-pencil"></i>
+		</button>
+    <button class="btn btn-sm btn-success pull-right inline" ng-show="editingStart" ng-click="editingStart = false; editEvent();">
+      <i class="fa fa-save"></i>
+    </button>
 	</div>
 	<div class="row">
 		<h4 class="col-sm-2">End:</h4>
-		<h5 class="col-sm-10">{{event.end | date: 'short'}}</h5>
+		<h5 class="col-sm-10" ng-show="!editingEnd">{{event.end | date: 'shortDate'}}</h5>
+		<p class="input-group date-picker" ng-show="editingEnd">
+    	<input type="date" class="form-control" uib-datepicker-popup ng-model="event.end" is-open="eventEndEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+    	<span class="input-group-btn">
+      <button type="button" class="btn btn-default" ng-click="eventEndEdit = !eventEndEdit">
+        <i class="glyphicon glyphicon-calendar"></i>
+      </button>
+    	</span>
+  	</p>
+		<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-show="!editingAddress" ng-click="editingEnd = true">
+      <i class="fa fa-pencil"></i>
+		</button>
+    <button class="btn btn-sm btn-success pull-right inline" ng-show="editingEnd" ng-click="editingEnd = false; editEvent();">
+      <i class="fa fa-save"></i>
+    </button>
 	</div>
 	<div class="row">
 		<h4 class="col-sm-2">Address:</h4>
 		<h5 class="col-sm-10" ng-show="!editingAddress">{{event.address}}</h5>
 		<input type="text" ng-model="event.address" ng-show="editingAddress"/>
-		<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-click="editingAddress = true">
+		<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-show="!editingAddress" ng-click="editingAddress = true">
       <i class="fa fa-pencil"></i>
 		</button>
-    <button class="btn btn-sm btn-success pull-right inline" ng-show="editingAddress" ng-click="editingAddress = false; editAddress();">
+    <button class="btn btn-sm btn-success pull-right inline" ng-show="editingAddress" ng-click="editingAddress = false; editEvent();">
       <i class="fa fa-save"></i>
     </button>
 	</div>
@@ -47,12 +79,17 @@
 	</div>
 	<div class="row">
 		<h4 class="col-sm-2">Reference:</h4>
-		<h5 class="col-sm-10">{{event.ref}}</h5>
-		<button type="button" class="btn btn-default" ng-click="!editingReference = true">
+		<h5 class="col-sm-10" ng-show="!editingReference">{{event.ref}}</h5>
+		<input type="text" ng-model="event.ref" ng-show="editingReference"/>
+		<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-show="!editingReference" ng-click="editingReference = true">
 			<i class="fa fa-pencil"></i>
 		</button>
-		<button class="btn btn-sm btn-success pull-right" ng-show="editingAddress" ng-click="editing = false; editAddress();">
+		<button class="btn btn-sm btn-success pull-right inline" ng-show="editingReference" ng-click="editingReference = false; editEvent();">
       <i class="fa fa-save"></i>
+    </button>
+	</div>
+	<div class="row">
+		<button class="btn btn-sm btn-success pull-right inline" ng-show="editingType || editingStart || editingEnd || editingAddress || editingReference" ng-click="editEvent(); editingType = false; editingStart = false; editingEnd = false; editingAddress = false; editingReference = false;">Save All Edits
     </button>
 	</div>
 </div>

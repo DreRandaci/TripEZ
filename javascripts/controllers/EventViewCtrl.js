@@ -35,27 +35,13 @@ app.controller("EventViewCtrl", function($location, $routeParams, $scope, BaseFa
     });
   };
 
-  $scope.editEventAttribute = () => {
-  	console.log("in eventAttribute");
-		let eventToEdit = {
-      address: $scope.event.address,
-      base: $scope.event.base,
-      end: $scope.event.end,
-      latitude: event.geometry.location.lat(),
-      longitude: event.geometry.location.lng(),
-      name: event.name,
-      ref: $scope.event.ref,
-      review: searchEvent.review,
-      start: $scope.event.start,
-      trip: $scope.event.trip,
-      type: $scope.event.type
-		};
-		EventFactory.editEventAttributeInFB(eventToEdit)
+  $scope.editEvent = () => {
+		EventFactory.editEventInFB($scope.event)
     .then(() => {
       getSingleEvent();
 	  })
     .catch((error) => {
-      console.log("editEventAttribute error", error);
+      console.log("editEvent error", error);
 	  });
 	};
 
@@ -63,8 +49,8 @@ app.controller("EventViewCtrl", function($location, $routeParams, $scope, BaseFa
 
 	let pinSingleEvent = () => {
 	  let singleEventToPin = {
-	  	lat: $scope.event.latitude, 
-	  	lng: $scope.event.longitude
+	  	lat: Number($scope.event.latitude), 
+	  	lng: Number($scope.event.longitude)
 	  };
 	  let map = new google.maps.Map(document.getElementById('map'), {
 	    zoom: 12,

@@ -32,8 +32,14 @@ app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $sc
   getBases();
 
   let baseAutoComplete = () => {
+
+    map = new google.maps.Map(document.getElementById('map'), {});
+
     var input = document.getElementById('new-base-input');
-    var autocomplete = new google.maps.places.Autocomplete(input, {placeIdOnly: true});
+    var autocomplete = new google.maps.places.Autocomplete(input, {
+      types: ['geocode'],                                                   // added to debug
+      placeIdOnly: true
+    });
     var geocoder = new google.maps.Geocoder();
     autocomplete.addListener('place_changed', function() {
       var place = autocomplete.getPlace();
