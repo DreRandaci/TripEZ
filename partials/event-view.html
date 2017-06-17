@@ -1,4 +1,13 @@
-<h2><a ng-href="#!/events/{{eventId}}">{{event.name}}</a></h2>
+<div class="row">
+	<h2 class="inline" ng-show="!editingName"><a ng-href="#!/events/{{eventId}}">{{event.name}}</a></h2>
+	<input type="text" ng-model="event.name" ng-show="editingName"/>
+	<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-show="!editingName" ng-click="editingName = true">
+ 	 <i class="fa fa-pencil"></i>
+	</button>
+	<button class="btn btn-sm btn-success pull-right inline" ng-show="editingName" ng-click="editingName = false; editEvent();">
+	  <i class="fa fa-save"></i>
+	</button>
+</div>
 <h4>Event in {{trip.name}}</h4>
 <div id="map"></div>
 <div>
@@ -75,7 +84,16 @@
 	</div>
 	<div class="row">
 		<h4 class="col-sm-2">Base:</h4>
-		<h5 class="col-sm-10">{{base.name}}</h5>
+		<h5 class="col-sm-10" ng-show="!editingBase">{{currentBase.name}}</h5>
+		<select ng-model="event.base" ng-show="editingBase">
+			<option ng-repeat="base in bases" name="base" value="{{base.baseId}}">{{base.name}}</option>
+		</select>
+		<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-show="!editingBase" ng-click="editingBase = true">
+      <i class="fa fa-pencil"></i>
+		</button>
+    <button class="btn btn-sm btn-success pull-right inline" ng-show="editingBase" ng-click="editingBase = false; editEvent();">
+      <i class="fa fa-save"></i>
+    </button>
 	</div>
 	<div class="row">
 		<h4 class="col-sm-2">Reference:</h4>
@@ -88,8 +106,11 @@
       <i class="fa fa-save"></i>
     </button>
 	</div>
-	<div class="row">
-		<button class="btn btn-sm btn-success pull-right inline" ng-show="editingType || editingStart || editingEnd || editingAddress || editingReference" ng-click="editEvent(); editingType = false; editingStart = false; editingEnd = false; editingAddress = false; editingReference = false;">Save All Edits
-    </button>
-	</div>
+</div>
+<div class="row">
+	<button class="btn btn-sm btn-primary pull-right inline" ng-show="!editingName || !editingType || !editingStart || !editingEnd || !editingAddress || !editingBase || !editingReference" ng-click="editEvent(); editingName = true; editingType = true; editingStart = true; editingEnd = true; editingAddress = true; editingBase = true; editingReference = true;">Edit All
+  </button>
+	<button class="btn btn-sm btn-success pull-right inline" ng-show="editingName || editingType || editingStart || editingEnd || editingAddress || editingBase || editingReference" ng-click="editEvent(); editingName = false; editingType = false; editingStart = false; editingEnd = false; editingAddress = false; editingBase = false; editingReference = false;">Save All Edits
+  </button>
+  <button class="btn btn-sm btn-danger" ng-click="deleteEvent(event.eventId)">Delete Event</i></button>
 </div>

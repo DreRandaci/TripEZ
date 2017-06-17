@@ -4,9 +4,10 @@ app.controller("EventViewCtrl", function($location, $routeParams, $scope, BaseFa
     EventFactory.getSingleEventFromFB($routeParams.eventId)
   	.then((event) => {
       $scope.event = event;
-      pinSingleEvent();
       getTripFromTripId(event.trip);
       getBaseFromBaseId(event.base);
+      getBases(event.trip);
+  		pinSingleEvent();
   	})
   	.catch((error) => {
       console.log("getSingleEvent error", error);
@@ -28,10 +29,20 @@ app.controller("EventViewCtrl", function($location, $routeParams, $scope, BaseFa
   let getBaseFromBaseId = (baseId) => {
     BaseFactory.getBaseWithBaseIdFromFB(baseId)
     .then((baseReturned) => {
-    	$scope.base = baseReturned;
+    	$scope.currentBase = baseReturned;
     })
     .catch ((error) => {
       console.log("error in getBaseFromBaseId", error);
+    });
+  };
+
+  let getBases = (tripId) => {
+    BaseFactory.getBasesFromFB(tripId)
+    .then((bases) => {
+      $scope.bases = bases;
+    })
+    .catch((error) => {
+      console.log("getBases error", error);
     });
   };
 
