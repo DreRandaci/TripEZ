@@ -2,45 +2,66 @@ app.controller("EventViewCtrl", function($location, $routeParams, $scope, BaseFa
 
 	let getSingleEvent = () => {
     EventFactory.getSingleEventFromFB($routeParams.eventId)
-	  	.then((event) => {
-	      $scope.event = event;
-	      pinSingleEvent();
-	      getTripFromTripId(event.trip);
-	      getBaseFromBaseId(event.base);
-	  	})
-	  	.catch((error) => {
-	      console.log("getSingleEvent error", error);
-	 	 	});
+  	.then((event) => {
+      $scope.event = event;
+      getTripFromTripId(event.trip);
+      getBaseFromBaseId(event.base);
+      getBases(event.trip);
+  		pinSingleEvent();
+  	})
+  	.catch((error) => {
+      console.log("getSingleEvent error", error);
+ 	 	});
   };
 
   getSingleEvent();
 
 	let getTripFromTripId = (tripId) => {
     TripFactory.getSingleTripNameFromFB(tripId)
-    	.then((tripReturned) => {
-      	$scope.trip = tripReturned;
-    	})
-    	.catch((error) => {
-      	console.log("getTripFromTripId error", error);
-    	});
+  	.then((tripReturned) => {
+    	$scope.trip = tripReturned;
+  	})
+  	.catch((error) => {
+    	console.log("getTripFromTripId error", error);
+  	});
   };
 
   let getBaseFromBaseId = (baseId) => {
     BaseFactory.getBaseWithBaseIdFromFB(baseId)
-      .then((baseReturned) => {
-      	$scope.base = baseReturned;
-      })
-      .catch ((error) => {
-        console.log("error in getBaseFromBaseId", error);
-      });
+    .then((baseReturned) => {
+    	$scope.currentBase = baseReturned;
+    })
+    .catch ((error) => {
+      console.log("error in getBaseFromBaseId", error);
+    });
   };
+
+  let getBases = (tripId) => {
+    BaseFactory.getBasesFromFB(tripId)
+    .then((bases) => {
+      $scope.bases = bases;
+    })
+    .catch((error) => {
+      console.log("getBases error", error);
+    });
+  };
+
+  $scope.editEvent = () => {
+		EventFactory.editEventInFB($scope.event)
+    .then(() => {
+      getSingleEvent();
+	  })
+    .catch((error) => {
+      console.log("editEvent error", error);
+	  });
+	};
 
 	let map;
 
 	let pinSingleEvent = () => {
 	  let singleEventToPin = {
-	  	lat: $scope.event.latitude, 
-	  	lng: $scope.event.longitude
+	  	lat: Number($scope.event.latitude), 
+	  	lng: Number($scope.event.longitude)
 	  };
 	  let map = new google.maps.Map(document.getElementById('map'), {
 	    zoom: 12,

@@ -1,9 +1,9 @@
 <h3>Events in {{trip.name}}</h3>
 
 <h4>Filter By Base:</h4>
-<select>
-	<option name="base" ng-model="baseIdToFilter">All Bases</option>
-	<option ng-repeat="base in bases" name="base" ng-model="baseIdToFilter" value="base.baseId">{{base.name}}</option>
+<select ng-model="baseIdToFilter">							<!-- no filter by ng model -->
+	<option name="base">All Bases</option>
+	<option ng-repeat="base in bases" name="base" value="base.id">{{base.name}}</option> <!-- ng-href new route param -->
 </select>
 
 <a ng-href="#!/search/{{trip.id}}">
@@ -19,7 +19,7 @@
 	<h2 class="col-sm-3">End</h2>
 </div>
 
-<div ng-repeat="event in events | filter: {'base' : baseIdToFilter} | orderBy:'start'">
+<div ng-repeat="event in events | filter: {'base' : baseIdToFilter} | orderBy:'start'"> <!-- no filter by ng model -->
 	<div class="row row-div">
 		<div class="col-sm-4">
       <h3><a ng-href="#!/events/{{event.eventId}}">{{event.name}}</a></h3>

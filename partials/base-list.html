@@ -4,67 +4,74 @@
 	<h2 class="col-sm-3">Start</h2>
 	<h2 class="col-sm-3">End</h2>
 </div>
-<div ng-repeat="base in bases">
+<div ng-repeat="base in bases | orderBy:'start'">
 	<div class="row row-div">
-		<div class="col-sm-4">
-      <h3><a ng-href="#!/events/{{base.trip}}/{{base.baseId}}">{{base.name}}</a></h3>
-    </div>
-    <h4 class="col-sm-3">{{base.start | date: 'shortDate'}}</h4>
-    <h4 class="col-sm-3">{{base.end | date: 'shortDate'}}</h4>
-    <div class="pull-right col-sm-1">
-      <button class="btn btn-sm btn-info edit-btn" ng-click="editing = true">
-        <i class="fa fa-pencil"></i>
-      </button>
-      <button class="btn btn-sm btn-danger" ng-click="deleteEntireBase(base.baseId)"><i class="fa fa-trash"></i></button>
-    </div>
-    <div ng-show="editing">
-      <input ng-model="base.name" type="text" autofocus>
-      <div class="pull-right">
-		    <p class="input-group date-picker">
-	      	<input type="date" class="form-control" uib-datepicker-popup ng-model="base.start" is-open="isOpened0" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" value="base.start"/>
-	      	<span class="input-group-btn">
-	        <button type="button" class="btn btn-default" ng-click="isOpened0 = !isOpened0">
-	          <i class="glyphicon glyphicon-calendar"></i>
-	        </button>
-	      	</span>
-	    	</p>
-	    	<p class="input-group date-picker">
-	      	<input type="date" class="form-control" uib-datepicker-popup ng-model="base.end" is-open="isOpened1" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" value="base.end"/>
-	      	<span class="input-group-btn">
-	        <button type="button" class="btn btn-default" ng-click="isOpened1 = !isOpened1">
-	          <i class="glyphicon glyphicon-calendar"></i>
-	        </button>
-	      	</span>
-	    	</p>
-        <button class="btn btn-sm btn-success" ng-click="editing = false; editBase(base, base.name)">
-          <i class="fa fa-save"></i>
-        </button>
-  		</div>
-  	</div>
+		<div ng-show="!editing">
+			<div class="col-sm-4">
+	      <h3><a ng-href="#!/events/{{base.trip}}/{{base.baseId}}">{{base.name}}</a></h3>
+	    </div>
+	    <h4 class="col-sm-3">{{base.start | date: 'shortDate'}}</h4>
+	    <h4 class="col-sm-3">{{base.end | date: 'shortDate'}}</h4>
+	    <div class="pull-right col-sm-1">
+	      <button class="btn btn-sm btn-info edit-btn" ng-click="editing = true">
+	        <i class="fa fa-pencil"></i>
+	      </button>
+	      <button class="btn btn-sm btn-danger" ng-click="deleteEntireBase(base.baseId)"><i class="fa fa-trash"></i></button>
+	    </div>
+	  </div>
+		<div ng-show="editing">
+	    <input class="col-sm-4 inline" ng-model="base.name" type="text" autofocus>
+	    <div class="inline">
+		    <p class="input-group date-picker col-sm-3">
+		    	<input type="date" class="form-control" uib-datepicker-popup ng-model="base.start" is-open="baseStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" value="base.start"/>
+		    	<span class="input-group-btn">
+		        <button type="button" class="btn btn-default" ng-click="baseStartEdit = !baseStartEdit">
+		          <i class="glyphicon glyphicon-calendar"></i>
+		        </button>
+		    	</span>
+		  	</p>
+		  </div>
+		  <div class="inline">
+		  	<p class="input-group date-picker col-sm-3">
+		    	<input type="date" class="form-control" uib-datepicker-popup ng-model="base.end" is-open="baseEndEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" value="base.end"/>
+		    	<span class="input-group-btn">
+		        <button type="button" class="btn btn-default" ng-click="baseEndEdit = !baseEndEdit">
+		          <i class="glyphicon glyphicon-calendar"></i>
+		        </button>
+		    	</span>
+		  	</p>
+		  </div>
+		  <div class="pull-right col-sm-2">
+		    <button class="btn btn-sm btn-success col-sm-2 inline pull-right" ng-click="editing = false; editBase(base)">
+		      <i class="fa fa-save"></i>
+		    </button>
+		  </div>
+		</div>
 	</div>
 </div>
 <div class="row row-div">
-	<input id="new-base-input" ng-model="newBasePopover.baseName" class="col-sm-4" type="text" placeholder="Search for new base" ng-model="newBasePopover.baseName" autofocus>
+	<input id="new-base-input" ng-model="newBase.name" class="col-sm-4" type="text" placeholder="Search for new base" autofocus>
 	<div class="inline">
 	  <p class="input-group date-picker col-sm-3">
-	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBasePopover.baseStartDate" is-open="isOpened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBase.start" is-open="newBaseStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
 	  	<span class="input-group-btn">
-	    <button type="button" class="btn btn-default" ng-click="isOpened2 = !isOpened2">
-	      <i class="glyphicon glyphicon-calendar"></i>
-	    </button>
+		    <button type="button" class="btn btn-default" ng-click="newBaseStartEdit = !newBaseStartEdit">
+		      <i class="glyphicon glyphicon-calendar"></i>
+		    </button>
 	  	</span>
 		</p>
 	</div>
 	<div class="inline">
 	  <p class="input-group date-picker col-sm-3">
-	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBasePopover.baseEndDate" is-open="isOpened3" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBase.end" is-open="newBaseEndEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
 	  	<span class="input-group-btn">
-	    <button type="button" class="btn btn-default" ng-click="isOpened3 = !isOpened3">
-	      <i class="glyphicon glyphicon-calendar"></i>
-	    </button>
+		    <button type="button" class="btn btn-default" ng-click="newBaseEndEdit = !newBaseEndEdit">
+		      <i class="glyphicon glyphicon-calendar"></i>
+		    </button>
 	  	</span>
 		</p>
 	</div>
-	<button class="btn btn-default col-sm-2" ng-click="makeNewBase()">Submit</button>
+	<button class="btn btn-default col-sm-2" ng-click="makeNewBase(newBase)">Submit</button>
 	</div>
 </div>
+<div id="map" class="invisoMap"></div>

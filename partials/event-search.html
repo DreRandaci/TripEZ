@@ -6,7 +6,7 @@
 	</select>
 </div>
 <input type="text" placeholder="Anything you want" ng-model="userSearchTerms"/>
-<button class="btn btn-default" ng-click="searchGooglePlaces(userSearchTerms); searching = true">Search</button> 
+<button class="btn btn-default" ng-click="initMap(userSearchTerms); searching = true">Search</button> 
 <div id="map"></div>
 <div uib-alert ng-repeat="alert in alerts" class="col-xs-4 col-xs-offset-4 alert-danger">{{alert.msg}}</div>
 <div class="row row-headings" ng-show="searching">

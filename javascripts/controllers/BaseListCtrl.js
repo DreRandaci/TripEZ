@@ -1,53 +1,55 @@
 app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $scope, EventFactory, BaseFactory, TripFactory) {
 
-var input = document.getElementById('new-base-input');
+  $scope.newBase = {
+    trip: $routeParams.tripId,
+    uid: $rootScope.user.uid
+  };
 
-	let getSingleTripName = () => {
+  var input = document.getElementById('new-base-input');
+
+  let getSingleTripName = () => {
     TripFactory.getSingleTripNameFromFB($routeParams.tripId)
-    	.then((tripReturned) => {
-        $scope.trip = tripReturned;
-      })
-      .catch((error) => {
-        console.log("getSingleTripName error", error);
-      });
+    .then((tripReturned) => {
+      $scope.trip = tripReturned;
+    })
+    .catch((error) => {
+      console.log("getSingleTripName error", error);
+    });
   };
 
   getSingleTripName();
 
-	let getBases = () => {
+  let getBases = () => {
     BaseFactory.getBasesFromFB($routeParams.tripId)
-    	.then((bases) => {
-        $scope.bases = bases;
-      })
-      .catch((error) => {
-        console.log("getBases error", error);
-      });
+    .then((bases) => {
+      $scope.bases = bases;
+    })
+    .catch((error) => {
+      console.log("getBases error", error);
+    });
   };
 
   getBases();
 
-  $scope.newBasePopover = {
-    templateUrl: "newBasePopover.html",
-    baseEndDate: "",
-    baseName: "",
-		baseStartDate: "",
-    latitude: "",
-    longitude: ""
-  };
-
   let baseAutoComplete = () => {
+
+    map = new google.maps.Map(document.getElementById('map'), {});
+
     var input = document.getElementById('new-base-input');
-    var autocomplete = new google.maps.places.Autocomplete(input, {placeIdOnly: true});
-    var geocoder = new google.maps.Geocoder;
+    var autocomplete = new google.maps.places.Autocomplete(input, {
+      types: ['geocode'],                                                   // added to debug
+      placeIdOnly: true
+    });
+    var geocoder = new google.maps.Geocoder();
     autocomplete.addListener('place_changed', function() {
       var place = autocomplete.getPlace();
       if (!place.place_id) {
         return;
       }
       geocoder.geocode({'placeId': place.place_id}, function(results, status) {
-        $scope.newBasePopover.baseName = results[0].address_components[0].short_name;
-        $scope.newBasePopover.latitude = results[0].geometry.location.lat();
-        $scope.newBasePopover.longitude = results[0].geometry.location.lng();
+        $scope.newBase.name = results[0].address_components[0].short_name;
+        $scope.newBase.latitude = results[0].geometry.location.lat();
+        $scope.newBase.longitude = results[0].geometry.location.lng();
         if (status !== 'OK') {
           window.alert('Geocoder failed due to: ' + status);
           return;
@@ -58,53 +60,35 @@ var input = document.getElementById('new-base-input');
 
   baseAutoComplete();
 
-  $scope.makeNewBase = () => {
-  	let newBase = {
-  		end: $scope.newBasePopover.baseEndDate,
-      latitude: $scope.newBasePopover.latitude,
-      longitude: $scope.newBasePopover.longitude,
-      name: $scope.newBasePopover.baseName,
-      start: $scope.newBasePopover.baseStartDate,
-      trip: $routeParams.tripId,
-      uid: $rootScope.user.uid
-    };
+  $scope.makeNewBase = (newBase) => {
    	BaseFactory.makeNewBaseInFB(newBase)
-      .then(() => {
-      	getBases();
-      })
-      .catch((error) => {
-      	console.log("error in makeNewBases", error);
-      });
+    .then(() => {
+    	getBases();
+    })
+    .catch((error) => {
+    	console.log("error in makeNewBases", error);
+    });
   };
 
-  $scope.editBase = (base, newBaseName) => {
-		let baseToEdit = {
-			end: base.end,
-      latitude: base.latitude,
-      longitude: base.longitude,
-			start: base.start,
-			trip: $routeParams.tripId,
-			uid: $rootScope.user.uid,
-			name: newBaseName
-		};
-		BaseFactory.editBaseInFB(baseToEdit)
-      .then(() => {
-        getBases();
-		  })
-      .catch((error) => {
-        console.log("editBaseName error", error);
-		  });
+  $scope.editBase = (base) => {
+		BaseFactory.editBaseInFB(base)
+    .then(() => {
+      getBases();
+	  })
+    .catch((error) => {
+      console.log("editBaseName error", error);
+	  });
 	};
 
   $scope.deleteEntireBase = (baseId) => {
     BaseFactory.deleteBaseFromFB(baseId)
-      .then(() => {
-        EventFactory.deleteBaseEventsFromFB(baseId);
-        getBases();
-      })
-      .catch((error) => {
-        console.log("deleteEntireBase error", error);
-      });
+    .then(() => {
+      EventFactory.deleteBaseEventsFromFB(baseId);
+      getBases();
+    })
+    .catch((error) => {
+      console.log("deleteEntireBase error", error);
+    });
   };
 
 });

@@ -48,10 +48,17 @@ app.factory("TripFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
   	});
   };
 
-  let editTripInFB = (tripToEdit) => {
+  let editTripInFB = (trip) => {
     return $q((resolve, reject) => {
-      $http.put(`${FIREBASE_CONFIG.databaseURL}/trips/${tripToEdit.id}.json`,
-        JSON.stringify(tripToEdit))
+      $http.put(`${FIREBASE_CONFIG.databaseURL}/trips/${trip.tripId}.json`,
+        JSON.stringify({
+          archived: trip.archived,
+          end: trip.end,
+          name: trip.name,
+          start: trip.start,
+          uid: trip.uid
+        })
+      )
       .then((result) => {
         resolve(result);
       })
