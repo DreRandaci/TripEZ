@@ -1,8 +1,8 @@
 <h3>Events in {{trip.name}}</h3>
 <h4>Filter By Base:</h4>
-<select ng-model="baseIdToFilter">
-	<option name="base" value="">All Bases</option>
-	<option ng-repeat="base in bases" ng-selected= "{{base.baseId == baseIdToFilter}}" name="basesToFilter" value="{{base.baseId}}">{{base.name}}</option>
+<select ng-model="baseIdToFilter" value="All Bases" placeholder="All Bases">
+	<option name="base">All Bases</option>
+	<option ng-repeat="base in bases" ng-selected="base.baseId === defaultSelectedBaseId" name="basesToFilter" value="{{base.baseId}}">{{base.name}}</option>
 </select>
 <a ng-href="#!/search/{{trip.id}}">
 	<button class="btn btn-default">Search New Event</button>
