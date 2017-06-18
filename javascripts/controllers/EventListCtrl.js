@@ -1,11 +1,10 @@
 app.controller("EventListCtrl", function($location, $routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
 
-  let getBaseIdForSelectedEvent = () => {
-    $scope.defaultSelectedBaseId = BaseFactory.getBaseIdForSelectedEventFromFB();
+  let getBaseIdForSelectedBase = () => {
+    $scope.defaultSelectedBaseId = BaseFactory.getBaseIdForSelectedBaseFromFB();
   };
 
-  getBaseIdForSelectedEvent();
-  console.log("$scope.defaultSelectedBaseId", $scope.defaultSelectedBaseId);
+  getBaseIdForSelectedBase();
 
 	let getSingleTripName = () => {
     TripFactory.getSingleTripNameFromFB($routeParams.tripId)

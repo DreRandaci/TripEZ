@@ -60,6 +60,10 @@ app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $sc
 
   baseAutoComplete();
 
+  $scope.setDefaultBaseFilterForEventList = (baseId) => {
+    BaseFactory.setBaseIdForSelectedBaseInFB(baseId);
+  };
+
   $scope.makeNewBase = (newBase) => {
    	BaseFactory.makeNewBaseInFB(newBase)
     .then(() => {
