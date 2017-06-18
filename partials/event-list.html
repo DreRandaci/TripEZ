@@ -18,7 +18,7 @@
 <div ng-repeat="event in events | filter: {'base' : defaultSelectedBaseId} | orderBy:'start'">
 	<div class="row row-div">
 		<div class="col-sm-4">
-      <h3><a ng-href="#!/events/{{event.eventId}}">{{event.name}}</a></h3>
+      <h3><a ng-href="#!/event/{{event.eventId}}">{{event.name}}</a></h3>
     </div>
     <h4 class="col-sm-3">{{event.start | date: 'short'}}</h4>
     <h4 class="col-sm-3">{{event.end | date: 'short'}}</h4>
