@@ -1,28 +1,24 @@
 <h3>Events in {{trip.name}}</h3>
-
 <h4>Filter By Base:</h4>
-<select ng-model="baseIdToFilter">							<!-- no filter by ng model -->
+<select ng-model="defaultSelectedBaseId" value="All Bases" placeholder="All Bases">
 	<option name="base">All Bases</option>
-	<option ng-repeat="base in bases" name="base" value="base.id">{{base.name}}</option> <!-- ng-href new route param -->
+	<option ng-repeat="base in bases" ng-selected="{{base.baseId}} == {{defaultSelectedBaseId}}" name="basesToFilter" value="{{base.baseId}}">{{base.name}}</option>
 </select>
-
 <a ng-href="#!/search/{{trip.id}}">
 	<button class="btn btn-default">Search New Event</button>
 </a>
 <a ng-href="#!/event/add/{{trip.id}}">
 	<button class="btn btn-default">Add Custom Event</button>
 </a>
-
 <div class="row row-headings">
 	<h2 class="col-sm-4">Event</h2>
 	<h2 class="col-sm-3">Start</h2>
 	<h2 class="col-sm-3">End</h2>
 </div>
-
-<div ng-repeat="event in events | filter: {'base' : baseIdToFilter} | orderBy:'start'"> <!-- no filter by ng model -->
+<div ng-repeat="event in events | filter: {'base' : defaultSelectedBaseId} | orderBy:'start'">
 	<div class="row row-div">
 		<div class="col-sm-4">
-      <h3><a ng-href="#!/events/{{event.eventId}}">{{event.name}}</a></h3>
+      <h3><a ng-href="#!/event/{{event.eventId}}">{{event.name}}</a></h3>
     </div>
     <h4 class="col-sm-3">{{event.start | date: 'short'}}</h4>
     <h4 class="col-sm-3">{{event.end | date: 'short'}}</h4>

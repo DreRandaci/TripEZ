@@ -8,7 +8,7 @@
 	<div class="row row-div">
 		<div ng-show="!editing">
 			<div class="col-sm-4">
-	      <h3><a ng-href="#!/events/{{base.trip}}/{{base.baseId}}">{{base.name}}</a></h3>
+	      <h3><a ng-href="#!/events/{{base.trip}}" ng-click="setDefaultBaseFilterForEventList(base.baseId)">{{base.name}}</a></h3>
 	    </div>
 	    <h4 class="col-sm-3">{{base.start | date: 'shortDate'}}</h4>
 	    <h4 class="col-sm-3">{{base.end | date: 'shortDate'}}</h4>

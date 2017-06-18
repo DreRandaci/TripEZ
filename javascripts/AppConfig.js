@@ -35,17 +35,17 @@ app.config(function($routeProvider) {
         controller: "TripListCtrl",
         resolve: {isAuth}
     })
-    .when("/trips/bases/:tripId", {
+    .when("/bases/:tripId", {
         templateUrl: "partials/base-list.html",
         controller: "BaseListCtrl",
         resolve: {isAuth}
     })
-    .when("/events/:tripId/:baseId", {
+    .when("/events/:tripId", {
         templateUrl: "partials/event-list.html",
         controller: "EventListCtrl",
         resolve: {isAuth}
      })
-    .when("/events/:eventId", {
+    .when("/event/:eventId", {
         templateUrl: "partials/event-view.html",
         controller: "EventViewCtrl",
         resolve: {isAuth}

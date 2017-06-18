@@ -1,5 +1,15 @@
 app.factory("BaseFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
 
+  let baseIdForSelectedBase = "";
+
+  let setBaseIdForSelectedBaseInFB = (baseId) => {
+    baseIdForSelectedBase = baseId;
+  };
+
+  let getBaseIdForSelectedBaseFromFB = () => {
+    return baseIdForSelectedBase;
+  };
+
 	let getBasesFromFB = (tripId) => {
     let baseArray = [];
     return $q((resolve, reject) => {
@@ -99,6 +109,8 @@ app.factory("BaseFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
   };
 
 	return {
+    setBaseIdForSelectedBaseInFB:setBaseIdForSelectedBaseInFB,
+    getBaseIdForSelectedBaseFromFB:getBaseIdForSelectedBaseFromFB,
 		getBasesFromFB:getBasesFromFB,
     getBaseWithBaseIdFromFB:getBaseWithBaseIdFromFB,
 		makeNewBaseInFB:makeNewBaseInFB,

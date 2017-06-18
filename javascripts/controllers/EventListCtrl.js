@@ -1,50 +1,56 @@
 app.controller("EventListCtrl", function($location, $routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
 
+  let getBaseIdForSelectedBase = () => {
+    $scope.defaultSelectedBaseId = BaseFactory.getBaseIdForSelectedBaseFromFB();
+  };
+
+  getBaseIdForSelectedBase();
+
 	let getSingleTripName = () => {
     TripFactory.getSingleTripNameFromFB($routeParams.tripId)
-    	.then((tripReturned) => {
-        tripReturned.id = $routeParams.tripId;
-        $scope.trip = tripReturned;
-      })
-      .catch((error) => {
-        console.log("getSingleTripName error", error);
-      });
+  	.then((tripReturned) => {
+      tripReturned.id = $routeParams.tripId;
+      $scope.trip = tripReturned;
+    })
+    .catch((error) => {
+      console.log("getSingleTripName error", error);
+    });
   };
 
   getSingleTripName();
 
 	let getEventsByTrip = () => {
     EventFactory.getEventsByTripFromFB($routeParams.tripId)
-    	.then((events) => {
-        $scope.events = events;
-      })
-      .catch((error) => {
-        console.log("getEventsByTrip error", error);
-      });
+  	.then((events) => {
+      $scope.events = events;
+    })
+    .catch((error) => {
+      console.log("getEventsByTrip error", error);
+    });
   };
 
   getEventsByTrip();
 
   let getBases = () => {
     BaseFactory.getBasesFromFB($routeParams.tripId)
-    	.then((bases) => {
-        $scope.bases = bases;
-      })
-      .catch((error) => {
-        console.log("getBases error", error);
-      });
+  	.then((bases) => {
+      $scope.bases = bases;
+    })
+    .catch((error) => {
+      console.log("getBases error", error);
+    });
   };
 
   getBases();
 
   $scope.deleteEvent = (eventId) => {
     EventFactory.deleteEventFromFB(eventId)
-      .then(() => {
-        getEventsByTrip();
-      })
-      .catch((error) => {
-        console.log("deletePin error", error);
-      });
+    .then(() => {
+      getEventsByTrip();
+    })
+    .catch((error) => {
+      console.log("deletePin error", error);
+    });
   };
 
 });
