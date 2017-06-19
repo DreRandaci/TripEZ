@@ -1,11 +1,12 @@
 app.controller("EventSearchCtrl", function($location, $routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
 
-  $scope.mytime = new Date();
+  $scope.alerts = [];
 
+  $scope.mytime = new Date();
   $scope.hstep = 1;
   $scope.mstep = 1;
-
   $scope.ismeridian = true;
+  
   $scope.toggleMode = function() {
     $scope.ismeridian = ! $scope.ismeridian;
   };
@@ -17,15 +18,9 @@ app.controller("EventSearchCtrl", function($location, $routeParams, $scope, Base
     $scope.mytime = d;
   };
 
-  $scope.alerts = [];
-
   $scope.newEventToSave = {
     end: "",
     start: ""
-  };
-
-  $scope.newEventPopover = {
-    templateUrl: "newEventPopover.html",
   };
 
   let latToSearch;
