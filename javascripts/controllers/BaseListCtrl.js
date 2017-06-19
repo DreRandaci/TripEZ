@@ -1,4 +1,4 @@
-app.controller("BaseListCtrl", function($location, $rootScope, $routeParams, $scope, EventFactory, BaseFactory, TripFactory) {
+app.controller("BaseListCtrl", function($rootScope, $routeParams, $scope, EventFactory, BaseFactory, TripFactory) {
 
   $scope.newBase = {
     trip: $routeParams.tripId,

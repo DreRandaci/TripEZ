@@ -1,4 +1,4 @@
-app.controller("TripListCtrl", function($location, $rootScope, $routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
+app.controller("TripListCtrl", function($rootScope, $routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
 
   $scope.newTrip = {
       archived: false,

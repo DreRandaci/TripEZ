@@ -1,4 +1,4 @@
-app.controller("EventSearchCtrl", function($location, $routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
+app.controller("EventSearchCtrl", function($routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
 
   $scope.alerts = [];
 
@@ -50,6 +50,29 @@ app.controller("EventSearchCtrl", function($location, $routeParams, $scope, Base
 
   getBases();
 
+  let getMapBaseToSearchFrom = () => {
+    BaseFactory.getBaseWithBaseIdFromFB($scope.baseSelected)
+    .then((baseReturned) => {
+      latToSearch = baseReturned.latitude;
+      longToSearch = baseReturned.longitude;
+      centerMapToBase(latToSearch, longToSearch);
+    })
+    .catch ((error) => {
+      console.log("error in setBaseToSearchFrom", error);
+    });
+  };
+
+  let getBaseIdForSelectedBase = () => {
+    $scope.baseSelected = BaseFactory.getBaseIdForSelectedBaseFromFB();
+    getMapBaseToSearchFrom($scope.baseSelected);
+  };
+
+  getBaseIdForSelectedBase();
+
+  $scope.changeBaseToSearchFrom = () => {
+    getMapBaseToSearchFrom();
+  };
+
   $scope.addToTripEvents = (searchEvent) => {
     let eventToBeSavedToFB = {
       address: searchEvent.vicinity,
@@ -72,18 +95,6 @@ app.controller("EventSearchCtrl", function($location, $routeParams, $scope, Base
     })
     .catch((error) => {
       console.log("error in addToTripEvents", error);
-    });
-  };
-
-  $scope.setBaseToSearchFrom = () => {
-    BaseFactory.getBaseWithBaseIdFromFB($scope.baseSelected)
-    .then((baseReturned) => {
-      latToSearch = baseReturned.latitude;
-      longToSearch = baseReturned.longitude;
-      centerMapToBase(latToSearch, longToSearch);
-    })
-    .catch ((error) => {
-      console.log("error in setBaseToSearchFrom", error);
     });
   };
 
