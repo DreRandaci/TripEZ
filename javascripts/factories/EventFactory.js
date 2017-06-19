@@ -23,9 +23,9 @@ app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG, GOO
         let eventCollection = eventsFromFB.data;
         if (eventCollection !== null) {
             Object.keys(eventCollection).forEach((key) => {
-            eventCollection[key].start=new Date(eventCollection[key].start);
-            eventCollection[key].end=new Date(eventCollection[key].end);
-            eventCollection[key].eventId=key;
+            eventCollection[key].start = new Date(eventCollection[key].start);
+            eventCollection[key].end = new Date(eventCollection[key].end);
+            eventCollection[key].eventId = key;
             eventArray.push(eventCollection[key]);
           });
         }
@@ -45,9 +45,9 @@ app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG, GOO
         let eventCollection = eventsFromFB.data;
         if (eventCollection !== null) {
             Object.keys(eventCollection).forEach((key) => {
-            eventCollection[key].start=new Date(eventCollection[key].start);
-            eventCollection[key].end=new Date(eventCollection[key].end);
-            eventCollection[key].eventId=key;
+            eventCollection[key].start = new Date(eventCollection[key].start);
+            eventCollection[key].end = new Date(eventCollection[key].end);
+            eventCollection[key].eventId = key;
             eventArray.push(eventCollection[key]);
           });
         }

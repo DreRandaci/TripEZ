@@ -15,48 +15,42 @@
 	<h3 class="col-sm-2">Address</h3>
 </div>
 <div ng-repeat="searchEvent in searchEvents">
-<div class="row row-div">
-	<h4 class="col-sm-2">{{searchEvent.name}}</h4>
-	<h4 class="col-sm-1">{{searchEvent.rating}}</h4>
-	<h4 class="col-sm-3">{{searchEvent.vicinity}}</h4>
-	<div>
-		<div class="inline col-sm-2">
+	<div class="row row-div">
+		<div class="col-sm-2">
+			<h4 class="row">{{searchEvent.name}}</h4>
+			<div class="row" ng-show="savingEvent">
+				<label for="newEventTypeSelect" class="col-sm-4">Type:</label>
+				<select id="newEventTypeSelect" class="col-sm-8 inline" ng-model="newEventToSave.type">
+					<option name="eventType" value="Food">Food</option>
+					<option name="eventType" value="Site">Site</option>
+					<option name="eventType" value="Transit">Transit</option>
+					<option name="eventType" value="Lodging">Lodging</option>
+				</select>
+			</div>
 		</div>
-		<div class="inline col-sm-2">
+		<h4 class="col-sm-1" ng-show="!savingEvent">{{searchEvent.rating}}</h4>
+		<h4 class="col-sm-3" ng-show="!savingEvent">{{searchEvent.vicinity}}</h4>
+		<div class="col-sm-2" ng-show="savingEvent">
+			<div class="row">
+				<label for="newEventDatePickerStart" class="col-sm-3">Start:</label>
+			  <p id="newEventDatePickerStart" class="col-sm-9 input-group date-picker">
+			  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newEventToSave.start" is-open="isOpened4" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+				</p>
+			</div>
+			<div class="row" uib-timepicker ng-model="newEventToSave.start" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
 		</div>
+		<div class="col-sm-2" ng-show="savingEvent">
+			<div class="row">
+				<label for="newEventDatePickerEnd" class="col-sm-3">End:</label>
+			  <p id="newEventDatePickerEnd" class="col-sm-9 input-group date-picker">
+			  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newEventToSave.end" is-open="isOpened5" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+				</p>
+			</div>
+			<div class="row" uib-timepicker ng-model="newEventToSave.end" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+		</div>
+		<input type="text" class="col-sm-4" ng-show="savingEvent" ng-model="newEventToSave.ref" placeholder="Reference note here">
+    <button type="button" class="btn btn-default pull-right" ng-show="!savingEvent" ng-click="savingEvent = true">Save Event</button>
+		<button class="btn btn-success col-sm-offset-4" ng-show="savingEvent" ng-click="addToTripEvents(searchEvent); savingEvent = false;">Confirm Save</button>
+    <button type="button" class="btn btn-danger pull-right" ng-show="savingEvent" ng-click="savingEvent = false">Cancel</button>
 	</div>
-		<div class="col-sm-2 btn-right">
-		  <h3>
-		    <button uib-popover-template="newEventPopover.templateUrl" popover-title="Details..." type="button" class="btn btn-default">Save Event</button>
-		    <script type="text/ng-template" id="newEventPopover.html" class="newPopover">
-		      <div class="form-group">
-		        <form>
-		        	<div class="row">
-								<label for="newEventTypeSelect" class="col-sm-3">Type:</label>
-								<select id="newEventTypeSelect" class="col-sm-9 inline" ng-model="newEventToSave.type">
-									<option name="eventType" value="Food">Food</option>
-									<option name="eventType" value="Site">Site</option>
-									<option name="eventType" value="Transit">Transit</option>
-									<option name="eventType" value="Lodging">Lodging</option>
-								</select>
-							</div>
-							<div class="row">
-								<label for="newEventDatePickerStart" class="col-sm-3">Start:</label>
-								  <p id="newEventDatePickerStart" class="col-sm-9 input-group date-picker">
-								  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newEventToSave.start" is-open="isOpened4" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
-									</p>
-							</div>
-							<div class="row">
-								<label for="newEventDatePickerEnd" class="col-sm-3">End:</label>
-							  <p id="newEventDatePickerEnd" class="col-sm-9 input-group date-picker">
-							  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newEventToSave.end" is-open="isOpened5" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
-								</p>
-							</div>
-							<input type="text" class="form-control" ng-model="newEventToSave.ref" placeholder="Reference note here">
-							<button class="btn btn-default col-sm-offset-4" ng-click="addToTripEvents(searchEvent)">Submit</button>
-		        </form>
-		      </div>
-		    </script>
-		  </h3>
-		</div>
 </div>
