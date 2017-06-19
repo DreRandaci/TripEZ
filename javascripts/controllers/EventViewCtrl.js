@@ -89,4 +89,15 @@ app.controller("EventViewCtrl", function($location, $routeParams, $scope, BaseFa
 	  });
 	};
 
+  $scope.deleteEvent = (eventToDelete) => {
+    let eventToDeleteTrip = eventToDelete.trip;
+    EventFactory.deleteEventFromFB(eventToDelete.id)
+    .then((result) => {
+      $location.url(`/events/${eventToDeleteTrip}`);
+    })
+    .catch((error) => {
+      console.log("deletePin error", error);
+    });
+  };
+
 });
