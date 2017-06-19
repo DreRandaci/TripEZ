@@ -125,7 +125,6 @@ app.controller("EventSearchCtrl", function($location, $routeParams, $scope, Base
         createMarker(results[i]);
         resultsArray.push(results[i]);
       }
-      console.log(resultsArray);
     }
     $scope.$apply(function () {
       $scope.searchEvents = resultsArray;
