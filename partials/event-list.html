@@ -1,6 +1,6 @@
 <h3>Events in {{trip.name}}</h3>
 <h4>Filter By Base:</h4>
-<select ng-model="defaultSelectedBaseId" value="All Bases" placeholder="All Bases">
+<select ng-model="defaultSelectedBaseId" value="All Bases" placeholder="All Bases" ng-change="setDefaultBaseFilterForEventList(defaultSelectedBaseId)">
 	<option name="base">All Bases</option>
 	<option ng-repeat="base in bases" ng-selected="{{base.baseId}} == {{defaultSelectedBaseId}}" name="basesToFilter" value="{{base.baseId}}">{{base.name}}</option>
 </select>

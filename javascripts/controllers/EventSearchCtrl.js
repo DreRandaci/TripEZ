@@ -1,4 +1,4 @@
-app.controller("EventSearchCtrl", function($location, $routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
+app.controller("EventSearchCtrl", function($routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
 
   $scope.alerts = [];
 

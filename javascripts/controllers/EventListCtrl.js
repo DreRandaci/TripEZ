@@ -1,4 +1,4 @@
-app.controller("EventListCtrl", function($location, $routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
+app.controller("EventListCtrl", function($routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
 
   let getBaseIdForSelectedBase = () => {
     $scope.defaultSelectedBaseId = BaseFactory.getBaseIdForSelectedBaseFromFB();
@@ -42,6 +42,10 @@ app.controller("EventListCtrl", function($location, $routeParams, $scope, BaseFa
   };
 
   getBases();
+
+  $scope.setDefaultBaseFilterForEventList = (baseId) => {
+    BaseFactory.setBaseIdForSelectedBaseInFB(baseId);
+  };
 
   $scope.deleteEvent = (eventId) => {
     EventFactory.deleteEventFromFB(eventId)
