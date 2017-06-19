@@ -1,5 +1,7 @@
 <div class="row">
-	<h2 class="inline" ng-show="!editingName"><a ng-href="#!/events/{{eventId}}">{{event.name}}</a></h2>
+	<h2 class="inline" ng-show="!editingName">
+		<a ng-href="#!/events/{{eventId}}">{{event.name}}</a>
+	</h2>
 	<input type="text" ng-model="event.name" ng-show="editingName"/>
 	<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-show="!editingName" ng-click="editingName = true">
  	 <i class="fa fa-pencil"></i>
