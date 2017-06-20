@@ -2,6 +2,7 @@
 <div>
 	<p class="inline">From This Base:</p>
 	<select class="inline" ng-change="changeBaseToSearchFrom()" ng-model="baseSelected">
+		<option ng-selected="true" name="basesToFilter" value="undefined">Select a Base</option>
 		<option ng-repeat="base in bases" ng-selected="{{base.baseId}} == {{baseSelected}}" name="basesToFilter" value="{{base.baseId}}">{{base.name}}</option>
 	</select>
 </div>

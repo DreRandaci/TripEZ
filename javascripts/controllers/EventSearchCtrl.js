@@ -1,4 +1,4 @@
-app.controller("EventSearchCtrl", function($routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
+app.controller("EventSearchCtrl", function($routeParams, $scope, ngToast, BaseFactory, EventFactory, TripFactory) {
 
   $scope.alerts = [];
 
@@ -64,7 +64,13 @@ app.controller("EventSearchCtrl", function($routeParams, $scope, BaseFactory, Ev
 
   let getBaseIdForSelectedBase = () => {
     $scope.baseSelected = BaseFactory.getBaseIdForSelectedBaseFromFB();
-    getMapBaseToSearchFrom($scope.baseSelected);
+    if ($scope.baseSelected !== "") {
+      getMapBaseToSearchFrom($scope.baseSelected);
+    }
+    else {
+      $scope.baseSelected = "undefined";
+      ngToast.create('Select a base to center your search.');
+    }
   };
 
   getBaseIdForSelectedBase();
