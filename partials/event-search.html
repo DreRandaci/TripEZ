@@ -17,7 +17,7 @@
 <div ng-repeat="searchEvent in searchEvents">
 	<div class="row row-div">
 		<div class="col-sm-4">
-			<h3 class="row">{{searchEvent.name}}</h3>
+			<h3 class="row">{{searchEvent.tag}}. {{searchEvent.name}}</h3>
 			<div class="row" ng-show="savingEvent">
 				<h4 class="col-sm-4">Type:</h4>
 				<select id="newEventTypeSelect" class="col-sm-8 inline" ng-model="newEventToSave.type">

@@ -7,12 +7,12 @@ app.controller("EventSearchCtrl", function($routeParams, $scope, BaseFactory, Ev
   $scope.mstep = 1;
   $scope.ismeridian = true;
   
-  $scope.toggleMode = function() {
+  $scope.toggleMode = () => {
     $scope.ismeridian = ! $scope.ismeridian;
   };
 
-  $scope.update = function() {
-    var d = new Date();
+  $scope.update = () => {
+    let d = new Date();
     d.setHours( 14 );
     d.setMinutes( 0 );
     $scope.mytime = d;
@@ -20,7 +20,7 @@ app.controller("EventSearchCtrl", function($routeParams, $scope, BaseFactory, Ev
 
   $scope.newEventToSave = {
     end: "",
-    start: ""
+    start: "",
   };
 
   let latToSearch;
@@ -99,27 +99,24 @@ app.controller("EventSearchCtrl", function($routeParams, $scope, BaseFactory, Ev
   };
 
   let centerMapToBase = (latToSearch, longToSearch) => {
-    var baseToSearchFrom = {lat: latToSearch, lng: longToSearch};
+    let baseToSearchFrom = {lat: latToSearch, lng: longToSearch};
     map = new google.maps.Map(document.getElementById('map'), {
       center: baseToSearchFrom,
       zoom: 15
     });
   };
 
-  var map = {};
-  var infowindow;
-  var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  var labelIndex = 0;
-  var marker;
+  let map = {};
+  let infowindow;
 
   $scope.initMap = (userSearchTerms) => {
-    var basetoSearchFrom = {lat: latToSearch, lng: longToSearch};
+    let basetoSearchFrom = {lat: latToSearch, lng: longToSearch};
     map = new google.maps.Map(document.getElementById('map'), {
       center: basetoSearchFrom,
       zoom: 15
     });
     infowindow = new google.maps.InfoWindow();
-    var service = new google.maps.places.PlacesService(map);
+    let service = new google.maps.places.PlacesService(map);
     service.nearbySearch({
       location: basetoSearchFrom,
       radius: 500,
@@ -129,45 +126,45 @@ app.controller("EventSearchCtrl", function($routeParams, $scope, BaseFactory, Ev
 
   let callback = (results, status) => {
     let resultsArray = [];
+    let labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let labelIndex = 0;
     if (status === google.maps.places.PlacesServiceStatus.OK) {
-      for (var i = 0; i < results.length; i++) {
+      for (let i = 0; i < results.length; i++) {
+        results[i].tag = labels[labelIndex++ % labels.length];
         createMarker(results[i]);
         resultsArray.push(results[i]);
         getPlaceDetails(results[i].place_id);
       }
     }
-    $scope.$apply(function () {
+    $scope.$apply(() => {
       $scope.searchEvents = resultsArray;
     });
   };
 
   let createMarker = (place) => {
-    var placeLoc = place.geometry.location;
+    let placeLoc = place.geometry.location;
+    let tag = place.tag;
     marker = new google.maps.Marker({
       animation: google.maps.Animation.DROP,
-      label: labels[labelIndex++ % labels.length],
+      label: tag,
       map: map,
       position: place.geometry.location
     });
-    google.maps.event.addListener(marker, 'click', function() {
+    google.maps.event.addListener(marker, 'click', function(){
       infowindow.setContent(place.name);
       infowindow.open(map, this);
     });
   };
 
   let getPlaceDetails = (placeId) => {
-
-    var request = {
+    let request = {
       placeId: placeId
     };
-
     service = new google.maps.places.PlacesService(map);
-    console.log("service", service);
     service.getDetails(request, callback);
-
     function callback(place, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
-        $scope.$apply(function () {
+        $scope.$apply(() => {
           $scope.searchEvents.review = place.rating;
         });
       }
