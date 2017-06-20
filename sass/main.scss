@@ -2,6 +2,13 @@
 @import "images";
 @import "navbar";
 
+body {
+  font-family: 'Acme', sans-serif;
+  font-size: 2em;
+  color: #333333;
+  background-color: #ffffff;
+}
+
 .inline {
 	display: inline-block;
 }
@@ -29,9 +36,14 @@
 }
 
 #map {
-  height: 200px;
+  height: 300px;
+  border: 2px solid black;
 }
 
 .invisoMap {
 	display: none;
+}
+
+.reference-input {
+	height: 120px;
 }
