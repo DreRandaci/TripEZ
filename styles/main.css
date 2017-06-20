@@ -33,6 +33,12 @@
   font-size: 36px;
   margin-left: 50px; }
 
+body {
+  font-family: 'Acme', sans-serif;
+  font-size: 2em;
+  color: #333333;
+  background-color: #ffffff; }
+
 .inline {
   display: inline-block; }
 

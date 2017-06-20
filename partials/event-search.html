@@ -10,16 +10,16 @@
 <div id="map"></div>
 <div uib-alert ng-repeat="alert in alerts" class="col-xs-4 col-xs-offset-4 alert-danger">{{alert.msg}}</div>
 <div class="row row-headings" ng-show="searching">
-	<h3 class="col-sm-2">Name</h3>
+	<h3 class="col-sm-4">Name</h3>
 	<h3 class="col-sm-1">Rating</h3>
 	<h3 class="col-sm-2">Address</h3>
 </div>
 <div ng-repeat="searchEvent in searchEvents">
 	<div class="row row-div">
-		<div class="col-sm-2">
-			<h4 class="row">{{searchEvent.name}}</h4>
+		<div class="col-sm-4">
+			<h3 class="row">{{searchEvent.name}}</h3>
 			<div class="row" ng-show="savingEvent">
-				<label for="newEventTypeSelect" class="col-sm-4">Type:</label>
+				<h4 class="col-sm-4">Type:</h4>
 				<select id="newEventTypeSelect" class="col-sm-8 inline" ng-model="newEventToSave.type">
 					<option name="eventType" value="Food">Food</option>
 					<option name="eventType" value="Site">Site</option>
@@ -29,7 +29,7 @@
 			</div>
 		</div>
 		<h4 class="col-sm-1" ng-show="!savingEvent">{{searchEvent.rating}}</h4>
-		<h4 class="col-sm-3" ng-show="!savingEvent">{{searchEvent.vicinity}}</h4>
+		<h4 class="col-sm-4" ng-show="!savingEvent">{{searchEvent.vicinity}}</h4>
 		<div class="col-sm-2" ng-show="savingEvent">
 			<div class="row">
 				<label for="newEventDatePickerStart" class="col-sm-3">Start:</label>

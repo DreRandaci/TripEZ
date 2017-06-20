@@ -2,6 +2,13 @@
 @import "images";
 @import "navbar";
 
+body {
+  font-family: 'Acme', sans-serif;
+  font-size: 2em;
+  color: #333333;
+  background-color: #ffffff;
+}
+
 .inline {
 	display: inline-block;
 }
