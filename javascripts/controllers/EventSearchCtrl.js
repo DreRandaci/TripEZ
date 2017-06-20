@@ -108,6 +108,9 @@ app.controller("EventSearchCtrl", function($routeParams, $scope, BaseFactory, Ev
 
   var map = {};
   var infowindow;
+  var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var labelIndex = 0;
+  var marker;
 
   $scope.initMap = (userSearchTerms) => {
     var basetoSearchFrom = {lat: latToSearch, lng: longToSearch};
@@ -140,7 +143,9 @@ app.controller("EventSearchCtrl", function($routeParams, $scope, BaseFactory, Ev
 
   let createMarker = (place) => {
     var placeLoc = place.geometry.location;
-    var marker = new google.maps.Marker({
+    marker = new google.maps.Marker({
+      animation: google.maps.Animation.DROP,
+      label: labels[labelIndex++ % labels.length],
       map: map,
       position: place.geometry.location
     });
@@ -151,11 +156,13 @@ app.controller("EventSearchCtrl", function($routeParams, $scope, BaseFactory, Ev
   };
 
   let getPlaceDetails = (placeId) => {
+
     var request = {
       placeId: placeId
     };
 
     service = new google.maps.places.PlacesService(map);
+    console.log("service", service);
     service.getDetails(request, callback);
 
     function callback(place, status) {
