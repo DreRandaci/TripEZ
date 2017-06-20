@@ -48,7 +48,7 @@
 			</div>
 			<div class="row" uib-timepicker ng-model="newEventToSave.end" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
 		</div>
-		<input type="text" class="col-sm-4" ng-show="savingEvent" ng-model="newEventToSave.ref" placeholder="Reference note here">
+		<input type="textarea" class="col-sm-4 reference-input" ng-show="savingEvent" ng-model="newEventToSave.ref" placeholder="Reference note here"></input>
     <button type="button" class="btn btn-default pull-right" ng-show="!savingEvent" ng-click="savingEvent = true">Save Event</button>
 		<button class="btn btn-success col-sm-offset-4" ng-show="savingEvent" ng-click="addToTripEvents(searchEvent); savingEvent = false;">Confirm Save</button>
     <button type="button" class="btn btn-danger pull-right" ng-show="savingEvent" ng-click="savingEvent = false">Cancel</button>

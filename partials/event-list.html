@@ -22,11 +22,13 @@
     </div>
     <h4 class="col-sm-3">{{event.start | date: 'short'}}</h4>
     <h4 class="col-sm-3">{{event.end | date: 'short'}}</h4>
-    <div class="pull-right col-sm-1">
+    <div class="pull-right col-sm-2">
+      <button class="btn btn-sm btn-danger" ng-click="deleteEvent(event.eventId)">
+      	<i class="fa fa-trash"></i>
+      </button>
       <button class="btn btn-sm btn-info edit-btn" ng-href="#">
         <i class="fa fa-pencil"></i>
       </button>
-      <button class="btn btn-sm btn-danger" ng-click="deleteEvent(event.eventId)"><i class="fa fa-trash"></i></button>
     </div>
 	</div>
 </div>

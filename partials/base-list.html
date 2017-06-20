@@ -12,11 +12,13 @@
 	    </div>
 	    <h4 class="col-sm-3">{{base.start | date: 'shortDate'}}</h4>
 	    <h4 class="col-sm-3">{{base.end | date: 'shortDate'}}</h4>
-	    <div class="pull-right col-sm-1">
-	      <button class="btn btn-sm btn-info edit-btn" ng-click="editing = true">
+	    <div class="col-sm-2">
+	      <button class="btn btn-sm btn-danger pull-right" ng-click="deleteEntireBase(base.baseId)">
+	      	<i class="fa fa-trash"></i>
+	      </button>
+	      <button class="btn btn-sm btn-info edit-btn pull-right" ng-click="editing = true">
 	        <i class="fa fa-pencil"></i>
 	      </button>
-	      <button class="btn btn-sm btn-danger" ng-click="deleteEntireBase(base.baseId)"><i class="fa fa-trash"></i></button>
 	    </div>
 	  </div>
 		<div ng-show="editing">
@@ -72,6 +74,6 @@
 		</p>
 	</div>
 	<button class="btn btn-default col-sm-2" ng-click="makeNewBase(newBase)">Submit</button>
-	</div>
+	<!-- </div> -->
 </div>
 <div id="map" class="invisoMap"></div>

@@ -36,9 +36,14 @@ body {
 }
 
 #map {
-  height: 200px;
+  height: 300px;
+  border: 2px solid black;
 }
 
 .invisoMap {
 	display: none;
+}
+
+.reference-input {
+	height: 120px;
 }
