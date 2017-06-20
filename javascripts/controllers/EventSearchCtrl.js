@@ -144,8 +144,17 @@ app.controller("EventSearchCtrl", function($routeParams, $scope, BaseFactory, Ev
   let createMarker = (place) => {
     let placeLoc = place.geometry.location;
     let tag = place.tag;
+    let icon = {
+      path: google.maps.SymbolPath.CIRCLE,
+      fillColor: 'green',
+      fillOpacity: 0.4,
+      strokeColor: 'white',
+      strokeWeight: 0.7,
+      scale: 10
+    };
     marker = new google.maps.Marker({
       animation: google.maps.Animation.DROP,
+      icon: icon,
       label: tag,
       map: map,
       position: place.geometry.location
