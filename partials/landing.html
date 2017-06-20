@@ -1,29 +1,36 @@
-<div uib-alert ng-repeat="alert in alerts" class="col-xs-4 col-xs-offset-4 alert-danger">{{alert.msg}}</div>
 <div class="container col-xs-4 col-xs-offset-4 auth-container">
   <img src="./images/filler_logo.png" alt="logo" />
   <h1>TripEZ</h1>
   <div class="btn-right btn-new-board">
-      <button ng-click="userWillLogin()" uib-popover-template="auth.templateUrl" popover-title="Welcome Back" type="button" class="btn btn-default">I'm Back!
+    <div ng-show="!userToLogin && !userToRegister">
+      <button ng-click="userWillLogin(); userToLogin = true; userToRegister = false" type="button" class="btn btn-default">I'm Back!
       </button>
-      <button ng-click="userWillRegister()" uib-popover-template="auth.templateUrl" popover-title="Please Register" type="button" class="btn btn-default">New Here?
+      <button ng-click="userWillRegister(); userToRegister = true; userToLogin = false" type="button" class="btn btn-default">New Here?
       </button>
-      <script type="text/ng-template" id="auth.html">
-        <div class="form-group">
-          <form>
-            <input type="email" id="inputEmail" class="form-control form-spacing" placeholder="Email Address" ng-model="auth.email" required autofocus>
-            <input type="password" id="inputPassword" class="form-control form-spacing" placeholder="Password" ng-model="auth.password" ng-keyup="$event.keyCode == 13 && loginUser()" required autofocus>
-            <a class="btn col-xs-12" ng-click="loginUser()">Login</a>
-          </form>
-        </div>
-      </script>
-      <script type="text/ng-template" id="reg.html">
-        <div class="form-group">
-          <form>
-            <input type="email" id="inputEmail" class="form-control form-spacing" placeholder="Email Address" ng-model="auth.email" required autofocus>
-            <input type="password" id="inputPassword" class="form-control form-spacing" placeholder="Password" ng-model="auth.password" ng-keyup="$event.keyCode == 13 && registerUser()" required autofocus>
-            <a class="btn col-xs-12" ng-click="registerUser()">Register</a>
-          </form>
-        </div>
-      </script>
+    </div>
+    <div class="form-group" ng-show="userToLogin">
+      <form>
+        <label>Welcome Back!</label>
+        <input type="email" id="inputEmail" class="form-control form-spacing" placeholder="Email Address" ng-model="auth.email" required autofocus>
+        <input type="password" id="inputPassword" class="form-control form-spacing" placeholder="Password" ng-model="auth.password" ng-keyup="$event.keyCode == 13 && loginUser()" required>
+        <button type="button" class="btn btn-default" ng-click="loginUser()">
+          <h4>Login</h4>
+        </button>
+      </form>
+    </div>
+    <div class="form-group" ng-show="userToRegister">
+      <form>
+        <label>Please Register</label>
+        <input type="email" id="inputEmail" class="form-control form-spacing" placeholder="Email Address" ng-model="auth.email" required autofocus>
+        <input type="password" id="inputPassword" class="form-control form-spacing" placeholder="Password" ng-model="auth.password" ng-keyup="$event.keyCode == 13 && registerUser()" required>
+        <button type="button" class="btn btn-default" ng-click="registerUser()">
+          <h4>Register</h4>
+        </button>
+      </form>
+    </div>
+    <div class="pull-right auth-oops" ng-click="userToLogin = false; userToRegister = false">
+      <a href="#" ng-show="userToRegister">Back to Login</a>
+      <a href="#" ng-show="userToLogin">Back to Register</a>
+    </div>
   </div>
 </div>

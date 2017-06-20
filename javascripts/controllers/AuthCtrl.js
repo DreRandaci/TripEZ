@@ -1,6 +1,4 @@
-app.controller("AuthCtrl", function($location, $rootScope, $scope, AuthFactory, UserFactory) {
-
-	$scope.alerts = [];
+app.controller("AuthCtrl", function($location, $rootScope, $scope, ngToast, AuthFactory, UserFactory) {
 
 	$scope.auth = {};
 
@@ -30,11 +28,15 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, AuthFactory, 
 		AuthFactory.authenticate($scope.auth).then((userCreds) => {
 			return UserFactory.getUser(userCreds.uid);
 		}, (error) => {
-			$scope.alerts[0] = {msg: "Oops! Looks like that username or password isn't recognized."};
-		}).then((user) => {
+			ngToast.create("Check your username & password, or register if you're new here!");
+		})
+		.then((user) => {
+		if (user) {
 			$rootScope.user = user;
 			$location.url(`/trips/${$rootScope.user.uid}`);
-		}).catch((error) => {
+			}
+		})
+		.catch((error) => {
 			console.log(error);
 		});
 	};
