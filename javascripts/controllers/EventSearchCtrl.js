@@ -130,6 +130,7 @@ app.controller("EventSearchCtrl", function($routeParams, $scope, BaseFactory, Ev
       for (var i = 0; i < results.length; i++) {
         createMarker(results[i]);
         resultsArray.push(results[i]);
+        getPlaceDetails(results[i].place_id);
       }
     }
     $scope.$apply(function () {
@@ -147,6 +148,23 @@ app.controller("EventSearchCtrl", function($routeParams, $scope, BaseFactory, Ev
       infowindow.setContent(place.name);
       infowindow.open(map, this);
     });
+  };
+
+  let getPlaceDetails = (placeId) => {
+    var request = {
+      placeId: placeId
+    };
+
+    service = new google.maps.places.PlacesService(map);
+    service.getDetails(request, callback);
+
+    function callback(place, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        $scope.$apply(function () {
+          $scope.searchEvents.review = place.rating;
+        });
+      }
+    }
   };
       
 });
