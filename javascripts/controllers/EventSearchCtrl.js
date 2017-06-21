@@ -1,4 +1,4 @@
-app.controller("EventSearchCtrl", function($routeParams, $scope, ngToast, BaseFactory, EventFactory, TripFactory) {
+app.controller("EventSearchCtrl", function($location, $routeParams, $scope, ngToast, BaseFactory, EventFactory, TripFactory) {
 
   $scope.alerts = [];
 
@@ -114,8 +114,10 @@ app.controller("EventSearchCtrl", function($routeParams, $scope, ngToast, BaseFa
 
   let map = {};
   let infowindow;
+  let placesArray = [];
 
   $scope.initMap = (userSearchTerms) => {
+    placesArray = [];
     let basetoSearchFrom = {lat: latToSearch, lng: longToSearch};
     map = new google.maps.Map(document.getElementById('map'), {
       center: basetoSearchFrom,
@@ -127,23 +129,43 @@ app.controller("EventSearchCtrl", function($routeParams, $scope, ngToast, BaseFa
       location: basetoSearchFrom,
       radius: 500,
       keyword: [userSearchTerms]
-    }, callback);
+    }, getPlaces);
   };
 
-  let callback = (results, status) => {
-    let resultsArray = [];
+  let getPlaces = (results, status) => {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      getPlaceDetails(results);
+    }
+  };
+
+  let getPlaceDetails = (results) => {
+    for (let i = 0; i < results.length; i++) {
+      let request = {
+        placeId: results[i].place_id
+      };
+      service = new google.maps.places.PlacesService(map);
+      service.getDetails(request, detailsCallback);
+    }
+  };
+
+  let detailsCallback = (place, status) => {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+      placesArray.push(place);
+    } else {
+      console.log("error with getPlaceDetails callback", status);
+    }
+    applyToScope(placesArray);
+  };
+
+  let applyToScope = (placesArray) => {
     let labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let labelIndex = 0;
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-      for (let i = 0; i < results.length; i++) {
-        results[i].tag = labels[labelIndex++ % labels.length];
-        createMarker(results[i]);
-        resultsArray.push(results[i]);
-        getPlaceDetails(results[i].place_id);
-      }
+    for (let i = 0; i < placesArray.length; i++) {
+      placesArray[i].tag = labels[labelIndex++ % labels.length];
+      createMarker(placesArray[i]);
     }
     $scope.$apply(() => {
-      $scope.searchEvents = resultsArray;
+      $scope.searchEvents = placesArray;
     });
   };
 
@@ -156,7 +178,7 @@ app.controller("EventSearchCtrl", function($routeParams, $scope, ngToast, BaseFa
       fillOpacity: 0.4,
       strokeColor: 'white',
       strokeWeight: 0.7,
-      scale: 10
+      scale: 12
     };
     marker = new google.maps.Marker({
       animation: google.maps.Animation.DROP,
@@ -166,24 +188,9 @@ app.controller("EventSearchCtrl", function($routeParams, $scope, ngToast, BaseFa
       position: place.geometry.location
     });
     google.maps.event.addListener(marker, 'click', function(){
-      infowindow.setContent(place.name);
+      infowindow.setContent(placesArray[i].name);
       infowindow.open(map, this);
     });
-  };
-
-  let getPlaceDetails = (placeId) => {
-    let request = {
-      placeId: placeId
-    };
-    service = new google.maps.places.PlacesService(map);
-    service.getDetails(request, callback);
-    function callback(place, status) {
-      if (status == google.maps.places.PlacesServiceStatus.OK) {
-        $scope.$apply(() => {
-          $scope.searchEvents.review = place.rating;
-        });
-      }
-    }
   };
       
 });
