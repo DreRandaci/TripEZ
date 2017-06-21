@@ -36,6 +36,8 @@ app.factory("TripFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
   };
 
   let makeNewTripInFB = (newTrip) => {
+    newTrip.archived = false;
+    newTrip.uid = $rootScope.user.uid;
     return $q((resolve, reject) => {
       $http.post(`${FIREBASE_CONFIG.databaseURL}/trips.json`,
         JSON.stringify(newTrip))

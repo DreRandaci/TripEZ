@@ -1,4 +1,4 @@
-app.factory("BaseFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
+app.factory("BaseFactory", function($q, $http, $rootScope, $routeParams, FIREBASE_CONFIG) {
 
   let baseIdForSelectedBase = "";
 
@@ -46,6 +46,8 @@ app.factory("BaseFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
   };
 
   let makeNewBaseInFB = (base) => {
+    base.trip = $routeParams.tripId;
+    base.uid = $rootScope.user.uid;
     return $q((resolve, reject) => {
       $http.post(`${FIREBASE_CONFIG.databaseURL}/bases.json`,
         JSON.stringify(base))

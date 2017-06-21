@@ -55,7 +55,7 @@
 	</div>
 </div>
 <div class="row row-div">
-	<input id="new-base-input" ng-model="newTrip.name" class="col-sm-4" type="text" placeholder="New Trip Name" ng-keyup="$event.keyCode == 13 && makeNewTrip(newTrip)" autofocus>
+	<input ng-model="newTrip.name" class="col-sm-4" type="text" placeholder="New Trip Name" ng-keyup="$event.keyCode == 13 && makeNewTrip(newTrip)" autofocus>
 	<div class="inline col-sm-3">
 	  <p class="input-group date-picker">
 	  	<input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="newTrip.start" is-open="newTripStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" placeholder="mm/dd/yyyy"/>
