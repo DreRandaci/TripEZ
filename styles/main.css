@@ -93,3 +93,6 @@ body {
   display: absolute;
   color: red;
   border: 1px dotted red; }
+
+.input-group .form-control {
+  width: 110px; }
