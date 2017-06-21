@@ -6,7 +6,7 @@
 </div>
 <div ng-repeat="trip in trips | filter: {'archived' : true} | orderBy:'start'">
 	<div class="row row-div">
-		<div ng-show="!editing">
+		<div>
 			<div class="col-sm-4">
 	      <h3><a ng-href="#!/bases/{{trip.tripId}}">{{trip.name}}</a></h3>
 	    </div>

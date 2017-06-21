@@ -1,8 +1,8 @@
-app.controller("TripListCtrl", function($rootScope, $routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
+app.controller("TripListCtrl", function($rootScope, $routeParams, $scope, ngToast, BaseFactory, EventFactory, TripFactory) {
 
   $scope.newTrip = {
-      archived: false,
-      uid: $rootScope.user.uid
+    archived: false,
+    uid: $rootScope.user.uid
   };
 
   let getTrips = () => {
@@ -36,8 +36,20 @@ app.controller("TripListCtrl", function($rootScope, $routeParams, $scope, BaseFa
 	  })
     .catch((error) => {
       console.log("editTripName error", error);
-	});
+	   });
 	};
+
+  $scope.archiveTrip = (trip) => {
+    trip.archived = true;
+    TripFactory.editTripInFB(trip)
+    .then(() => {
+      ngToast.create('Trip archived. View Archive to reactivate.');
+      getTrips();
+    })
+    .catch((error) => {
+      console.log("archiveTrip error", error);
+    });
+  };
 
   $scope.deleteEntireTrip = (tripId) => {
     TripFactory.deleteTripFromFB(tripId)
