@@ -93,7 +93,7 @@ app.controller("EventViewCtrl", function($location, $routeParams, $scope, ngToas
 	  });
     let icon = {
       path: google.maps.SymbolPath.CIRCLE,
-      fillColor: 'green',
+      fillColor: 'forestgreen',
       fillOpacity: 1,
       strokeColor: 'white',
       strokeWeight: 0.7,

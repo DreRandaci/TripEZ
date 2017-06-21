@@ -1,67 +1,69 @@
-<h2>New Event Search in {{trip.name}}</h2>
-<div>
-	<p class="inline">From This Base:</p>
-	<select class="inline" ng-change="changeBaseToSearchFrom()" ng-model="baseSelected">
-		<option ng-selected="true" name="basesToFilter" value="undefined">Select a Base</option>
-		<option ng-repeat="base in bases" ng-selected="{{base.baseId}} == {{baseSelected}}" name="basesToFilter" value="{{base.baseId}}">{{base.name}}</option>
-	</select>
-</div>
-<input type="text" placeholder="Anything you want" ng-model="userSearchTerms" ng-keyup="$event.keyCode == 13 && initMap(userSearchTerms)" required autofocus/>
-<button class="btn btn-default" ng-click="initMap(userSearchTerms); searching = true">Search</button> 
-<div id="map"></div>
-<div uib-alert ng-repeat="alert in alerts" class="col-xs-4 col-xs-offset-4 alert-danger">{{alert.msg}}</div>
-<div class="row row-headings" ng-show="searching">
-	<h3 class="col-sm-4">Name</h3>
-	<h3 class="col-sm-1">Rating</h3>
-	<h3 class="col-sm-2">Address</h3>
-</div>
-<div ng-repeat="searchEvent in searchEvents">
-	<div class="row row-div">
-		<div class="col-sm-4">
-			<h3 class="row">{{searchEvent.tag}}. <a href="{{searchEvent.website}}" target="_blank">{{searchEvent.name}}</a></h3>
-			<div class="row" ng-show="savingEvent">
-				<h4 class="col-sm-2">Type:</h4>
-				<select id="newEventTypeSelect" class="col-sm-4 inline" ng-model="newEventToSave.type">
-					<option name="eventType" value="Food">Food</option>
-					<option name="eventType" value="Site">Site</option>
-					<option name="eventType" value="Transit">Transit</option>
-					<option name="eventType" value="Lodging">Lodging</option>
-				</select>
+<div class="lg-container">
+	<h2>New Event Search in {{trip.name}}</h2>
+	<div>
+		<p class="inline">From This Base:</p>
+		<select class="inline" ng-change="changeBaseToSearchFrom()" ng-model="baseSelected">
+			<option ng-selected="true" name="basesToFilter" value="undefined">Select a Base</option>
+			<option ng-repeat="base in bases" ng-selected="{{base.baseId}} == {{baseSelected}}" name="basesToFilter" value="{{base.baseId}}">{{base.name}}</option>
+		</select>
+	</div>
+	<input type="text" placeholder="Anything you want" ng-model="userSearchTerms" ng-keyup="$event.keyCode == 13 && initMap(userSearchTerms)" required autofocus/>
+	<button class="btn btn-default" ng-click="initMap(userSearchTerms); searching = true">Search</button> 
+	<div id="map"></div>
+	<div uib-alert ng-repeat="alert in alerts" class="col-xs-4 col-xs-offset-4 alert-danger">{{alert.msg}}</div>
+	<div class="row row-headings" ng-show="searching">
+		<h3 class="col-sm-4">Name</h3>
+		<h3 class="col-sm-1">Rating</h3>
+		<h3 class="col-sm-2">Address</h3>
+	</div>
+	<div ng-repeat="searchEvent in searchEvents">
+		<div class="row row-lg-container">
+			<div class="col-sm-4">
+				<h3 class="row">{{searchEvent.tag}}. <a href="{{searchEvent.website}}" target="_blank">{{searchEvent.name}}</a></h3>
+				<div class="row" ng-show="savingEvent">
+					<h4 class="col-sm-2">Type:</h4>
+					<select id="newEventTypeSelect" class="col-sm-4 inline" ng-model="newEventToSave.type">
+						<option name="eventType" value="Food">Food</option>
+						<option name="eventType" value="Site">Site</option>
+						<option name="eventType" value="Transit">Transit</option>
+						<option name="eventType" value="Lodging">Lodging</option>
+					</select>
+				</div>
 			</div>
-		</div>
-		<h4 class="col-sm-1" ng-show="!savingEvent">{{searchEvent.rating}}</h4>
-		<h4 class="col-sm-4" ng-show="!savingEvent">{{searchEvent.vicinity}}</h4>
-		<div class="col-sm-3" ng-show="savingEvent">
-			<div class="row">
-				<label for="newEventDatePickerStart">Start:</label>
-			  <p id="newEventDatePickerStart" class="col-sm-12 input-group date-picker">
-			  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newEventToSave.start" is-open="newEventSetStart" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
-					<span class="input-group-btn">
-			    	<button type="button" class="btn btn-default" ng-click="newEventSetStart = !newEventSetStart">
-			      	<i class="glyphicon glyphicon-calendar"></i>
-			    	</button>
-		  		</span>
-				</p>
+			<h4 class="col-sm-1" ng-show="!savingEvent">{{searchEvent.rating}}</h4>
+			<h4 class="col-sm-4" ng-show="!savingEvent">{{searchEvent.vicinity}}</h4>
+			<div class="col-sm-3" ng-show="savingEvent">
+				<div class="row">
+					<label for="newEventDatePickerStart">Start:</label>
+				  <p id="newEventDatePickerStart" class="input-group date-picker">
+				  	<input type="text" class="form-control" uib-datepicker-popup ng-model="newEventToSave.start" is-open="newEventSetStart" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" placeholder="mm/dd/yyyy"/>
+						<span class="input-group-btn">
+				    	<button type="button" class="btn btn-default" ng-click="newEventSetStart = !newEventSetStart">
+				      	<i class="glyphicon glyphicon-calendar"></i>
+				    	</button>
+			  		</span>
+					</p>
+				</div>
+				<div class="row" uib-timepicker ng-model="newEventToSave.start" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
 			</div>
-			<div class="row" uib-timepicker ng-model="newEventToSave.start" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
-		</div>
-		<div class="col-sm-3" ng-show="savingEvent">
-			<div class="row">
-				<label for="newEventDatePickerEnd">End:</label>
-			  <p id="newEventDatePickerEnd" class="col-sm-12 input-group date-picker">
-			  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newEventToSave.end" is-open="newEventSetEnd" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
-					<span class="input-group-btn">
-			    	<button type="button" class="btn btn-default" ng-click="newEventSetEnd = !newEventSetEnd">
-			      	<i class="glyphicon glyphicon-calendar"></i>
-			    	</button>
-		  		</span>
-				</p>
+			<div class="col-sm-3" ng-show="savingEvent">
+				<div class="row">
+					<label for="newEventDatePickerEnd">End:</label>
+				  <p id="newEventDatePickerEnd" class="input-group date-picker">
+				  	<input type="text" class="form-control" uib-datepicker-popup ng-model="newEventToSave.end" is-open="newEventSetEnd" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" placeholder="mm/dd/yyyy"/>
+						<span class="input-group-btn">
+				    	<button type="button" class="btn btn-default" ng-click="newEventSetEnd = !newEventSetEnd">
+				      	<i class="glyphicon glyphicon-calendar"></i>
+				    	</button>
+			  		</span>
+					</p>
+				</div>
+				<div class="row" uib-timepicker ng-model="newEventToSave.end" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
 			</div>
-			<div class="row" uib-timepicker ng-model="newEventToSave.end" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+			<input type="textarea" class="col-sm-2 reference-input" ng-show="savingEvent" ng-model="newEventToSave.ref" placeholder="Reference note" ng-keyup="$event.keyCode == 13 && addToTripEvents(searchEvent)"></input>
+	    <button type="button" class="btn btn-default pull-right" ng-show="!savingEvent" ng-click="savingEvent = true">Save Event</button>
+			<button class="btn btn-success pull-right" ng-show="savingEvent" ng-click="addToTripEvents(searchEvent); savingEvent = false;">Confirm Save</button>
+	    <button type="button" class="btn btn-danger pull-right" ng-show="savingEvent" ng-click="savingEvent = false">Cancel</button>
 		</div>
-		<input type="textarea" class="col-sm-2 reference-input" ng-show="savingEvent" ng-model="newEventToSave.ref" placeholder="Reference note here" ng-keyup="$event.keyCode == 13 && addToTripEvents(searchEvent)"></input>
-    <button type="button" class="btn btn-default pull-right" ng-show="!savingEvent" ng-click="savingEvent = true">Save Event</button>
-		<button class="btn btn-success pull-right" ng-show="savingEvent" ng-click="addToTripEvents(searchEvent); savingEvent = false;">Confirm Save</button>
-    <button type="button" class="btn btn-danger pull-right" ng-show="savingEvent" ng-click="savingEvent = false">Cancel</button>
 	</div>
 </div>

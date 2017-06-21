@@ -19,7 +19,8 @@
   </a>
   <a href="#!/logout" ng-click="closeNav(); navOpen = false;">
     <div class="row">
-    	<div class="nav-col-left" ng-if="navOpen">Logout</div>
+      <div class="nav-col-left" ng-if="navOpen" ng-show="!user.uid">Login</div>
+    	<div class="nav-col-left" ng-if="navOpen" ng-show="user.uid">Logout</div>
     	<img title="Logout" class="nav-img pull-right nav-col-right" src="./images/logout.png" alt="logout"/>
     </div>
   </a>

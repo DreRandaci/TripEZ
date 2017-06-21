@@ -1,7 +1,7 @@
-@import "colors";
 @import "images";
 @import "navbar";
 @import "maps";
+@import "animation";
 
 body {
 	background: url("/images/mapback.png") no-repeat center center fixed;
@@ -20,10 +20,11 @@ body {
 }
 
 .custom-container {
-	background: rgba(255, 255, 255, 0.7);
+	background: rgba(255, 255, 255, 0.8);
 	border: 2px solid black;
-	box-shadow: 0 0 15px black;
+	box-shadow: 0 0 12px black;
 	border-radius: 15px;
+	padding: 15px;
 }
 
 .auth-container {
@@ -37,8 +38,9 @@ body {
 	font-size: 0.6em;
 }
 
-.row-headings {
-	text-decoration: underline;
+.row-headings, h2 {
+	color: white;
+	text-shadow: 1px 1px 20px black;
 }
 
 .date-picker {
@@ -47,6 +49,18 @@ body {
 
 .row-div {
 	@extend .custom-container;
+}
+
+.lg-container {
+	@extend .custom-container;
+	padding: 45px;
+	h2, h3 {
+		color: black;
+		text-shadow: 1px 1px 20px white;
+	}
+}
+
+.row-lg-container {
 	padding: 15px;
 }
 
@@ -55,15 +69,11 @@ body {
 }
 
 .archive {
+	@extend .custom-container;
 	display: absolute;
 	color: red;
-	border: 1px dotted red;
 }
 
 .input-group .form-control {
 	width: 110px;
-}
-
-h2 {
-	text-shadow: 1px 1px 1px white, 0 0 1em white, 0 0 0.1em white;
 }

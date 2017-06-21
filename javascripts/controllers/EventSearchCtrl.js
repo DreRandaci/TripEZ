@@ -177,7 +177,7 @@ app.controller("EventSearchCtrl", function($location, $routeParams, $scope, ngTo
     };
     let icon = {
       path: google.maps.SymbolPath.CIRCLE,
-      fillColor: 'green',
+      fillColor: 'forestgreen',
       fillOpacity: 0.4,
       strokeColor: 'white',
       strokeWeight: 0.7,
