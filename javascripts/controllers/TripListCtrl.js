@@ -51,11 +51,24 @@ app.controller("TripListCtrl", function($rootScope, $routeParams, $scope, ngToas
     });
   };
 
+  $scope.reactivateTrip = (trip) => {
+    trip.archived = false;
+    TripFactory.editTripInFB(trip)
+    .then(() => {
+      ngToast.create('Trip reactivated in your Active Trips list.');
+      getTrips();
+    })
+    .catch((error) => {
+      console.log("archiveTrip error", error);
+    });
+  };
+
   $scope.deleteEntireTrip = (tripId) => {
     TripFactory.deleteTripFromFB(tripId)
     .then(() => {
       BaseFactory.deleteTripBasesFromFB(tripId);
       EventFactory.deleteTripEventsFromFB(tripId);
+      ngToast.create('Trip deleted.');
       getTrips();
     })
     .catch((error) => {
