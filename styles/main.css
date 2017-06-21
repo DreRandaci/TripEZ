@@ -84,3 +84,8 @@ body {
 
 .reference-input {
   height: 120px; }
+
+.archive {
+  display: absolute;
+  color: red;
+  border: 1px dotted red; }

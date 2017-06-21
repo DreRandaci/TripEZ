@@ -1,3 +1,4 @@
+<h4 class="archive pull-right" ng-if="trip.archived">ARCHIVE</h4>
 <h2>Events in {{trip.name}}</h2>
 <h4>Filter By Base:</h4>
 <select ng-model="defaultSelectedBaseId" value="All Bases" placeholder="All Bases" ng-change="setDefaultBaseFilterForEventList(defaultSelectedBaseId)">
@@ -5,7 +6,7 @@
 	<option ng-repeat="base in bases" ng-selected="{{base.baseId}} == {{defaultSelectedBaseId}}" name="basesToFilter" value="{{base.baseId}}">{{base.name}}</option>
 </select>
 <a ng-href="#!/search/{{trip.id}}" ng-show="!trip.archived">
-	<button class="btn btn-default">Search New Event</button>
+	<button title="Click to search for Events" class="btn btn-default">Search New Event</button>
 </a>
 <div class="row row-headings">
 	<h2 class="col-sm-4">Event</h2>
@@ -20,11 +21,8 @@
     <h4 class="col-sm-3">{{event.start | date: 'short'}}</h4>
     <h4 class="col-sm-3">{{event.end | date: 'short'}}</h4>
     <div class="pull-right col-sm-2" ng-show="!trip.archived">
-      <button class="btn btn-sm btn-danger" ng-click="deleteEvent(event.eventId)">
+      <button title="Delete Event" class="btn btn-sm btn-danger" ng-click="deleteEvent(event.eventId)">
       	<i class="fa fa-trash"></i>
-      </button>
-      <button class="btn btn-sm btn-info edit-btn" ng-href="#">
-        <i class="fa fa-pencil"></i>
       </button>
     </div>
 	</div>
