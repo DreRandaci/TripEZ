@@ -20,6 +20,7 @@ app.controller("TripListCtrl", function($rootScope, $routeParams, $scope, BaseFa
   $scope.makeNewTrip = (newTrip) => {
    	TripFactory.makeNewTripInFB(newTrip)
     .then(() => {
+      ngToast.create('Trip added to active list.');
     	getTrips();
     })
     .catch((error) => {
@@ -30,6 +31,7 @@ app.controller("TripListCtrl", function($rootScope, $routeParams, $scope, BaseFa
   $scope.editTrip = (trip) => {
 		TripFactory.editTripInFB(trip)
     .then(() => {
+      ngToast.create('Trip edit successful.');
       getTrips();
 	  })
     .catch((error) => {

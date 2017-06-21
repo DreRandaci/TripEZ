@@ -1,4 +1,4 @@
-app.controller("BaseListCtrl", function($rootScope, $routeParams, $scope, EventFactory, BaseFactory, TripFactory) {
+app.controller("BaseListCtrl", function($rootScope, $routeParams, $scope, ngToast, EventFactory, BaseFactory, TripFactory) {
 
   $scope.newBase = {
     trip: $routeParams.tripId,
@@ -67,6 +67,7 @@ app.controller("BaseListCtrl", function($rootScope, $routeParams, $scope, EventF
   $scope.makeNewBase = (newBase) => {
    	BaseFactory.makeNewBaseInFB(newBase)
     .then(() => {
+      ngToast.create('Base added to trip. How about adding some events?');
     	getBases();
     })
     .catch((error) => {
@@ -77,6 +78,7 @@ app.controller("BaseListCtrl", function($rootScope, $routeParams, $scope, EventF
   $scope.editBase = (base) => {
 		BaseFactory.editBaseInFB(base)
     .then(() => {
+      ngToast.create('Base edit successful.');
       getBases();
 	  })
     .catch((error) => {
@@ -88,6 +90,7 @@ app.controller("BaseListCtrl", function($rootScope, $routeParams, $scope, EventF
     BaseFactory.deleteBaseFromFB(baseId)
     .then(() => {
       EventFactory.deleteBaseEventsFromFB(baseId);
+      ngToast.create('Base deleted. Where to next?');
       getBases();
     })
     .catch((error) => {

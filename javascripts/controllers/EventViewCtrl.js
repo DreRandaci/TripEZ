@@ -1,4 +1,4 @@
-app.controller("EventViewCtrl", function($location, $routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
+app.controller("EventViewCtrl", function($location, $routeParams, $scope, ngToast, BaseFactory, EventFactory, TripFactory) {
 
   let getSingleEvent = () => {
     EventFactory.getSingleEventFromFB($routeParams.eventId)
@@ -50,6 +50,7 @@ app.controller("EventViewCtrl", function($location, $routeParams, $scope, BaseFa
     EventFactory.editEventInFB($scope.event)
     .then(() => {
       getSingleEvent();
+      ngToast.create('Edit successful.');
     })
     .catch((error) => {
       console.log("editEvent error", error);

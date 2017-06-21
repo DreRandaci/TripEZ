@@ -1,22 +1,22 @@
 <div ng-controller="NavBarCtrl" id="sideNav" class="sidenav"> 
-  <a href="javascript:void(0)" class="nav-toggle-btn" ng-show="!navOpen" ng-click="openNav(); navOpen = true;">|||</a>
-  <a href="javascript:void(0)" class="nav-toggle-btn" ng-show="navOpen" ng-click="closeNav(); navOpen = false;">|||</a>
-  <div class="row">
-    <a ng-show="user.uid" href="#!/trips/{{user.uid}}">
-    	<div ng-if="navOpen">Active Trips</div>
-    	<img class="nav-img pull-right" src="./images/fwd.png" alt="future"/>
-    </a>
-  </div>
-  <div class="row">
-    <a ng-show="user.uid" href="#!/trips/{{user.uid}}">
-    	<div ng-if="navOpen">Archive</div> 
-    	<img class="nav-img pull-right" src="./images/bkwd.png" alt="past"/>
-    </a>
-  </div>
-  <div class="row">
-    <a href="#!/logout">
-    	<div ng-if="navOpen">Logout</div>
-    	<img class="nav-img pull-right" src="./images/logout.png" alt="logout"/>
-    </a>
-  </div>
+  <a href="javascript:void(0)" class="nav-toggle-btn" ng-show="!navOpen" ng-click="openNav(); navOpen = true;"> |||</a>
+  <a href="javascript:void(0)" class="nav-toggle-btn" ng-show="navOpen" ng-click="closeNav(); navOpen = false;"> |||</a>
+  <a ng-show="user.uid" href="#!/trips/{{user.uid}}" ng-click="closeNav(); navOpen = false;">
+    <div class="row">
+    	<div class="nav-col-left" ng-if="navOpen">Active Trips</div>
+    	<img class="nav-img pull-right nav-col-right" src="./images/fwd.png" alt="future"/>
+    </div>
+  </a>
+  <a ng-show="user.uid" href="#!/trips/{{user.uid}}" ng-click="closeNav(); navOpen = false;">
+    <div class="row">
+    	<div class="nav-col-left" ng-if="navOpen">Archive</div> 
+    	<img class="nav-img pull-right nav-col-right" src="./images/bkwd.png" alt="past"/>
+    </div>
+  </a>
+  <a href="#!/logout" ng-click="closeNav(); navOpen = false;">
+    <div class="row">
+    	<div class="nav-col-left" ng-if="navOpen">Logout</div>
+    	<img class="nav-img pull-right nav-col-right" src="./images/logout.png" alt="logout"/>
+    </div>
+  </a>
 </div>
