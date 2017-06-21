@@ -52,14 +52,14 @@
 	</div>
 </div>
 <div class="row row-div">
-	<input id="new-base-input" ng-model="newTrip.name" class="col-sm-4" type="text" placeholder="New Trip Name" autofocus>
+	<input id="new-base-input" ng-model="newTrip.name" class="col-sm-4" type="text" placeholder="New Trip Name" ng-keyup="$event.keyCode == 13 && makeNewTrip(newTrip)" autofocus>
 	<div class="inline">
 	  <p class="input-group date-picker col-sm-3">
 	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newTrip.start" is-open="newTripStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
 	  	<span class="input-group-btn">
-	    <button type="button" class="btn btn-default" ng-click="newTripStartEdit = !newTripStartEdit">
-	      <i class="glyphicon glyphicon-calendar"></i>
-	    </button>
+		    <button type="button" class="btn btn-default" ng-click="newTripStartEdit = !newTripStartEdit">
+		      <i class="glyphicon glyphicon-calendar"></i>
+		    </button>
 	  	</span>
 		</p>
 	</div>
@@ -67,9 +67,9 @@
 	  <p class="input-group date-picker col-sm-3">
 	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newTrip.end" is-open="newTripEndEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
 	  	<span class="input-group-btn">
-	    <button type="button" class="btn btn-default" ng-click="newTripEndEdit = !newTripEndEdit">
-	      <i class="glyphicon glyphicon-calendar"></i>
-	    </button>
+		    <button type="button" class="btn btn-default" ng-click="newTripEndEdit = !newTripEndEdit">
+		      <i class="glyphicon glyphicon-calendar"></i>
+		    </button>
 	  	</span>
 		</p>
 	</div>
