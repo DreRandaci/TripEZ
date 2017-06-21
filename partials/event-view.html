@@ -2,7 +2,7 @@
 	<h2 class="inline" ng-show="!editingName">
 		<a ng-href="#!/events/{{eventId}}">{{event.name}}</a>
 	</h2>
-	<input type="text" ng-model="event.name" ng-show="editingName"/>
+	<input type="text" ng-model="event.name" ng-show="editingName" ng-keyup="$event.keyCode == 13 && editEvent()"/>
 	<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-show="!editingName" ng-click="editingName = true">
  	 <i class="fa fa-pencil"></i>
 	</button>
@@ -20,7 +20,7 @@
 	<div class="row">
 		<h3 class="col-sm-4">Type:</h3> 
 		<h4 class="col-sm-8" ng-show="!editingType">{{event.type}}</h4>
-		<select ng-model="event.type" ng-show="editingType">
+		<select ng-model="event.type" ng-show="editingType" ng-keyup="$event.keyCode == 13 && editEvent()">
 			<option name="type" value="Food">Food</option>
 			<option name="type" value="Site">Site</option>
 			<option name="type" value="Transit">Transit</option>
@@ -82,7 +82,7 @@
 	<div class="row">
 		<h3 class="col-sm-4">Address:</h3>
 		<h4 class="col-sm-8" ng-show="!editingAddress">{{event.address}}</h4>
-		<input type="text" ng-model="event.address" ng-show="editingAddress"/>
+		<input type="text" ng-model="event.address" ng-show="editingAddress" ng-keyup="$event.keyCode == 13 && editEvent()"/>
 		<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-show="!editingAddress" ng-click="editingAddress = true">
       <i class="fa fa-pencil"></i>
 		</button>
@@ -106,7 +106,7 @@
 	<div class="row">
 		<h3 class="col-sm-4">Reference:</h3>
 		<h4 class="col-sm-8" ng-show="!editingReference">{{event.ref}}</h4>
-		<input type="text" ng-model="event.ref" ng-show="editingReference"/>
+		<input type="text" ng-model="event.ref" ng-show="editingReference" ng-keyup="$event.keyCode == 13 && editEvent()"/>
 		<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-show="!editingReference" ng-click="editingReference = true">
 			<i class="fa fa-pencil"></i>
 		</button>

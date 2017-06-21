@@ -52,7 +52,7 @@
 	</div>
 </div>
 <div class="row row-div">
-	<input id="new-base-input" ng-model="newBase.name" class="col-sm-4" type="text" placeholder="Search for new base" autofocus>
+	<input id="new-base-input" ng-model="newBase.name" class="col-sm-4" type="text" placeholder="Search for new base" ng-keyup="$event.keyCode == 13 && makeNewBase(newBase)" autofocus>
 	<div class="inline">
 	  <p class="input-group date-picker col-sm-3">
 	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBase.start" is-open="newBaseStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
