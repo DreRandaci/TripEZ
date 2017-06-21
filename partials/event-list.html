@@ -9,17 +9,19 @@
 	<button title="Click to search for Events" class="btn btn-default">Search New Event</button>
 </a>
 <div class="row row-headings">
-	<h2 class="col-sm-4">Event</h2>
-	<h2 class="col-sm-3">Start</h2>
-	<h2 class="col-sm-3">End</h2>
+	<h2 class="col-sm-3">Event</h2>
+	<h2 class="col-sm-1">Type</h2>
+	<h2 class="col-sm-2">Start</h2>
+	<h2 class="col-sm-2">End</h2>
 </div>
 <div ng-repeat="event in events | filter: (!!defaultSelectedBaseId || undefined) && {'base' : defaultSelectedBaseId} | orderBy:'start'">
 	<div class="row row-div">
-		<div class="col-sm-4">
+		<div class="col-sm-3">
       <h3><a ng-href="#!/event/{{event.eventId}}">{{event.name}}</a></h3>
     </div>
-    <h4 class="col-sm-3">{{event.start | date: 'short'}}</h4>
-    <h4 class="col-sm-3">{{event.end | date: 'short'}}</h4>
+    <h4 class="col-sm-1"><img class="type-img" ng-src="./images/{{event.type}}.png" alt="type icon"/></h4>
+    <h4 class="col-sm-2">{{event.start | date: 'short'}}</h4>
+    <h4 class="col-sm-2">{{event.end | date: 'short'}}</h4>
     <div class="pull-right col-sm-2" ng-show="!trip.archived">
       <button title="Delete Event" class="btn btn-sm btn-danger" ng-click="deleteEvent(event.eventId)">
       	<i class="fa fa-trash"></i>
