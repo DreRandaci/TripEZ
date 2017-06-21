@@ -28,8 +28,8 @@ app.controller("EventViewCtrl", function($location, $routeParams, $scope, ngToas
   };
 
   let filterEditsIfArchived = (trip) => {
-    if (trip.archived === true) {
-      $("button").hide();
+    if (trip.archived === false) {
+      $('.hide').removeClass("hide");
     }
   };
 

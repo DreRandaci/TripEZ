@@ -12,7 +12,7 @@
 	    </div>
 	    <h4 class="col-sm-3">{{base.start | date: 'shortDate'}}</h4>
 	    <h4 class="col-sm-3">{{base.end | date: 'shortDate'}}</h4>
-	    <div class="col-sm-2" ng-show="base.archived = false">
+	    <div class="col-sm-2" ng-show="!trip.archived">
 	      <button class="btn btn-sm btn-danger pull-right" ng-click="deleteEntireBase(base.baseId)">
 	      	<i class="fa fa-trash"></i>
 	      </button>
@@ -51,7 +51,7 @@
 		</div>
 	</div>
 </div>
-<div class="row row-div" ng-show="base.archived = false">
+<div class="row row-div" ng-show="!trip.archived">
 	<input id="new-base-input" ng-model="newBase.name" class="col-sm-4" type="text" placeholder="Search for new base" ng-keyup="$event.keyCode == 13 && makeNewBase(newBase)" autofocus>
 	<div class="inline">
 	  <p class="input-group date-picker col-sm-3">
