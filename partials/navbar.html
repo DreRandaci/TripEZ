@@ -1,6 +1,10 @@
 <div ng-controller="NavBarCtrl" id="sideNav" class="sidenav"> 
-  <a href="javascript:void(0)" class="nav-toggle-btn" ng-show="!navOpen" ng-click="openNav(); navOpen = true;"> |||</a>
-  <a href="javascript:void(0)" class="nav-toggle-btn" ng-show="navOpen" ng-click="closeNav(); navOpen = false;"> |||</a>
+  <a href="javascript:void(0)" class="nav-toggle-btn" ng-show="!navOpen" ng-click="openNav(); navOpen = true;">
+    <i class="fa fa-bars"></i>
+  </a>
+  <a href="javascript:void(0)" class="nav-toggle-btn" ng-show="navOpen" ng-click="closeNav(); navOpen = false;">
+    <i class="fa fa-bars"></i>
+  </a>
   <a ng-show="user.uid" href="#!/trips/{{user.uid}}" ng-click="closeNav(); navOpen = false;">
     <div class="row">
     	<div class="nav-col-left" ng-if="navOpen">Active Trips</div>
