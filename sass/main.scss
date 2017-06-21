@@ -1,6 +1,7 @@
 @import "colors";
 @import "images";
 @import "navbar";
+@import "maps";
 
 body {
   font-family: 'Acme', sans-serif;
@@ -37,15 +38,6 @@ body {
 	border: 2px solid black;
 	border-radius: 15px;
 	padding: 15px;
-}
-
-#map {
-  height: 300px;
-  border: 2px solid black;
-}
-
-.invisoMap {
-	display: none;
 }
 
 .reference-input {

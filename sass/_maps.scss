@@ -1,4 +1,13 @@
+#map {
+  height: 300px;
+  border: 2px solid black;
+}
+
 .preview-map {
 	height: 30px;
 	width: 30px;
+}
+
+.invisoMap {
+	display: none;
 }

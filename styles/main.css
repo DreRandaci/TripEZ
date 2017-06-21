@@ -45,6 +45,17 @@
   display: inline;
   width: 50px; }
 
+#map {
+  height: 300px;
+  border: 2px solid black; }
+
+.preview-map {
+  height: 30px;
+  width: 30px; }
+
+.invisoMap {
+  display: none; }
+
 body {
   font-family: 'Acme', sans-serif;
   font-size: 2em;
@@ -74,13 +85,6 @@ body {
   border: 2px solid black;
   border-radius: 15px;
   padding: 15px; }
-
-#map {
-  height: 300px;
-  border: 2px solid black; }
-
-.invisoMap {
-  display: none; }
 
 .reference-input {
   height: 120px; }
