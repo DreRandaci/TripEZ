@@ -1,8 +1,6 @@
 <h4 class="archive pull-right" ng-if="trip.archived">ARCHIVE</h4>
 <div class="row">
-	<h2 class="inline" ng-show="!editingName">
-		<a href="javascript:history.back()">{{event.name}}</a>
-	</h2>
+	<h2 class="inline" ng-show="!editingName">{{event.name}}</h2>
 	<input type="text" ng-model="event.name" ng-show="editingName" ng-keyup="$event.keyCode == 13 && editEvent()"/>
 	<button type="button" class="btn btn-sm btn-primary pull-right inline hide" ng-show="!editingName" ng-click="editingName = true">
  	 <i class="fa fa-pencil"></i>
@@ -11,7 +9,7 @@
 	  <i class="fa fa-save"></i>
 	</button>
 </div>
-<h3>Event in {{trip.name}}</h3>
+<h3>Event in <a href="javascript:history.back()">{{trip.name}}</a></h3>
 <div id="map"></div>
 <div>
 	<div class="row">
