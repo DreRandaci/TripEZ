@@ -24,9 +24,9 @@
 	  </div>
 		<div ng-show="editing">
 	    <input class="col-sm-4 inline" ng-model="base.name" type="text" autofocus>
-	    <div class="inline">
-		    <p class="input-group date-picker col-sm-3">
-		    	<input type="date" class="form-control" uib-datepicker-popup ng-model="base.start" is-open="baseStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" value="base.start"/>
+	    <div class="inline col-sm-3">
+		    <p class="input-group date-picker">
+		    	<input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="base.start" is-open="baseStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" value="base.start"/>
 		    	<span class="input-group-btn">
 		        <button type="button" class="btn btn-default" ng-click="baseStartEdit = !baseStartEdit">
 		          <i class="glyphicon glyphicon-calendar"></i>
@@ -34,9 +34,9 @@
 		    	</span>
 		  	</p>
 		  </div>
-		  <div class="inline">
-		  	<p class="input-group date-picker col-sm-3">
-		    	<input type="date" class="form-control" uib-datepicker-popup ng-model="base.end" is-open="baseEndEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" value="base.end"/>
+		  <div class="inline col-sm-3">
+		  	<p class="input-group date-picker">
+		    	<input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="base.end" is-open="baseEndEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" value="base.end"/>
 		    	<span class="input-group-btn">
 		        <button type="button" class="btn btn-default" ng-click="baseEndEdit = !baseEndEdit">
 		          <i class="glyphicon glyphicon-calendar"></i>
@@ -54,9 +54,9 @@
 </div>
 <div class="row row-div" ng-show="!trip.archived">
 	<input id="new-base-input" ng-model="newBase.name" class="col-sm-4" type="text" placeholder="Search for new base" ng-keyup="$event.keyCode == 13 && makeNewBase(newBase)" autofocus>
-	<div class="inline">
-	  <p class="input-group date-picker col-sm-3">
-	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBase.start" is-open="newBaseStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+	<div class="inline col-sm-3">
+	  <p class="input-group date-picker">
+	  	<input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="newBase.start" is-open="newBaseStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" placeholder="mm/dd/yyyy"/>
 	  	<span class="input-group-btn">
 		    <button type="button" class="btn btn-default" ng-click="newBaseStartEdit = !newBaseStartEdit">
 		      <i class="glyphicon glyphicon-calendar"></i>
@@ -64,9 +64,9 @@
 	  	</span>
 		</p>
 	</div>
-	<div class="inline">
-	  <p class="input-group date-picker col-sm-3">
-	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newBase.end" is-open="newBaseEndEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+	<div class="inline col-sm-3">
+	  <p class="input-group date-picker">
+	  	<input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="newBase.end" is-open="newBaseEndEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" placeholder="mm/dd/yyyy"/>
 	  	<span class="input-group-btn">
 		    <button type="button" class="btn btn-default" ng-click="newBaseEndEdit = !newBaseEndEdit">
 		      <i class="glyphicon glyphicon-calendar"></i>

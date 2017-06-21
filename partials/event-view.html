@@ -43,7 +43,7 @@
 		<h4 class="col-sm-8" ng-show="!editingStart">{{event.start | date: 'short'}}</h4>
 		<div ng-show="editingStart">
 	    <p class="input-group date-picker" ng-show="editingStart">
-	    	<input type="date" class="form-control" uib-datepicker-popup ng-model="event.start" is-open="eventStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+	    	<input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="event.start" is-open="eventStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" placeholder="mm/dd/yyyy"/>
 	    	<span class="input-group-btn">
 		      <button type="button" class="btn btn-default" ng-click="eventStartEdit = !eventStartEdit">
 		        <i class="glyphicon glyphicon-calendar"></i>
@@ -64,7 +64,7 @@
 		<h4 class="col-sm-8" ng-show="!editingEnd">{{event.end | date: 'short'}}</h4>
 			<div ng-show="editingEnd">
 				<p class="input-group date-picker col-sm-4">
-		    	<input type="date" class="form-control" uib-datepicker-popup ng-model="event.end" is-open="eventEndEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+		    	<input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="event.end" is-open="eventEndEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" placeholder="mm/dd/yyyy"/>
 		    	<span class="input-group-btn">
 			      <button type="button" class="btn btn-default" ng-click="eventEndEdit = !eventEndEdit">
 			        <i class="glyphicon glyphicon-calendar"></i>
