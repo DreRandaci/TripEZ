@@ -1,13 +1,17 @@
 <div ng-controller="NavBarCtrl" id="sideNav" class="sidenav"> 
-  <a href="javascript:void(0)" class="nav-toggle-btn" ng-show="!navOpen" ng-click="openNav(); navOpen = true;"> |||</a>
-  <a href="javascript:void(0)" class="nav-toggle-btn" ng-show="navOpen" ng-click="closeNav(); navOpen = false;"> |||</a>
+  <a href="javascript:void(0)" class="nav-toggle-btn" ng-show="!navOpen" ng-click="openNav(); navOpen = true;">
+    <i class="fa fa-bars"></i>
+  </a>
+  <a href="javascript:void(0)" class="nav-toggle-btn" ng-show="navOpen" ng-click="closeNav(); navOpen = false;">
+    <i class="fa fa-bars"></i>
+  </a>
   <a ng-show="user.uid" href="#!/trips/{{user.uid}}" ng-click="closeNav(); navOpen = false;">
     <div class="row">
     	<div class="nav-col-left" ng-if="navOpen">Active Trips</div>
     	<img class="nav-img pull-right nav-col-right" src="./images/fwd.png" alt="future"/>
     </div>
   </a>
-  <a ng-show="user.uid" href="#!/trips/{{user.uid}}" ng-click="closeNav(); navOpen = false;">
+  <a ng-show="user.uid" href="#!/archive/{{user.uid}}" ng-click="closeNav(); navOpen = false;">
     <div class="row">
     	<div class="nav-col-left" ng-if="navOpen">Archive</div> 
     	<img class="nav-img pull-right nav-col-right" src="./images/bkwd.png" alt="past"/>

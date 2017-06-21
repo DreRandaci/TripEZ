@@ -1,9 +1,10 @@
+<h4 class="archive pull-right" ng-if="trip.archived">ARCHIVE</h4>
 <div class="row">
 	<h2 class="inline" ng-show="!editingName">
-		<a ng-href="#!/events/{{eventId}}">{{event.name}}</a>
+		<a href="javascript:history.back()">{{event.name}}</a>
 	</h2>
 	<input type="text" ng-model="event.name" ng-show="editingName" ng-keyup="$event.keyCode == 13 && editEvent()"/>
-	<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-show="!editingName" ng-click="editingName = true">
+	<button type="button" class="btn btn-sm btn-primary pull-right inline hide" ng-show="!editingName" ng-click="editingName = true">
  	 <i class="fa fa-pencil"></i>
 	</button>
 	<button class="btn btn-sm btn-success pull-right inline" ng-show="editingName" ng-click="editingName = false; editEvent();">
@@ -26,7 +27,7 @@
 			<option name="type" value="Transit">Transit</option>
 			<option name="type" value="Lodging">Lodging</option>
 		</select>
-		<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-show="!editingType" ng-click="editingType = true">
+		<button type="button" class="btn btn-sm btn-primary pull-right inline hide" ng-show="!editingType" ng-click="editingType = true">
       <i class="fa fa-pencil"></i>
 		</button>
     <button class="btn btn-sm btn-success pull-right inline" ng-show="editingType" ng-click="editingType = false; editEvent();">
@@ -51,7 +52,7 @@
 	  	</p>
 	  	<div class="col-sm-4" uib-timepicker ng-model="event.start" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
   	</div>
-		<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-show="!editingStart" ng-click="editingStart = true">
+		<button type="button" class="btn btn-sm btn-primary pull-right inline hide" ng-show="!editingStart" ng-click="editingStart = true">
       <i class="fa fa-pencil"></i>
 		</button>
     <button class="btn btn-sm btn-success pull-right inline" ng-show="editingStart" ng-click="editingStart = false; editEvent();">
@@ -72,7 +73,7 @@
 		  	</p>
 		  	<div class="col-sm-4" uib-timepicker ng-model="event.end" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
 	  	</div>
-		<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-show="!editingAddress" ng-click="editingEnd = true">
+		<button type="button" class="btn btn-sm btn-primary pull-right inline hide" ng-show="!editingAddress" ng-click="editingEnd = true">
       <i class="fa fa-pencil"></i>
 		</button>
     <button class="btn btn-sm btn-success pull-right inline" ng-show="editingEnd" ng-click="editingEnd = false; editEvent();">
@@ -83,7 +84,7 @@
 		<h3 class="col-sm-4">Address:</h3>
 		<h4 class="col-sm-8" ng-show="!editingAddress">{{event.address}}</h4>
 		<input type="text" ng-model="event.address" ng-show="editingAddress" ng-keyup="$event.keyCode == 13 && editEvent()"/>
-		<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-show="!editingAddress" ng-click="editingAddress = true">
+		<button type="button" class="btn btn-sm btn-primary pull-right inline hide" ng-show="!editingAddress" ng-click="editingAddress = true">
       <i class="fa fa-pencil"></i>
 		</button>
     <button class="btn btn-sm btn-success pull-right inline" ng-show="editingAddress" ng-click="editingAddress = false; editEvent();">
@@ -96,7 +97,7 @@
 		<select ng-model="event.base" ng-show="editingBase">
 			<option ng-repeat="base in bases" name="base" value="{{base.baseId}}">{{base.name}}</option>
 		</select>
-		<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-show="!editingBase" ng-click="editingBase = true">
+		<button type="button" class="btn btn-sm btn-primary pull-right inline hide" ng-show="!editingBase" ng-click="editingBase = true">
       <i class="fa fa-pencil"></i>
 		</button>
     <button class="btn btn-sm btn-success pull-right inline" ng-show="editingBase" ng-click="editingBase = false; editEvent();">
@@ -107,7 +108,7 @@
 		<h3 class="col-sm-4">Reference:</h3>
 		<h4 class="col-sm-8" ng-show="!editingReference">{{event.ref}}</h4>
 		<input type="text" ng-model="event.ref" ng-show="editingReference" ng-keyup="$event.keyCode == 13 && editEvent()"/>
-		<button type="button" class="btn btn-sm btn-primary pull-right inline" ng-show="!editingReference" ng-click="editingReference = true">
+		<button type="button" class="btn btn-sm btn-primary pull-right inline hide" ng-show="!editingReference" ng-click="editingReference = true">
 			<i class="fa fa-pencil"></i>
 		</button>
 		<button class="btn btn-sm btn-success pull-right inline" ng-show="editingReference" ng-click="editingReference = false; editEvent();">
@@ -116,9 +117,9 @@
 	</div>
 </div>
 <div class="row">
-	<button class="btn btn-sm btn-primary pull-right inline" ng-show="!editingName || !editingType || !editingStart || !editingEnd || !editingAddress || !editingBase || !editingReference" ng-click="editEvent(); editingName = true; editingType = true; editingStart = true; editingEnd = true; editingAddress = true; editingBase = true; editingReference = true;">Edit All
+	<button class="btn btn-sm btn-primary pull-right inline hide" ng-show="!editingName || !editingType || !editingStart || !editingEnd || !editingAddress || !editingBase || !editingReference" ng-click="editingName = true; editingType = true; editingStart = true; editingEnd = true; editingAddress = true; editingBase = true; editingReference = true;">Edit All
   </button>
 	<button class="btn btn-sm btn-success pull-right inline" ng-show="editingName || editingType || editingStart || editingEnd || editingAddress || editingBase || editingReference" ng-click="editEvent(); editingName = false; editingType = false; editingStart = false; editingEnd = false; editingAddress = false; editingBase = false; editingReference = false;">Save All Edits
   </button>
-  <button class="btn btn-sm btn-danger" ng-click="deleteEvent(event)">Delete Event</i></button>
+  <button class="btn btn-sm btn-danger hide" ng-click="deleteEvent(event)">Delete Event</i></button>
 </div>

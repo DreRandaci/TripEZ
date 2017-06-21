@@ -1,3 +1,4 @@
+<h4 class="archive pull-right" ng-if="trip.archived">ARCHIVE</h4>
 <h3>Bases in {{trip.name}}</h2>
 <div class="row row-headings">
 	<h3 class="col-sm-4">Base</h3>
@@ -12,11 +13,11 @@
 	    </div>
 	    <h4 class="col-sm-3">{{base.start | date: 'shortDate'}}</h4>
 	    <h4 class="col-sm-3">{{base.end | date: 'shortDate'}}</h4>
-	    <div class="col-sm-2">
-	      <button class="btn btn-sm btn-danger pull-right" ng-click="deleteEntireBase(base.baseId)">
+	    <div class="col-sm-2" ng-show="!trip.archived">
+	      <button title="Delete Base" class="btn btn-sm btn-danger pull-right" ng-click="deleteEntireBase(base.baseId)">
 	      	<i class="fa fa-trash"></i>
 	      </button>
-	      <button class="btn btn-sm btn-info edit-btn pull-right" ng-click="editing = true">
+	      <button title="Edit Base" class="btn btn-sm btn-info edit-btn pull-right" ng-click="editing = true">
 	        <i class="fa fa-pencil"></i>
 	      </button>
 	    </div>
@@ -51,7 +52,7 @@
 		</div>
 	</div>
 </div>
-<div class="row row-div">
+<div class="row row-div" ng-show="!trip.archived">
 	<input id="new-base-input" ng-model="newBase.name" class="col-sm-4" type="text" placeholder="Search for new base" ng-keyup="$event.keyCode == 13 && makeNewBase(newBase)" autofocus>
 	<div class="inline">
 	  <p class="input-group date-picker col-sm-3">
@@ -73,6 +74,6 @@
 	  	</span>
 		</p>
 	</div>
-	<button class="btn btn-default col-sm-2 inline pull-right" ng-click="makeNewBase(newBase)">Submit</button>
+	<button title="Save as new Base" class="btn btn-default col-sm-2 inline pull-right" ng-click="makeNewBase(newBase)">Submit</button>
 </div>
 <div id="map" class="invisoMap"></div>

@@ -37,7 +37,7 @@ app.controller("BaseListCtrl", function($rootScope, $routeParams, $scope, ngToas
 
     var input = document.getElementById('new-base-input');
     var autocomplete = new google.maps.places.Autocomplete(input, {
-      types: ['geocode'],                                                   // added to debug
+      types: ['geocode'],
       placeIdOnly: true
     });
     var geocoder = new google.maps.Geocoder();

@@ -35,6 +35,11 @@ app.config(function($routeProvider) {
         controller: "TripListCtrl",
         resolve: {isAuth}
     })
+    .when("/archive/:uid", {
+        templateUrl: "partials/trip-archive.html",
+        controller: "TripListCtrl",
+        resolve: {isAuth}
+    })
     .when("/bases/:tripId", {
         templateUrl: "partials/base-list.html",
         controller: "BaseListCtrl",
