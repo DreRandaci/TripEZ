@@ -26,9 +26,9 @@
 	  </div>
 	  <div ng-show="editing">
 	    <input class="col-sm-4 inline" ng-model="trip.name" type="text" autofocus>
-	    <div class="inline">
-		    <p class="input-group date-picker col-sm-3">
-		    	<input type="date" class="form-control" uib-datepicker-popup ng-model="trip.start" is-open="tripStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" value="trip.start"/>
+	    <div class="inline col-sm-3">
+		    <p class="input-group date-picker">
+		    	<input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="trip.start" is-open="tripStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" value="trip.start"/>
 		    	<span class="input-group-btn">
 		        <button type="button" class="btn btn-default" ng-click="tripStartEdit = !tripStartEdit">
 		          <i class="glyphicon glyphicon-calendar"></i>
@@ -36,9 +36,9 @@
 		    	</span>
 		  	</p>
 		  </div>
-		  <div class="inline">
-		  	<p class="input-group date-picker col-sm-3">
-		    	<input type="date" class="form-control" uib-datepicker-popup ng-model="trip.end" is-open="tripEndEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" value="trip.end"/>
+		  <div class="inline col-sm-3">
+		  	<p class="input-group date-picker">
+		    	<input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="trip.end" is-open="tripEndEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" value="trip.end"/>
 		    	<span class="input-group-btn">
 		        <button type="button" class="btn btn-default" ng-click="tripEndEdit = !tripEndEdit">
 		          <i class="glyphicon glyphicon-calendar"></i>
@@ -55,10 +55,10 @@
 	</div>
 </div>
 <div class="row row-div">
-	<input id="new-base-input" ng-model="newTrip.name" class="col-sm-4" type="text" placeholder="New Trip Name" ng-keyup="$event.keyCode == 13 && makeNewTrip(newTrip)" autofocus>
-	<div class="inline">
-	  <p class="input-group date-picker col-sm-3">
-	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newTrip.start" is-open="newTripStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+	<input ng-model="newTrip.name" class="col-sm-4" type="text" placeholder="New Trip Name" ng-keyup="$event.keyCode == 13 && makeNewTrip(newTrip)" autofocus>
+	<div class="inline col-sm-3">
+	  <p class="input-group date-picker">
+	  	<input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="newTrip.start" is-open="newTripStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" placeholder="mm/dd/yyyy"/>
 	  	<span class="input-group-btn">
 		    <button type="button" class="btn btn-default" ng-click="newTripStartEdit = !newTripStartEdit">
 		      <i class="glyphicon glyphicon-calendar"></i>
@@ -66,9 +66,9 @@
 	  	</span>
 		</p>
 	</div>
-	<div class="inline">
-	  <p class="input-group date-picker col-sm-3">
-	  	<input type="date" class="form-control" uib-datepicker-popup ng-model="newTrip.end" is-open="newTripEndEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+	<div class="inline col-sm-3">
+	  <p class="input-group date-picker">
+	  	<input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="newTrip.end" is-open="newTripEndEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" placeholder="mm/dd/yyyy"/>
 	  	<span class="input-group-btn">
 		    <button type="button" class="btn btn-default" ng-click="newTripEndEdit = !newTripEndEdit">
 		      <i class="glyphicon glyphicon-calendar"></i>
@@ -76,5 +76,5 @@
 	  	</span>
 		</p>
 	</div>
-	<button title="Save As New Trip" class="btn btn-default col-sm-2 inline pull-right" ng-click="makeNewTrip(newTrip)">Submit</button>
+	<button title="Save As New Trip" class="btn btn-default col-sm-2 inline pull-right" ng-click="makeNewTrip(newTrip); newTrip = {}">Submit</button>
 </div>

@@ -171,10 +171,13 @@ app.controller("EventSearchCtrl", function($location, $routeParams, $scope, ngTo
 
   let createMarker = (place) => {
     let placeLoc = place.geometry.location;
-    let tag = place.tag;
+    let tag = {
+      text: place.tag,
+      color: 'white'
+    };
     let icon = {
       path: google.maps.SymbolPath.CIRCLE,
-      fillColor: 'green',
+      fillColor: 'forestgreen',
       fillOpacity: 0.4,
       strokeColor: 'white',
       strokeWeight: 0.7,
@@ -188,7 +191,7 @@ app.controller("EventSearchCtrl", function($location, $routeParams, $scope, ngTo
       position: place.geometry.location
     });
     google.maps.event.addListener(marker, 'click', function(){
-      infowindow.setContent(placesArray[i].name);
+      infowindow.setContent(place.name);
       infowindow.open(map, this);
     });
   };

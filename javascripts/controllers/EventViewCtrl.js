@@ -91,9 +91,24 @@ app.controller("EventViewCtrl", function($location, $routeParams, $scope, ngToas
 	    zoom: 12,
 	    center: singleEventToPin
 	  });
+    let icon = {
+      path: google.maps.SymbolPath.CIRCLE,
+      fillColor: 'forestgreen',
+      fillOpacity: 1,
+      strokeColor: 'white',
+      strokeWeight: 0.7,
+      scale: 12
+    };
+    let tag = {
+      text: 'X',
+      color: 'white'
+    };
 	  let marker = new google.maps.Marker({
-	    position: singleEventToPin,
-	    map: map
+      animation: google.maps.Animation.DROP,
+      icon: icon,
+      label: tag,
+      map: map,
+      position: singleEventToPin
 	  });
 	};
 

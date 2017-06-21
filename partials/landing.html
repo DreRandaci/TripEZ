@@ -3,9 +3,9 @@
   <h1>TripEZ</h1>
   <div class="btn-right btn-new-board">
     <div ng-show="!userToLogin && !userToRegister">
-      <button ng-click="userWillLogin(); userToLogin = true; userToRegister = false" type="button" class="btn btn-default">I'm Back!
+      <button title="Welcome back!" ng-click="userWillLogin(); userToLogin = true; userToRegister = false" type="button" class="btn btn-default">I'm Back!
       </button>
-      <button ng-click="userWillRegister(); userToRegister = true; userToLogin = false" type="button" class="btn btn-default">New Here?
+      <button title="Time to start your adventure." ng-click="userWillRegister(); userToRegister = true; userToLogin = false" type="button" class="btn btn-default">New Here?
       </button>
     </div>
     <div class="form-group" ng-show="userToLogin">

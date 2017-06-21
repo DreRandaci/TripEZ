@@ -1,10 +1,5 @@
 app.controller("TripListCtrl", function($rootScope, $routeParams, $scope, ngToast, BaseFactory, EventFactory, TripFactory) {
 
-  $scope.newTrip = {
-    archived: false,
-    uid: $rootScope.user.uid
-  };
-
   let getTrips = () => {
     TripFactory.getTripsFromFB($routeParams.uid)
     .then((trips) => {

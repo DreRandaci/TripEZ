@@ -1,10 +1,5 @@
 app.controller("BaseListCtrl", function($rootScope, $routeParams, $scope, ngToast, EventFactory, BaseFactory, TripFactory) {
 
-  $scope.newBase = {
-    trip: $routeParams.tripId,
-    uid: $rootScope.user.uid
-  };
-
   var input = document.getElementById('new-base-input');
 
   let getSingleTripName = () => {
@@ -32,9 +27,7 @@ app.controller("BaseListCtrl", function($rootScope, $routeParams, $scope, ngToas
   getBases();
 
   let baseAutoComplete = () => {
-
     map = new google.maps.Map(document.getElementById('map'), {});
-
     var input = document.getElementById('new-base-input');
     var autocomplete = new google.maps.places.Autocomplete(input, {
       types: ['geocode'],
