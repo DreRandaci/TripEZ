@@ -20,10 +20,17 @@ app.controller("EventViewCtrl", function($location, $routeParams, $scope, ngToas
     TripFactory.getSingleTripNameFromFB(tripId)
     .then((tripReturned) => {
       $scope.trip = tripReturned;
+      filterEditsIfArchived(tripReturned);
     })
     .catch((error) => {
       console.log("getTripFromTripId error", error);
     });
+  };
+
+  let filterEditsIfArchived = (trip) => {
+    if (trip.archived === true) {
+      $("button").hide();
+    }
   };
 
   let getBaseFromBaseId = (baseId) => {

@@ -4,11 +4,8 @@
 	<option name="base" value="">All Bases</option>
 	<option ng-repeat="base in bases" ng-selected="{{base.baseId}} == {{defaultSelectedBaseId}}" name="basesToFilter" value="{{base.baseId}}">{{base.name}}</option>
 </select>
-<a ng-href="#!/search/{{trip.id}}">
+<a ng-href="#!/search/{{trip.id}}" ng-show="base.archived = false">
 	<button class="btn btn-default">Search New Event</button>
-</a>
-<a ng-href="#!/event/add/{{trip.id}}">
-	<button class="btn btn-default">Add Custom Event</button>
 </a>
 <div class="row row-headings">
 	<h2 class="col-sm-4">Event</h2>
@@ -22,7 +19,7 @@
     </div>
     <h4 class="col-sm-3">{{event.start | date: 'short'}}</h4>
     <h4 class="col-sm-3">{{event.end | date: 'short'}}</h4>
-    <div class="pull-right col-sm-2">
+    <div class="pull-right col-sm-2" ng-show="base.archived = false">
       <button class="btn btn-sm btn-danger" ng-click="deleteEvent(event.eventId)">
       	<i class="fa fa-trash"></i>
       </button>
