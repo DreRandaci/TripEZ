@@ -6,7 +6,7 @@
 		<option ng-repeat="base in bases" ng-selected="{{base.baseId}} == {{baseSelected}}" name="basesToFilter" value="{{base.baseId}}">{{base.name}}</option>
 	</select>
 </div>
-<input type="text" placeholder="Anything you want" ng-model="userSearchTerms"/>
+<input type="text" placeholder="Anything you want" ng-model="userSearchTerms" ng-keyup="$event.keyCode == 13 && initMap(userSearchTerms)" required autofocus/>
 <button class="btn btn-default" ng-click="initMap(userSearchTerms); searching = true">Search</button> 
 <div id="map"></div>
 <div uib-alert ng-repeat="alert in alerts" class="col-xs-4 col-xs-offset-4 alert-danger">{{alert.msg}}</div>
@@ -18,7 +18,7 @@
 <div ng-repeat="searchEvent in searchEvents">
 	<div class="row row-div">
 		<div class="col-sm-4">
-			<h3 class="row">{{searchEvent.tag}}. {{searchEvent.name}}</h3>
+			<h3 class="row">{{searchEvent.tag}}. <a href="{{searchEvent.website}}" target="_blank">{{searchEvent.name}}</a></h3>
 			<div class="row" ng-show="savingEvent">
 				<h4 class="col-sm-4">Type:</h4>
 				<select id="newEventTypeSelect" class="col-sm-8 inline" ng-model="newEventToSave.type">
