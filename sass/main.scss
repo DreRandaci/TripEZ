@@ -4,6 +4,11 @@
 @import "maps";
 
 body {
+	background: url("/images/mapback.png") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
   font-family: 'Acme', sans-serif;
   font-size: 2em;
   color: #333333;
@@ -14,9 +19,15 @@ body {
 	display: inline-block;
 }
 
-.auth-container {
+.custom-container {
+	background: rgba(255, 255, 255, 0.7);
 	border: 2px solid black;
+	box-shadow: 0 0 15px black;
 	border-radius: 15px;
+}
+
+.auth-container {
+	@extend .custom-container;
 	text-align: center;
 	padding: 25px;
 	margin-top: 200px;
@@ -35,9 +46,7 @@ body {
 }
 
 .row-div {
-	border: 2px solid black;
-	box-shadow: 0 0 15px black;
-	border-radius: 15px;
+	@extend .custom-container;
 	padding: 15px;
 }
 
@@ -56,5 +65,5 @@ body {
 }
 
 h2 {
-	text-shadow: 1px 1px 1px black, 0 0 1em black, 0 0 0.1em black;
+	text-shadow: 1px 1px 1px white, 0 0 1em white, 0 0 0.1em white;
 }

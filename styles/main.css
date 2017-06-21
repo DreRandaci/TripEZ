@@ -20,7 +20,7 @@
   padding: 20px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: #d9d9d9;
   display: block;
   transition: 0.3s; }
 
@@ -60,6 +60,11 @@
   display: none; }
 
 body {
+  background: url("/images/mapback.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   font-family: 'Acme', sans-serif;
   font-size: 2em;
   color: #333333;
@@ -68,9 +73,13 @@ body {
 .inline {
   display: inline-block; }
 
-.auth-container {
+.custom-container, .auth-container, .row-div {
+  background: rgba(255, 255, 255, 0.7);
   border: 2px solid black;
-  border-radius: 15px;
+  box-shadow: 0 0 15px black;
+  border-radius: 15px; }
+
+.auth-container {
   text-align: center;
   padding: 25px;
   margin-top: 200px; }
@@ -85,9 +94,6 @@ body {
   width: 40px; }
 
 .row-div {
-  border: 2px solid black;
-  box-shadow: 0 0 15px black;
-  border-radius: 15px;
   padding: 15px; }
 
 .reference-input {
@@ -102,4 +108,4 @@ body {
   width: 110px; }
 
 h2 {
-  text-shadow: 1px 1px 1px black, 0 0 1em black, 0 0 0.1em black; }
+  text-shadow: 1px 1px 1px white, 0 0 1em white, 0 0 0.1em white; }
