@@ -7,20 +7,20 @@
 <div ng-repeat="trip in trips | filter: {'archived' : false} | orderBy:'start'">
 	<div class="row row-div">
 		<div ng-show="!editing">
-			<div class="col-sm-4">
+			<div class="col-sm-4 vert-center">
 	      <h3><a ng-href="#!/bases/{{trip.tripId}}">{{trip.name}}</a></h3>
 	    </div>
-	    <h4 class="col-sm-3" ng-show="!editing">{{trip.start | date: 'shortDate'}}</h4>
-	    <h4 class="col-sm-3" ng-show="!editing">{{trip.end | date: 'shortDate'}}</h4>
-	    <div class="col-sm-2">
-	      <button title="Delete Trip" class="btn btn-sm btn-danger pull-right" ng-click="deleteEntireTrip(trip.tripId)">
-	      	<i class="fa fa-trash"></i>
+	    <h4 class="col-sm-3 vert-center" ng-show="!editing">{{trip.start | date: 'shortDate'}}</h4>
+	    <h4 class="col-sm-3 vert-center" ng-show="!editing">{{trip.end | date: 'shortDate'}}</h4>
+	    <div class="col-sm-2 pull-right btn-group">
+	      <button title="Edit Trip" class="btn btn-sm btn-info edit-btn" ng-click="editing = true">
+	        <i class="fa fa-pencil"></i>
 	      </button>
-	      <button title="Archive Trip" class="btn btn-sm btn-warning pull-right" ng-click="archiveTrip(trip)">
+	      <button title="Archive Trip" class="btn btn-sm btn-warning" ng-click="archiveTrip(trip)">
 	        <i class="fa fa-archive"></i>
 	      </button>
-	      <button title="Edit Trip" class="btn btn-sm btn-info edit-btn pull-right" ng-click="editing = true">
-	        <i class="fa fa-pencil"></i>
+	      <button title="Delete Trip" class="btn btn-sm btn-danger" ng-click="deleteEntireTrip(trip.tripId)">
+	      	<i class="fa fa-trash"></i>
 	      </button>
 	    </div>
 	  </div>

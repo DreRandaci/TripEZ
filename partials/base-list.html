@@ -8,17 +8,17 @@
 <div ng-repeat="base in bases | orderBy:'start'">
 	<div class="row row-div">
 		<div ng-show="!editing">
-			<div class="col-sm-4">
+			<div class="col-sm-4 vert-center">
 	      <h3><a ng-href="#!/events/{{base.trip}}" ng-click="setDefaultBaseFilterForEventList(base.baseId)">{{base.name}}</a></h3>
 	    </div>
-	    <h4 class="col-sm-3">{{base.start | date: 'shortDate'}}</h4>
-	    <h4 class="col-sm-3">{{base.end | date: 'shortDate'}}</h4>
-	    <div class="col-sm-2" ng-show="!trip.archived">
-	      <button title="Delete Base" class="btn btn-sm btn-danger pull-right" ng-click="deleteEntireBase(base.baseId)">
-	      	<i class="fa fa-trash"></i>
-	      </button>
-	      <button title="Edit Base" class="btn btn-sm btn-info edit-btn pull-right" ng-click="editing = true">
+	    <h4 class="col-sm-3 vert-center">{{base.start | date: 'shortDate'}}</h4>
+	    <h4 class="col-sm-3 vert-center">{{base.end | date: 'shortDate'}}</h4>
+	    <div class="col-sm-2 pull-right btn-group" ng-show="!trip.archived">
+	      <button title="Edit Base" class="btn btn-sm btn-info edit-btn" ng-click="editing = true">
 	        <i class="fa fa-pencil"></i>
+	      </button>
+	      <button title="Delete Base" class="btn btn-sm btn-danger" ng-click="deleteEntireBase(base.baseId)">
+	      	<i class="fa fa-trash"></i>
 	      </button>
 	    </div>
 	  </div>

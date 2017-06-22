@@ -55,6 +55,17 @@ main {
 	@extend .custom-container;
 }
 
+.vert-center {
+  float: none;
+	display: inline-block;
+  vertical-align: middle;
+}
+
+.btn-group {
+	@extend .vert-center;
+	margin-top: -45px;
+}
+
 .lg-container {
 	@extend .custom-container;
 	padding: 45px;

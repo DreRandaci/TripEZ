@@ -110,6 +110,14 @@ main {
 .date-picker {
   width: 40px; }
 
+.vert-center, .btn-group {
+  float: none;
+  display: inline-block;
+  vertical-align: middle; }
+
+.btn-group {
+  margin-top: -45px; }
+
 .lg-container {
   padding: 45px; }
   .lg-container h2, .lg-container h3 {
