@@ -1,5 +1,5 @@
 <h4 class="archive pull-right" ng-if="trip.archived">ARCHIVE</h4>
-<h2>Bases in {{trip.name}}</h2>
+<h2 class="h-center">Bases in {{trip.name}}</h2>
 <div class="row row-headings">
 	<h3 class="col-sm-4">Base</h3>
 	<h3 class="col-sm-3">Start</h3>
@@ -8,12 +8,12 @@
 <div ng-repeat="base in bases | orderBy:'start'">
 	<div class="row row-div">
 		<div ng-show="!editing">
-			<div class="col-sm-4">
+			<div class="col-sm-4 vert-center">
 	      <h3><a ng-href="#!/events/{{base.trip}}" ng-click="setDefaultBaseFilterForEventList(base.baseId)">{{base.name}}</a></h3>
 	    </div>
-	    <h4 class="col-sm-3">{{base.start | date: 'shortDate'}}</h4>
-	    <h4 class="col-sm-3">{{base.end | date: 'shortDate'}}</h4>
-	    <div class="col-sm-2" ng-show="!trip.archived">
+	    <h4 class="col-sm-3 vert-center">{{base.start | date: 'shortDate'}}</h4>
+	    <h4 class="col-sm-3 vert-center">{{base.end | date: 'shortDate'}}</h4>
+	    <div class="col-sm-2 pull-right btn-group" ng-show="!trip.archived">
 	      <button title="Delete Base" class="btn btn-sm btn-danger pull-right" ng-click="deleteEntireBase(base.baseId)">
 	      	<i class="fa fa-trash"></i>
 	      </button>
@@ -52,7 +52,8 @@
 		</div>
 	</div>
 </div>
-<div class="row row-div" ng-show="!trip.archived">
+<button title="Open New Base Fields" class="btn btn-default col-sm-2 inline pull-right add-new-btn" ng-show="!showAddNewBase && !trip.archived" ng-click="showAddNewBase = true">Add New Base</button>
+<div class="row row-div" ng-show="!trip.archived && showAddNewBase">
 	<input id="new-base-input" ng-model="newBase.name" class="col-sm-4" type="text" placeholder="Search for new base" ng-keyup="$event.keyCode == 13 && makeNewBase(newBase)" autofocus>
 	<div class="inline col-sm-3">
 	  <p class="input-group date-picker">
@@ -74,6 +75,9 @@
 	  	</span>
 		</p>
 	</div>
-	<button title="Save as new Base" class="btn btn-default col-sm-2 inline pull-right" ng-click="makeNewBase(newBase); newBase = {}">Submit</button>
+	<button title="Save as new Base" class="btn btn-default col-sm-2 inline pull-right" ng-click="makeNewBase(newBase); newBase = {}; showAddNewBase = false">Submit</button>
+	<div title="Cancel Save New Base" class="pull-right oops">
+    <a href="" ng-click="showAddNewBase = false">Cancel</a>
+  </div>
 </div>
 <div id="map" class="invisoMap"></div>

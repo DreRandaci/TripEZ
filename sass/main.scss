@@ -15,6 +15,10 @@ body {
   background-color: #ffffff;
 }
 
+main {
+	width: 65%;
+}
+
 .inline {
 	display: inline-block;
 }
@@ -34,7 +38,7 @@ body {
 	margin-top: 200px;
 }
 
-.auth-oops {
+.oops {
 	font-size: 0.6em;
 }
 
@@ -49,6 +53,21 @@ body {
 
 .row-div {
 	@extend .custom-container;
+}
+
+.vert-center {
+  float: none;
+	display: inline-block;
+  vertical-align: middle;
+}
+
+.h-center {
+	text-align: center;
+}
+
+.btn-group {
+	@extend .vert-center;
+	margin-top: -45px;
 }
 
 .lg-container {
@@ -76,4 +95,8 @@ body {
 
 .input-group .form-control {
 	width: 110px;
+}
+
+.add-new-btn {
+	margin-top: 20px;
 }

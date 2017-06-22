@@ -4,6 +4,7 @@ app.factory("TripFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
     return $q((resolve, reject) => {
       $http.get(`${FIREBASE_CONFIG.databaseURL}/trips/${tripIdPassed}.json`)
       .then((tripFromFB) => {
+        tripFromFB.data.tripId = tripIdPassed;
         let tripReturned = tripFromFB.data;
         resolve(tripReturned);
       })

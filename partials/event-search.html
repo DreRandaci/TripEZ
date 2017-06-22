@@ -1,14 +1,16 @@
 <div class="lg-container">
-	<h2>New Event Search in {{trip.name}}</h2>
-	<div>
+	<h2 class="h-center">New Event Search in <a ng-href="#!/events/{{trip.tripId}}">{{trip.name}}</a></h2>
+	<div class="h-center">
 		<p class="inline">From This Base:</p>
 		<select class="inline" ng-change="changeBaseToSearchFrom()" ng-model="baseSelected">
 			<option ng-selected="true" name="basesToFilter" value="undefined">Select a Base</option>
 			<option ng-repeat="base in bases" ng-selected="{{base.baseId}} == {{baseSelected}}" name="basesToFilter" value="{{base.baseId}}">{{base.name}}</option>
 		</select>
 	</div>
-	<input type="text" placeholder="Anything you want" ng-model="userSearchTerms" ng-keyup="$event.keyCode == 13 && initMap(userSearchTerms)" required autofocus/>
-	<button class="btn btn-default" ng-click="initMap(userSearchTerms); searching = true">Search</button> 
+	<div class="h-center">
+		<input type="text" class="h-center" ng-model="userSearchTerms" ng-keyup="$event.keyCode == 13 && initMap(userSearchTerms)" required autofocus/>
+		<button class="btn btn-default" ng-click="initMap(userSearchTerms); searching = true">Search</button> 
+	</div>
 	<div id="map"></div>
 	<div uib-alert ng-repeat="alert in alerts" class="col-xs-4 col-xs-offset-4 alert-danger">{{alert.msg}}</div>
 	<div class="row row-headings" ng-show="searching">

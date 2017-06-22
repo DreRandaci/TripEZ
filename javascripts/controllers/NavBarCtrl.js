@@ -1,7 +1,7 @@
 app.controller("NavBarCtrl", function($scope) {
 
 	$scope.openNav = () => {
-	  document.getElementById("sideNav").style.width = '15%';
+	  document.getElementById("sideNav").style.width = '13%';
 	};
 
 	$scope.closeNav = () => {

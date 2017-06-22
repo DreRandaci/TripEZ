@@ -1,6 +1,7 @@
 .sidenav {
   height: 100%;
   width: 5%;
+  min-width: 70px;
   position: fixed;
   z-index: 99;
   top: 0;
@@ -44,5 +45,5 @@
 
 .nav-col-right {
   display: inline;
-  width: 50px;
+  width: 40px;
 }

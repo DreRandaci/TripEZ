@@ -1,12 +1,16 @@
 .nav-img {
   height: 40px;
-  width: 40px;
-  margin-right: 20px;
+  margin-right: 25px;
   -webkit-filter: drop-shadow(0.75px 0.75px 0.75px white); }
+
+.type-img {
+  height: 40px;
+  width: 30px; }
 
 .sidenav {
   height: 100%;
   width: 5%;
+  min-width: 70px;
   position: fixed;
   z-index: 99;
   top: 0;
@@ -44,7 +48,7 @@
 
 .nav-col-right {
   display: inline;
-  width: 50px; }
+  width: 40px; }
 
 #map {
   height: 300px;
@@ -78,6 +82,9 @@ body {
   color: #333333;
   background-color: #ffffff; }
 
+main {
+  width: 65%; }
+
 .inline {
   display: inline-block; }
 
@@ -93,7 +100,7 @@ body {
   padding: 25px;
   margin-top: 200px; }
 
-.auth-oops {
+.oops {
   font-size: 0.6em; }
 
 .row-headings, h2 {
@@ -102,6 +109,17 @@ body {
 
 .date-picker {
   width: 40px; }
+
+.vert-center, .btn-group {
+  float: none;
+  display: inline-block;
+  vertical-align: middle; }
+
+.h-center {
+  text-align: center; }
+
+.btn-group {
+  margin-top: -45px; }
 
 .lg-container {
   padding: 45px; }
@@ -121,3 +139,6 @@ body {
 
 .input-group .form-control {
   width: 110px; }
+
+.add-new-btn {
+  margin-top: 20px; }
