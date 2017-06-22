@@ -52,7 +52,8 @@
 		</div>
 	</div>
 </div>
-<div class="row row-div" ng-show="!trip.archived">
+<button title="Open New Base Fields" class="btn btn-default col-sm-2 inline pull-right add-new-btn" ng-show="!showAddNewBase" ng-click="showAddNewBase = true">Add New Base</button>
+<div class="row row-div" ng-show="!trip.archived && showAddNewBase">
 	<input id="new-base-input" ng-model="newBase.name" class="col-sm-4" type="text" placeholder="Search for new base" ng-keyup="$event.keyCode == 13 && makeNewBase(newBase)" autofocus>
 	<div class="inline col-sm-3">
 	  <p class="input-group date-picker">
@@ -74,6 +75,6 @@
 	  	</span>
 		</p>
 	</div>
-	<button title="Save as new Base" class="btn btn-default col-sm-2 inline pull-right" ng-click="makeNewBase(newBase); newBase = {}">Submit</button>
+	<button title="Save as new Base" class="btn btn-default col-sm-2 inline pull-right" ng-click="makeNewBase(newBase); newBase = {}; showAddNewBase = false">Submit</button>
 </div>
 <div id="map" class="invisoMap"></div>

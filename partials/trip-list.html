@@ -54,7 +54,8 @@
 		</div>
 	</div>
 </div>
-<div class="row row-div">
+<button title="Open New Trip Fields" class="btn btn-default col-sm-2 inline pull-right add-new-btn" ng-show="!showAddNewTrip" ng-click="showAddNewTrip = true">Add New Trip</button>
+<div class="row row-div" ng-show="showAddNewTrip">
 	<input ng-model="newTrip.name" class="col-sm-4" type="text" placeholder="New Trip Name" ng-keyup="$event.keyCode == 13 && makeNewTrip(newTrip)" autofocus>
 	<div class="inline col-sm-3">
 	  <p class="input-group date-picker">
@@ -76,5 +77,5 @@
 	  	</span>
 		</p>
 	</div>
-	<button title="Save As New Trip" class="btn btn-default col-sm-2 inline pull-right" ng-click="makeNewTrip(newTrip); newTrip = {}">Submit</button>
+	<button title="Save As New Trip" class="btn btn-default col-sm-2 inline pull-right" ng-click="makeNewTrip(newTrip); newTrip = {}; showAddNewTrip = false">Submit</button>
 </div>
