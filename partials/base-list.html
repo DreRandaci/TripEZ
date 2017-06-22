@@ -14,11 +14,11 @@
 	    <h4 class="col-sm-3 vert-center">{{base.start | date: 'shortDate'}}</h4>
 	    <h4 class="col-sm-3 vert-center">{{base.end | date: 'shortDate'}}</h4>
 	    <div class="col-sm-2 pull-right btn-group" ng-show="!trip.archived">
-	      <button title="Edit Base" class="btn btn-sm btn-info edit-btn" ng-click="editing = true">
-	        <i class="fa fa-pencil"></i>
-	      </button>
-	      <button title="Delete Base" class="btn btn-sm btn-danger" ng-click="deleteEntireBase(base.baseId)">
+	      <button title="Delete Base" class="btn btn-sm btn-danger pull-right" ng-click="deleteEntireBase(base.baseId)">
 	      	<i class="fa fa-trash"></i>
+	      </button>
+	      <button title="Edit Base" class="btn btn-sm btn-info edit-btn pull-right" ng-click="editing = true">
+	        <i class="fa fa-pencil"></i>
 	      </button>
 	    </div>
 	  </div>
@@ -76,5 +76,8 @@
 		</p>
 	</div>
 	<button title="Save as new Base" class="btn btn-default col-sm-2 inline pull-right" ng-click="makeNewBase(newBase); newBase = {}; showAddNewBase = false">Submit</button>
+	<div title="Cancel Save New Base" class="pull-right oops">
+    <a href="" ng-click="showAddNewBase = false">Cancel</a>
+  </div>
 </div>
 <div id="map" class="invisoMap"></div>

@@ -13,14 +13,14 @@
 	    <h4 class="col-sm-3 vert-center" ng-show="!editing">{{trip.start | date: 'shortDate'}}</h4>
 	    <h4 class="col-sm-3 vert-center" ng-show="!editing">{{trip.end | date: 'shortDate'}}</h4>
 	    <div class="col-sm-2 pull-right btn-group">
-	      <button title="Edit Trip" class="btn btn-sm btn-info edit-btn" ng-click="editing = true">
-	        <i class="fa fa-pencil"></i>
+	      <button title="Delete Trip" class="btn btn-sm btn-danger pull-right" ng-click="deleteEntireTrip(trip.tripId)">
+	      	<i class="fa fa-trash"></i>
 	      </button>
-	      <button title="Archive Trip" class="btn btn-sm btn-warning" ng-click="archiveTrip(trip)">
+	      <button title="Archive Trip" class="btn btn-sm btn-warning pull-right" ng-click="archiveTrip(trip)">
 	        <i class="fa fa-archive"></i>
 	      </button>
-	      <button title="Delete Trip" class="btn btn-sm btn-danger" ng-click="deleteEntireTrip(trip.tripId)">
-	      	<i class="fa fa-trash"></i>
+	      <button title="Edit Trip" class="btn btn-sm btn-info edit-btn pull-right" ng-click="editing = true">
+	        <i class="fa fa-pencil"></i>
 	      </button>
 	    </div>
 	  </div>
@@ -78,4 +78,7 @@
 		</p>
 	</div>
 	<button title="Save As New Trip" class="btn btn-default col-sm-2 inline pull-right" ng-click="makeNewTrip(newTrip); newTrip = {}; showAddNewTrip = false">Submit</button>
+	<div title="Cancel Save New Trip" class="pull-right oops">
+    <a href="" ng-click="showAddNewTrip = false">Cancel</a>
+  </div>
 </div>

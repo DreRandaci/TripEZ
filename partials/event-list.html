@@ -1,6 +1,6 @@
 <h4 class="archive pull-right" ng-if="trip.archived">ARCHIVE</h4>
 <h2>Events in {{trip.name}}</h2>
-<h4>Filter By Base:</h4>
+<h4 class="row-headings">Filter By Base:</h4>
 <select ng-model="defaultSelectedBaseId" value="All Bases" placeholder="All Bases" ng-change="setDefaultBaseFilterForEventList(defaultSelectedBaseId)">
 	<option name="base" value="">All Bases</option>
 	<option ng-repeat="base in bases" ng-selected="{{base.baseId}} == {{defaultSelectedBaseId}}" name="basesToFilter" value="{{base.baseId}}">{{base.name}}</option>
@@ -23,7 +23,7 @@
     <h4 class="col-sm-2 vert-center">{{event.start | date: 'short'}}</h4>
     <h4 class="col-sm-2 vert-center">{{event.end | date: 'short'}}</h4>
     <h4 class="pull-right col-sm-2 vert-center" ng-show="!trip.archived">
-      <button title="Delete Event" class="btn btn-sm btn-danger" ng-click="deleteEvent(event.eventId)">
+      <button title="Delete Event" class="btn btn-sm btn-danger pull-right" ng-click="deleteEvent(event.eventId)">
       	<i class="fa fa-trash"></i>
       </button>
     </h4>
