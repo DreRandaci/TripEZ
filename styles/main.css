@@ -115,6 +115,9 @@ main {
   display: inline-block;
   vertical-align: middle; }
 
+.h-center {
+  text-align: center; }
+
 .btn-group {
   margin-top: -45px; }
 
