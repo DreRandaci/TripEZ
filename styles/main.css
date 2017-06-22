@@ -10,6 +10,7 @@
 .sidenav {
   height: 100%;
   width: 5%;
+  min-width: 70px;
   position: fixed;
   z-index: 99;
   top: 0;
@@ -80,6 +81,9 @@ body {
   font-size: 2em;
   color: #333333;
   background-color: #ffffff; }
+
+main {
+  width: 65%; }
 
 .inline {
   display: inline-block; }
