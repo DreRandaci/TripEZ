@@ -35,6 +35,11 @@ app.config(function($routeProvider) {
         controller: "TripListCtrl",
         resolve: {isAuth}
     })
+    .when("/calendar/:uid", {
+        templateUrl: "partials/cal.html",
+        controller: "CalCtrl",
+        resolve: {isAuth}
+    })
     .when("/archive/:uid", {
         templateUrl: "partials/trip-archive.html",
         controller: "TripListCtrl",
