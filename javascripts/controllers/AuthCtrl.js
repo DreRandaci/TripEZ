@@ -4,18 +4,13 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, ngToast, Auth
 
 	$scope.userWillLogin = () => {
 		$scope.auth = { 
-			templateUrl: "auth.html",
 			email: "a@a.com",
 			password: "123456"
 		};
 	};
 
-	$scope.userWillRegister = () => {
-		$scope.auth = { 
-			templateUrl: "reg.html",
-			email: "",
-			password: ""
-		};
+	$scope.clearAuthScope = () => {
+		$scope.auth = {};
 	};
 
 	if ($location.path() === '/logout') {

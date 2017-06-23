@@ -2,10 +2,12 @@
   <img src="./images/filler_logo.png" alt="logo" />
   <h1>TripEZ</h1>
   <div class="btn-right btn-new-board">
-    <div ng-show="!userToLogin && !userToRegister">
-      <button title="Welcome back!" ng-click="userWillLogin(); userToLogin = true; userToRegister = false" type="button" class="btn btn-default">I'm Back!
+    <div ng-show="!userToLogin && !userToRegister && !userToLoginGoogle">
+      <button title="Welcome back!" ng-click="userWillLogin(); userToLogin = true; userToRegister = false; userToLoginGoogle = false" type="button" class="btn btn-default">I'm Back!
       </button>
-      <button title="Time to start your adventure." ng-click="userWillRegister(); userToRegister = true; userToLogin = false" type="button" class="btn btn-default">New Here?
+      <button title="Time to start your adventure." ng-click="clearAuthScope(); userToRegister = true; userToLogin = false; userToLoginGoogle = false" type="button" class="btn btn-default">New Here?
+      </button>
+      <button title="Time to start your adventure." ng-click="clearAuthScope(); userToRegister = false; userToLogin = false; userToLoginGoogle = true" type="button" class="btn btn-default">Google User?
       </button>
     </div>
     <div class="form-group" ng-show="userToLogin">
@@ -28,9 +30,18 @@
         </button>
       </form>
     </div>
-    <div class="pull-right oops" ng-click="userToLogin = false; userToRegister = false">
-      <a href="" ng-show="userToRegister">Back to Login</a>
-      <a href="" ng-show="userToLogin">Back to Register</a>
+    <div class="form-group" ng-show="userToLoginGoogle">
+      <form>
+        <label>Welcome Google User!</label>
+        <input type="email" id="inputEmail" class="form-control form-spacing" placeholder="Email Address" ng-model="auth.email" ng-keyup="$event.keyCode == 13 && loginUserGoogle()" required autofocus>
+        <input type="password" id="inputPassword" class="form-control form-spacing" placeholder="Password" ng-model="auth.password" ng-keyup="$event.keyCode == 13 && loginUserGoogle()" required>
+        <button type="button" class="btn btn-default" ng-click="loginUserGoogle()">
+          <h4>Login</h4>
+        </button>
+      </form>
+    </div>
+    <div class="pull-right oops" ng-click="userToLogin = false; userToRegister = false; userToLoginGoogle = false">
+      <a href="" ng-show="userToRegister || userToLogin || userToLoginGoogle">Go Back</a>
     </div>
   </div>
 </div>
