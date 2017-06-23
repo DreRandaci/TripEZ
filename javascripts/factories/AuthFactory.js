@@ -40,12 +40,12 @@ app.factory("AuthFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
     return $q((resolve, reject) => {
       var provider = new firebase.auth.GoogleAuthProvider();
       firebase.auth().signInWithPopup(provider)
-        .then((authData) => {
-          currentUserData = authData.user;
-          resolve(currentUserData);
-        }).catch((error) => {
-          reject(error);
-        });
+      .then((authData) => {
+        currentUserData = authData.user;
+        resolve(currentUserData);
+      }).catch((error) => {
+        reject(error);
+      });
     });
   };
 

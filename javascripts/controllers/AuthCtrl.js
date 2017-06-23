@@ -4,18 +4,13 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, ngToast, Auth
 
 	$scope.userWillLogin = () => {
 		$scope.auth = { 
-			templateUrl: "auth.html",
 			email: "a@a.com",
 			password: "123456"
 		};
 	};
 
-	$scope.userWillRegister = () => {
-		$scope.auth = { 
-			templateUrl: "reg.html",
-			email: "",
-			password: ""
-		};
+	$scope.clearAuthScope = () => {
+		$scope.auth = {};
 	};
 
 	if ($location.path() === '/logout') {
@@ -33,6 +28,7 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, ngToast, Auth
 		.then((user) => {
 		if (user) {
 			$rootScope.user = user;
+			$rootScope.user.google = false;
 			$location.url(`/trips/${$rootScope.user.uid}`);
 			}
 		})
@@ -43,13 +39,14 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, ngToast, Auth
 
 	let logMeInGoogle = () => {
 		AuthFactory.authenticateGoogle($scope.auth)
-			.then((user) => {
-				$rootScope.user = user;
-				$rootScope.user.username = user.email;
-				$location.url(`/trips/${$rootScope.user.uid}`);
-			}).catch((error) => {
-				console.log(error);
-			});
+		.then((user) => {
+			$rootScope.user = user;
+			$rootScope.user.google = true;
+			$location.url(`/trips/${$rootScope.user.uid}`);
+		}).catch((error) => {
+			ngToast.create("Check your Google username & password, or register as new user.");
+			console.log(error);
+		});
 	};
 
 	$scope.registerUser = () => {
