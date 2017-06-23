@@ -1,4 +1,4 @@
-app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG, GOOGLE_CONFIG) {
+app.factory("EventFactory", function($q, $http, $rootScope, FIREBASE_CONFIG) {
 
   let getSingleEventFromFB = (eventId) => {
     return $q((resolve, reject) => {

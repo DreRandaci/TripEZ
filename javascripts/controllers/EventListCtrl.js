@@ -1,4 +1,4 @@
-app.controller("EventListCtrl", function($routeParams, $scope, BaseFactory, EventFactory, TripFactory) {
+app.controller("EventListCtrl", function($routeParams, $scope, ngToast, BaseFactory, EventFactory, TripFactory) {
 
   let getBaseIdForSelectedBase = () => {
     $scope.defaultSelectedBaseId = BaseFactory.getBaseIdForSelectedBaseFromFB();
@@ -22,7 +22,12 @@ app.controller("EventListCtrl", function($routeParams, $scope, BaseFactory, Even
 	let getEventsByTrip = () => {
     EventFactory.getEventsByTripFromFB($routeParams.tripId)
   	.then((events) => {
-      $scope.events = events;
+      if (events.length !== 0) {
+        $scope.events = events;
+      }
+      else {
+        ngToast.create("Looks like there are no events yet. Let's create some!");
+      }
     })
     .catch((error) => {
       console.log("getEventsByTrip error", error);
