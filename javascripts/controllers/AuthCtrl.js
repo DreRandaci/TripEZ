@@ -42,6 +42,7 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, ngToast, Auth
 		.then((user) => {
 			$rootScope.user = user;
 			$rootScope.user.google = true;
+			$rootScope.user.email = user.email;
 			$location.url(`/trips/${$rootScope.user.uid}`);
 		}).catch((error) => {
 			ngToast.create("Check your Google username & password, or register as new user.");
