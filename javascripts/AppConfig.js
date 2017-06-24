@@ -31,43 +31,43 @@ app.config(function($routeProvider) {
       controller: 'AuthCtrl'
     })
     .when("/trips/:uid", {
-        templateUrl: "partials/trip-list.html",
-        controller: "TripListCtrl",
-        resolve: {isAuth}
+      templateUrl: "partials/trip-list.html",
+      controller: "TripListCtrl",
+      resolve: {isAuth}
     })
     .when("/calendar/:uid", {
-        templateUrl: "partials/cal.html",
-        controller: "CalCtrl",
-        resolve: {isAuth}
+      templateUrl: "partials/cal.html",
+      controller: "CalCtrl",
+      resolve: {isAuth}
     })
     .when("/archive/:uid", {
-        templateUrl: "partials/trip-archive.html",
-        controller: "TripListCtrl",
-        resolve: {isAuth}
+      templateUrl: "partials/trip-archive.html",
+      controller: "TripListCtrl",
+      resolve: {isAuth}
     })
     .when("/bases/:tripId", {
-        templateUrl: "partials/base-list.html",
-        controller: "BaseListCtrl",
-        resolve: {isAuth}
+      templateUrl: "partials/base-list.html",
+      controller: "BaseListCtrl",
+      resolve: {isAuth}
     })
     .when("/events/:tripId", {
-        templateUrl: "partials/event-list.html",
-        controller: "EventListCtrl",
-        resolve: {isAuth}
+      templateUrl: "partials/event-list.html",
+      controller: "EventListCtrl",
+      resolve: {isAuth}
      })
     .when("/event/:eventId", {
-        templateUrl: "partials/event-view.html",
-        controller: "EventViewCtrl",
-        resolve: {isAuth}
+      templateUrl: "partials/event-view.html",
+      controller: "EventViewCtrl",
+      resolve: {isAuth}
      })
     .when("/search/:tripId", {
-        templateUrl: "partials/event-search.html",
-        controller: "EventSearchCtrl",
-        resolve: {isAuth}
+      templateUrl: "partials/event-search.html",
+      controller: "EventSearchCtrl",
+      resolve: {isAuth}
      })
     .when('/logout', {
-        templateUrl: 'partials/landing.html',
-        controller: 'AuthCtrl'
+      templateUrl: 'partials/landing.html',
+      controller: 'AuthCtrl'
     })
     .otherwise('/landing');
 

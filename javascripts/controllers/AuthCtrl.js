@@ -15,6 +15,9 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, ngToast, Auth
 
 	if ($location.path() === '/logout') {
 		AuthFactory.logout();
+		if ($rootScope.user.google) {
+			$location.url('https://accounts.google.com/Logout');
+		}
 		$rootScope.user = {};
 		$location.url('/landing');
 	}
