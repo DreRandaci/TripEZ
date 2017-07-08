@@ -77,6 +77,7 @@ app.controller("EventSearchCtrl", function($location, $routeParams, $scope, ngTo
 
   $scope.changeBaseToSearchFrom = () => {
     getMapBaseToSearchFrom();
+    $scope.searchEvents = "";
   };
 
   $scope.addToTripEvents = (searchEvent) => {
@@ -84,20 +85,19 @@ app.controller("EventSearchCtrl", function($location, $routeParams, $scope, ngTo
       address: searchEvent.vicinity,
       base: $scope.baseSelected,
       end: $scope.newEventToSave.end,
-      endTime: $scope.newEventToSave.endTime,
       latitude: searchEvent.geometry.location.lat(),
       longitude: searchEvent.geometry.location.lng(),
       name: searchEvent.name,
       ref: $scope.newEventToSave.ref,
       review: searchEvent.rating,
       start: $scope.newEventToSave.start,
-      startTime: $scope.newEventToSave.startTime,
       trip: $routeParams.tripId,
       type: $scope.newEventToSave.type
     };
     EventFactory.addToTripEventsInFB(eventToBeSavedToFB)
     .then((results) => {
       ngToast.create('Event added to trip.');
+      $scope.newEventToSave = { };
     })
     .catch((error) => {
       console.log("error in addToTripEvents", error);

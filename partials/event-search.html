@@ -2,7 +2,7 @@
 	<h2 class="h-center">New Event Search in <a ng-href="#!/events/{{trip.tripId}}">{{trip.name}}</a></h2>
 	<div class="h-center">
 		<p class="inline">From This Base:</p>
-		<select class="inline" ng-change="changeBaseToSearchFrom()" ng-model="baseSelected">
+		<select class="inline" ng-change="changeBaseToSearchFrom(); searching = false" ng-model="baseSelected">
 			<option ng-selected="true" name="basesToFilter" value="undefined">Select a Base</option>
 			<option ng-repeat="base in bases" ng-selected="{{base.baseId}} == {{baseSelected}}" name="basesToFilter" value="{{base.baseId}}">{{base.name}}</option>
 		</select>

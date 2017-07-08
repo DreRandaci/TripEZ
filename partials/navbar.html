@@ -8,13 +8,19 @@
   <a ng-show="user.uid" href="#!/trips/{{user.uid}}" ng-click="closeNav(); navOpen = false;">
     <div class="row">
     	<div class="nav-col-left" ng-if="navOpen">Active Trips</div>
-    	<img title="View Active Trips" class="nav-img pull-right nav-col-right" src="./images/fwd.png" alt="future"/>
+    	<img title="View Active Trips" class="nav-img pull-right nav-col-right" src="./images/fwd.png" alt="planned trips"/>
     </div>
   </a>
   <a ng-show="user.uid" href="#!/archive/{{user.uid}}" ng-click="closeNav(); navOpen = false;">
     <div class="row">
     	<div class="nav-col-left" ng-if="navOpen">Archive</div> 
-    	<img title="View Archived Trips" class="nav-img pull-right nav-col-right" src="./images/bkwd.png" alt="past"/>
+    	<img title="View Archived Trips" class="nav-img pull-right nav-col-right" src="./images/bkwd.png" alt="archived trips"/>
+    </div>
+  </a>
+  <a ng-show="user.uid && user.google" href="#!/calendar/{{user.uid}}" ng-click="closeNav(); navOpen = false;">
+    <div class="row">
+      <div class="nav-col-left" ng-if="navOpen">Calendar</div> 
+      <img title="View Archived Trips" class="nav-img pull-right nav-col-right" src="./images/cal.png" alt="calendar"/>
     </div>
   </a>
   <a href="#!/logout" ng-click="closeNav(); navOpen = false;">

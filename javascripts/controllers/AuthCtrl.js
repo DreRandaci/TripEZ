@@ -15,6 +15,9 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, ngToast, Auth
 
 	if ($location.path() === '/logout') {
 		AuthFactory.logout();
+		if ($rootScope.user.google) {
+			$location.url('https://accounts.google.com/Logout');
+		}
 		$rootScope.user = {};
 		$location.url('/landing');
 	}
@@ -42,6 +45,7 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, ngToast, Auth
 		.then((user) => {
 			$rootScope.user = user;
 			$rootScope.user.google = true;
+			$rootScope.user.email = user.email;
 			$location.url(`/trips/${$rootScope.user.uid}`);
 		}).catch((error) => {
 			ngToast.create("Check your Google username & password, or register as new user.");
