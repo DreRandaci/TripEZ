@@ -98,6 +98,7 @@ app.controller("EventSearchCtrl", function($location, $routeParams, $scope, ngTo
     EventFactory.addToTripEventsInFB(eventToBeSavedToFB)
     .then((results) => {
       ngToast.create('Event added to trip.');
+      $scope.newEventToSave = { };
     })
     .catch((error) => {
       console.log("error in addToTripEvents", error);
