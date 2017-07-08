@@ -77,6 +77,7 @@ app.controller("EventSearchCtrl", function($location, $routeParams, $scope, ngTo
 
   $scope.changeBaseToSearchFrom = () => {
     getMapBaseToSearchFrom();
+    $scope.searchEvents = "";
   };
 
   $scope.addToTripEvents = (searchEvent) => {
