@@ -22,12 +22,12 @@
 	<h2 class="col-sm-2">End</h2>
 	<h2 class="col-sm-2">Address</h2>
 </div>
-<div ng-repeat="event in events | filter: {'type' : typeFilter, 'base' : defaultSelectedBaseId} | orderBy:'start'">
+<div ng-repeat="event in events | filter: {'type' : typeFilter, 'base' : defaultSelectedBaseId} | orderBy: 'start'">
 	<div class="row row-div">
 		<div class="col-sm-3 vert-center">
       <h3><a ng-href="#!/event/{{event.eventId}}">{{event.name}}</a></h3>
     </div>
-    <h4 class="col-sm-1 vert-center"><img class="type-img" ng-src="./images/{{event.type}}.png" alt="type icon"/></h4>
+    <h4 class="col-sm-1 vert-center"><img class="type-img" ng-src="./images/{{event.type}}.png" alt="No Type!"/></h4>
     <h4 class="col-sm-2 vert-center">{{event.start | date: 'short'}}</h4>
     <h4 class="col-sm-2 vert-center">{{event.end | date: 'short'}}</h4>
     <h4 class="col-sm-2 vert-center">{{event.address}}</h4>

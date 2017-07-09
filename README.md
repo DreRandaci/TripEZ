@@ -23,9 +23,28 @@ Helps users organize their vacation plans using Trips, Bases, and Events. Users 
 ### User Flow
 1. Arrive on landing page
 1. Identify as existing user, needing to register, or Google user
-1. 
+1. Arrive at the Event List view that shows upcoming events
+1. Select existing Trip to view Base List
+1. Add or edit Trip and select desired dates
+1. Click existing Trip routes to Base list for that Trip
+1. Select existing Base to view & edit, or add another Base
+1. Add another Base and select desired dates
+1. Click existing Base routes to Event List for that Base
+1. Select Base to filter the Event List, or select All Bases to show entire trip itinerary
+1. Filter by Event type to see only Food, Site, Transit, or Lodging
+1. Click Search New Event button routes to Event Search page
+1. Arrive on Event Search Page that automatically centers map on most recently selected Base
+1. Search for Events returns 10-20 maximum results with the free API license
+1. Save Event to Base/Trip by indicating type, start, and end
+1. View and Edit Event details by clicking from Event List 
+1. Click Archived Trips to view the archive, which is only viewable
+1. Click the unlock button to return an archived Trip to the Active list for editing and additions
 
 ### Stretch Goals
  - Itinerary view includes tab to view mapped Bases and Events
  - Google users save and edit Events in sync with their cloud-based calendar
  - Direction support between Events
+
+ ### Screen Shots
+
+ ![Splashpage]()
