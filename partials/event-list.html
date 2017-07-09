@@ -3,8 +3,16 @@
 <div class="h-center">
 	<h4 class="row-headings inline">Filter By Base:</h4>
 	<select class="inline" ng-model="defaultSelectedBaseId" value="All Bases" placeholder="All Bases" ng-change="setDefaultBaseFilterForEventList(defaultSelectedBaseId)">
-		<option name="base" value="">All Bases</option>
+		<option value="">All Bases</option>
 		<option ng-repeat="base in bases" ng-selected="{{base.baseId}} == {{defaultSelectedBaseId}}" name="basesToFilter" value="{{base.baseId}}">{{base.name}}</option>
+	</select><br/>
+	<h4 class="row-headings inline">Filter By Type:</h4>
+	<select class="inline" ng-model="typeFilter">
+		<option name="typesToFilter" value="">All Types</option>
+		<option name="typesToFilter" value="Food">Food</option>
+		<option name="typesToFilter" value="Site">Site</option>
+		<option name="typesToFilter" value="Transit">Transit</option>
+		<option name="typesToFilter" value="Lodging">Lodging</option>
 	</select>
 </div>
 <div class="row row-headings">
@@ -14,7 +22,7 @@
 	<h2 class="col-sm-2">End</h2>
 	<h2 class="col-sm-2">Address</h2>
 </div>
-<div ng-repeat="event in events | filter: (!!defaultSelectedBaseId || undefined) && {'base' : defaultSelectedBaseId} | orderBy:'start'">
+<div ng-repeat="event in events | filter: {'type' : typeFilter, 'base' : defaultSelectedBaseId} | orderBy:'start'">
 	<div class="row row-div">
 		<div class="col-sm-3 vert-center">
       <h3><a ng-href="#!/event/{{event.eventId}}">{{event.name}}</a></h3>
