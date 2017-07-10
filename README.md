@@ -82,7 +82,7 @@ Helps users organize their vacation plans using Trips, Bases, and Events. Users 
 
 #### Event Detail
 
-![Splashpage](https://raw.githubusercontent.com/mitchellblom/TripEZ/readme/images/screenshots/event-detail1.png)
+![Splashpage](https://raw.githubusercontent.com/mitchellblom/TripEZ/readme/images/screenshots/event-detail.png)
 
 #### Archive Example
 
