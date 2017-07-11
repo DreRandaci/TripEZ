@@ -15,11 +15,11 @@
 	<div>
 		<div class="row">
 			<h3 class="col-sm-4">Map Coordinates:</h3>
-			<h4 class="col-sm-8">{{event.latitude}}, {{event.longitude}}</h4>
+			<h4 class="col-sm-8 top-pad">{{event.latitude}}, {{event.longitude}}</h4>
 		</div>
 		<div class="row">
 			<h3 class="col-sm-4">Type:</h3> 
-			<h4 class="col-sm-8" ng-show="!editingType">{{event.type}}</h4>
+			<h4 class="col-sm-8 top-pad" ng-show="!editingType">{{event.type}}</h4>
 			<select ng-model="event.type" ng-show="editingType" ng-keyup="$event.keyCode == 13 && editEvent()">
 				<option name="type" value="Food">Food</option>
 				<option name="type" value="Site">Site</option>
@@ -35,11 +35,11 @@
 		</div>
 		<div class="row">
 			<h3 class="col-sm-4">Average Review:</h3>
-			<h4 class="col-sm-8">{{event.review}}</h4>
+			<h4 class="col-sm-8 top-pad">{{event.review}}</h4>
 		</div>
 		<div class="row">
 			<h3 class="col-sm-4">Start:</h3>
-			<h4 class="col-sm-8" ng-show="!editingStart">{{event.start | date: 'short'}}</h4>
+			<h4 class="col-sm-8 top-pad" ng-show="!editingStart">{{event.start | date: 'short'}}</h4>
 			<div ng-show="editingStart">
 		    <p class="input-group date-picker" ng-show="editingStart">
 		    	<input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="event.start" is-open="eventStartEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" placeholder="mm/dd/yyyy"/>
@@ -60,7 +60,7 @@
 		</div>
 		<div class="row">
 			<h3 class="col-sm-4">End:</h3>
-			<h4 class="col-sm-8" ng-show="!editingEnd">{{event.end | date: 'short'}}</h4>
+			<h4 class="col-sm-8 top-pad" ng-show="!editingEnd">{{event.end | date: 'short'}}</h4>
 				<div ng-show="editingEnd">
 					<p class="input-group date-picker col-sm-4">
 			    	<input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="event.end" is-open="eventEndEdit" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" placeholder="mm/dd/yyyy"/>
@@ -81,7 +81,7 @@
 		</div>
 		<div class="row">
 			<h3 class="col-sm-4">Address:</h3>
-			<h4 class="col-sm-8" ng-show="!editingAddress">{{event.address}}</h4>
+			<h4 class="col-sm-8 top-pad" ng-show="!editingAddress">{{event.address}}</h4>
 			<input type="text" ng-model="event.address" ng-show="editingAddress" ng-keyup="$event.keyCode == 13 && editEvent()"/>
 			<button type="button" class="btn btn-sm btn-primary pull-right inline hide" ng-show="!editingAddress" ng-click="editingAddress = true">
 	      <i class="fa fa-pencil"></i>
@@ -92,7 +92,7 @@
 		</div>
 		<div class="row">
 			<h3 class="col-sm-4">Base:</h3>
-			<h4 class="col-sm-8" ng-show="!editingBase">{{currentBase.name}}</h4>
+			<h4 class="col-sm-8 top-pad" ng-show="!editingBase">{{currentBase.name}}</h4>
 			<select ng-model="event.base" ng-show="editingBase">
 				<option ng-repeat="base in bases" name="base" value="{{base.baseId}}">{{base.name}}</option>
 			</select>
@@ -105,7 +105,7 @@
 		</div>
 		<div class="row">
 			<h3 class="col-sm-4">Reference:</h3>
-			<h4 class="col-sm-8" ng-show="!editingReference">{{event.ref}}</h4>
+			<h4 class="col-sm-8 top-pad" ng-show="!editingReference">{{event.ref}}</h4>
 			<input type="text" ng-model="event.ref" ng-show="editingReference" ng-keyup="$event.keyCode == 13 && editEvent()"/>
 			<button type="button" class="btn btn-sm btn-primary pull-right inline hide" ng-show="!editingReference" ng-click="editingReference = true">
 				<i class="fa fa-pencil"></i>
