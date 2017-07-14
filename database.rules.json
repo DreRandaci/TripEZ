@@ -1,0 +1,27 @@
+{
+  "rules": {
+    ".read": "true",
+    ".write": "true",
+    "trips": {
+      ".indexOn": [
+        "uid",
+        "id"
+      ]
+    },
+    "bases": {
+      ".indexOn": "trip"
+    },
+    "events": {
+      ".indexOn": [
+        "trip",
+        "base"
+      ]
+    },
+    "types": {
+      ".indexOn": "uid"
+    },
+    "users": {
+      ".indexOn": "uid"
+    }
+  }
+}
